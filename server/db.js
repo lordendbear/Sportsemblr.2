@@ -1,4 +1,11 @@
-export default callback => {
-	// connect to a database if needed, then pass it to `callback`:
-	callback();
-}
+import mongoose from 'mongoose';
+
+export default (config) => {
+	mongoose.Promise = global.Promise;
+	mongoose.connect(config.connectionString);
+
+	mongoose.connection.on('error', () => {
+		console.log('MongoDB connection error. Please make sure MongoDB is running.');
+		process.exit();
+	});
+};
