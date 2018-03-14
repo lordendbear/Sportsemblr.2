@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import initializeDb from './db';
+import initializeDb from './config/db';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
@@ -23,20 +23,26 @@ app.use(bodyParser.json({
 	limit: config.bodyLimit
 }));
 
+//const db = initializeDb(config);
+
 // connect to db
-initializeDb(db => {
+// initializeDb(db => {
 
-	// internal middleware
-	app.use(middleware({ config, db }));
+// 	// internal middleware
+// 	app.use(middleware({ config, db }));
 
-	// api router
-	const router = api({ config, db });
+// 	// api router
+// 	const router = api({ config, db });
 
-	app.use('/api', router);
+// 	app.use('/api', router);
 
-	app.server.listen(process.env.PORT || config.port, () => {
-		console.log(`Started on port ${app.server.address().port}`);
-	});
+// 	app.server.listen(process.env.PORT || config.port, () => {
+// 		console.log(`Started on port ${app.server.address().port}`);
+// 	});
+// });
+
+app.listen(config.port, () => {
+	console.log(`Started on port ${config.port}`);
 });
 
 export default app;
