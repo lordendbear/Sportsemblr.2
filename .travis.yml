@@ -1,8 +1,6 @@
 language: node_js
 node_js:
-  - "7"
-  - "8"
-  - "9"
+  - "lts/*"
   - "node"
 
 install:
@@ -10,3 +8,11 @@ install:
   - npm install
   - cd ../server/
   - npm install
+  - cd ..
+
+script:
+  - cd client/
+  - npm run test
+  - cd ../server/
+  - npm run test
+  - cd ..
