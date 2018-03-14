@@ -14,5 +14,5 @@ script:
   - cd client/
   - npm run test && npm run build
   - cd ../server/
-  - npm run test && npm run build
+  - npm run test
   - cd ..
