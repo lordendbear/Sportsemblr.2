@@ -1,8 +1,7 @@
-import { version } from '../package.json';
 import { Router } from 'express';
 
 export default ({ config, db }) => {
-	const api = Router();
+	const router = Router();
 
-	return api;
+	return router;
 }
