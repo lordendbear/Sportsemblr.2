@@ -16,3 +16,8 @@ script:
   - cd ../server/
   - npm run test
   - cd ..
+
+  notifications:
+    email:
+      on_success: never
+      on_failure: never
