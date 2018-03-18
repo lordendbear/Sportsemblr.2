@@ -4,7 +4,7 @@
   "description": "Starter project for an ES6 RESTful Express API",
   "main": "dist",
   "scripts": {
-    "dev": "nodemon -w ./ --exec \"babel-node ./ --presets es2015,stage-0\"",
+    "dev": "nodemon -w ./ --exec \"babel-node index.js --presets es2015,stage-0\"",
     "build": "babel ./ -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
