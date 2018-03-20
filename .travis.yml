@@ -4,6 +4,8 @@ node_js:
   - "node"
   - "10"
 
+sudo: required
+
 install:
   - ./scripts/install.sh
 
