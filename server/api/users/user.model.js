@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: roles,
+        // enum: roles,
         default: 'user',
     },
     picture: {
@@ -38,6 +38,6 @@ const userSchema = new mongoose.Schema({
         timestamps: true
     });
 
-const User = mongoose.model('User', eventSchema);
+const User = mongoose.model('User', userSchema);
 
 export default User;

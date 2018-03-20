@@ -1,4 +1,4 @@
-export default (db) => {
+export default (Event) => {
     return {
 
     };

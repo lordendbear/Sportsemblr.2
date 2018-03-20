@@ -1,4 +1,4 @@
-export default (db) => {
+export default (User) => {
     return {
 
     };
