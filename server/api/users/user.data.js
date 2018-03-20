@@ -1,8 +1,22 @@
 export default (User, { passwordHasher }) => {
     return {
         create: (user) => {
-            return new Promise((resolve, reject) => {
+            const hashedPassword = passwordHasher.hashPassword(user.password);
 
+            const newUser = new User({
+                email: user.email,
+                name: user.name,
+                password: hashedPassword
+            });
+
+            return new Promise((resolve, reject) => {
+                newUser.save((err) => {
+                    if (err) {
+                        reject(err);
+                    }
+
+                    resolve(user);
+                })
             });
         },
         findByEmail: (email) => {
