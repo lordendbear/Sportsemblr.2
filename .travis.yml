@@ -16,6 +16,7 @@ jobs:
   include:
     - stage: build
       script: ./scripts/build-client.sh
+    - stage: build
       script: ./scripts/build-server.sh
     - stage: test
       script: ./scripts/test-client.sh
