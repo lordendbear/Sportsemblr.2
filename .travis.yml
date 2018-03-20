@@ -6,6 +6,8 @@ node_js:
 install:
   - ./scripts/install.sh
 
+script:
+
 stages:
   - build
   - test
@@ -16,7 +18,7 @@ jobs:
   include:
     - stage: build
       script: ./scripts/build-client.sh
-      script: ./scripts/build-server.sh
+      # script: ./scripts/build-server.sh
     - stage: test
       script: ./scripts/test-client.sh
       script: ./scripts/test-server.sh
