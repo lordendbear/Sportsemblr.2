@@ -12,7 +12,7 @@ export default (data) => {
                 .then((existingUser) => {
                     if (existingUser) {
                         return res
-                            .status(400)
+                            .sendStatus(400)
                             .send({
                                 error: 'User already exists'
                             });
