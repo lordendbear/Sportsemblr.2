@@ -6,6 +6,9 @@ node_js:
 install:
   - ./scripts/install.sh
 
+script:
+  - echo "Running tests..."
+
 stages:
   - build
   - test
