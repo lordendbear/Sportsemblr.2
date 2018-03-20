@@ -6,9 +6,6 @@ node_js:
 install:
   - ./scripts/install.sh
 
-script:
-  - echo "Running tests..."
-
 stages:
   - build
   - test
@@ -22,6 +19,7 @@ jobs:
       script: ./scripts/build-server.sh
     - stage: test
       script: ./scripts/test-client.sh
+    - stage: test
       script: ./scripts/test-server.sh
     # - stage: deploy
     #   script: ./deploy
