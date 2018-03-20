@@ -8,7 +8,9 @@
     "build": "babel ./ -s -D --ignore node_modules -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "test": "eslint ./"
+    "test": "npm run lint && npm run unit-test",
+    "lint": "eslint ./",
+    "unit-test": "mocha test --recursive --reporter spec"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -35,6 +37,7 @@
     "cors": "^2.7.1",
     "dotenv": "^5.0.1",
     "express": "^4.13.3",
+    "mocha": "^5.0.4",
     "mongoose": "^5.0.9",
     "morgan": "^1.8.0"
   },
