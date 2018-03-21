@@ -1,5 +1,7 @@
 /* eslint-env mocha */
 
+import { Promise } from 'bluebird';
+
 import createRequestMock from '../req.mock';
 import createResponseMock from '../res.mock';
 
