@@ -6,36 +6,19 @@ node_js:
 cache: bundler
 
 install:
-  - ./scripts/install.sh
+  - cd client/
+  - npm install
+  - cd ../server/
+  - npm install
+  - cd ..
 
 script:
-  - echo "Running tests..."
-
-stages:
-  - build
-  - test
-  - name: deploy
-    if: branch = master
-
-jobs:
-  include:
-    - stage: build
-      script: ./scripts/build-client.sh
-    - stage: build
-      script: ./scripts/build-server.sh
-    - stage: test
-      script: ./scripts/test-client.sh
-    - stage: test
-      script: ./scripts/test-server.sh
-    # - stage: deploy
-    #   script: ./deploy
-
-# script:
-#   - cd client/
-#   - npm run test && npm run build
-#   - cd ../server/
-#   - npm run test
-#   - cd ..
+  - cd client/
+  - npm run build
+  - npm run test
+  - cd ../server
+  - npm run build
+  - npm run test
 
 notifications:
   email:
