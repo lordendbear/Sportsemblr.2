@@ -8,7 +8,9 @@
     "build": "babel ./ -s -D --ignore node_modules -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "test": "eslint ./"
+    "test": "npm run lint && npm run unit-test",
+    "lint": "eslint ./",
+    "unit-test": "mocha  --compilers js:babel-core/register test --recursive --reporter spec "
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -28,6 +30,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
@@ -42,6 +46,8 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.1.1",
-    "nodemon": "^1.9.2"
+    "mocha": "^5.0.4",
+    "nodemon": "^1.9.2",
+    "sinon": "^4.4.6"
   }
 }
