@@ -1,5 +1,7 @@
 import passwordHasher from './password-hasher';
+import tokenManager from './token-manager';
 
 export default {
-    passwordHasher
+    passwordHasher,
+    tokenManager
 }
