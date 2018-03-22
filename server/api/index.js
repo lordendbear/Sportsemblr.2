@@ -4,7 +4,7 @@ import eventRouterInit from './events'
 import authRouterInit from './auth'
 import userRouterInit from './users'
 
-export default (app, config, utils) => {
+export default (app, config, utils, middleware) => {
 	const router = Router();
 
 	const eventRouter = eventRouterInit(config);
