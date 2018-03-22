@@ -46,7 +46,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "npm run lint node scripts/test.js --env=jsdom",
     "test:watch": "npm run lint && node scripts/test.js --env=jsdom --watch",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src"
