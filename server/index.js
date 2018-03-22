@@ -2,7 +2,9 @@ import initializeDb from './config/db';
 import initializeApi from './api';
 import config from './config';
 import app from './config/app';
-import utils from './utils';
+import initializeUtils from './utils';
+
+const utils = initializeUtils(config);
 
 initializeDb(config);
 

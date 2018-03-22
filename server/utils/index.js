@@ -1,7 +1,9 @@
 import passwordHasher from './password-hasher';
-import tokenManager from './token-manager';
+import tokenManagerInit from './token-manager';
 
-export default {
-    passwordHasher,
-    tokenManager
+export default function (config) {
+    return {
+        passwordHasher,
+        tokenManager: tokenManagerInit(config)
+    };
 }
