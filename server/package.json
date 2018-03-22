@@ -39,7 +39,9 @@
     "express": "^4.13.3",
     "jwt-simple": "^0.5.1",
     "mongoose": "^5.0.9",
-    "morgan": "^1.8.0"
+    "morgan": "^1.8.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
