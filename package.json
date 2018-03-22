@@ -1,0 +1,25 @@
+{
+  "name": "sportsemlbr.v2",
+  "version": "0.0.1",
+  "description": "[Project summary](https://docs.google.com/document/d/1K2_rQsSbkaQfpO1gciDXHp_hNcb1nrNzrDXIeYQ9k5U/edit?usp=sharing)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "prepush": "cd client && npm test && cd ../server && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordendbear/Sportsemblr.2.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lordendbear/Sportsemblr.2/issues"
+  },
+  "homepage": "https://github.com/lordendbear/Sportsemblr.2#readme",
+  "devDependencies": {
+    "husky": "^0.14.3"
+  }
+}
