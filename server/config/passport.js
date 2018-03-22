@@ -8,8 +8,8 @@ export default function (config) {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer')
     }
 
-    const jwtVerify = async (payload, done) => {
-        await User.findById(payload.sub, (err, user) => {
+    const jwtVerify = (payload, done) => {
+        User.findById(payload.sub, (err, user) => {
             if (err) {
                 return done(err, false);
             }
