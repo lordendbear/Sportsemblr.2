@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "cd client && npm test && cd ../server && npm test"
+    "prepush": "cd client && npm test && cd ../server && npm test"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/lordendbear/Sportsemblr.2/issues"
   },
-  "homepage": "https://github.com/lordendbear/Sportsemblr.2#readme"
+  "homepage": "https://github.com/lordendbear/Sportsemblr.2#readme",
+  "devDependencies": {
+    "husky": "^0.14.3"
+  }
 }
