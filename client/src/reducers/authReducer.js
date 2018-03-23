@@ -1,3 +1,11 @@
+import * as types from '../actions/actionTypes';
+
 export default function authReducer(state = {}, action) {
-    return state;
+    switch (action.type) {
+        case types.REGISTER:
+            return action.user;
+
+        default:
+            return state;
+    }
 }
