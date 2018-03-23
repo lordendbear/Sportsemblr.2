@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './Register.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as authActions from '../../actions/authActions';
 
 class Register extends Component {
     constructor(props, context) {
@@ -77,7 +80,7 @@ class Register extends Component {
     onRegisterClick() {
         const user = this.state.user;
 
-        console.log(user);
+        this.props.register(user);
     }
 
     render() {
@@ -143,4 +146,8 @@ class Register extends Component {
     }
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(authActions, dispatch)
+};
+
+export default connect(null, mapDispatchToProps)(Register);
