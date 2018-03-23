@@ -7,6 +7,8 @@ import User from '../../../api/users/user.model';
 
 import config from '../config';
 
+import mongoose, { mongo } from 'mongoose';
+
 describe('POST /api/users', () => {
     let dbUser;
     let user;
@@ -40,6 +42,16 @@ describe('POST /api/users', () => {
     });
 
     afterEach(() => {
+        mongoose.connection.db.dropDatabase()
+            .then(() => {
+                return mongoose.connection.close();
+            })
+            .then(() => {
+                done();
+            })
+            .catch(err => {
+                done(err);
+            });
     });
 
     it('should register a new user when request is ok', (done) => {
