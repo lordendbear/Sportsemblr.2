@@ -61,16 +61,17 @@ class Register extends Component {
                 errors
             })
         } else {
-            user.confirmPassword = confirmPassword;
-
-            this.setState({ user });
-
             const errors = this.state.errors;
+            errors.confirmPassword = '';
 
             this.setState({
                 errors
             })
         }
+
+        user.confirmPassword = confirmPassword;
+
+        this.setState({ user });
     }
 
     onRegisterClick() {
