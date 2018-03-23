@@ -39,7 +39,7 @@ describe('POST /api/users', () => {
         });
     });
 
-    afterEach(() => {
+    afterEach((done) => {
         mongoose.connection.db.dropDatabase()
             .then(() => {
                 return mongoose.connection.close();

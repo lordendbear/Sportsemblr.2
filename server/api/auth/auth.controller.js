@@ -18,9 +18,8 @@ export default (User, { passwordHasher, tokenManager }) => {
                 }
 
                 const isMatch = passwordHasher.verifyPassword(user.password, password);
-
                 if (!isMatch) {
-                    throw new Error();
+                    return res.sendStatus(401);
                 }
 
                 const payload = {
