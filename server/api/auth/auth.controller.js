@@ -12,6 +12,11 @@ export default (User, { passwordHasher, tokenManager }) => {
                     return res.send(err);
                 }
 
+                if (!user) {
+                    return res
+                        .sendStatus(404);
+                }
+
                 const isMatch = passwordHasher.verifyPassword(user.password, password);
 
                 if (!isMatch) {

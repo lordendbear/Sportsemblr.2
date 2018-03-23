@@ -1,0 +1,20 @@
+import * as types from './actionTypes';
+import authApi from '../api/authApi';
+
+export function register(user) {
+    return (dispatch) => {
+        return authApi.register(user)
+            .then(response => {
+                dispatch({
+                    type: types.REGISTER_SUCCESS,
+                    user: response
+                })
+            })
+            .catch(err => {
+                dispatch({
+                    type: types.REGISTER_FAIL,
+                    error: err
+                })
+            });
+    }
+}

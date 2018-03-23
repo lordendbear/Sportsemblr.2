@@ -4,7 +4,7 @@
   "description": "Server side project",
   "main": "dist",
   "scripts": {
-    "dev": "nodemon -w ./ --exec \"babel-node index.js --presets es2015,stage-0\"",
+    "dev": "nodemon -w ./ --exec \"clear && babel-node index.js --presets es2015,stage-0\"",
     "build": "babel ./ -s -D --ignore node_modules -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
