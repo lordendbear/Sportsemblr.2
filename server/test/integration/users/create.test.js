@@ -7,7 +7,7 @@ import User from '../../../api/users/user.model';
 
 import config from '../config';
 
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
 describe('POST /api/users', () => {
     let dbUser;
@@ -30,14 +30,12 @@ describe('POST /api/users', () => {
             name: 'Daniel Sousa',
         };
 
-        User.remove({}, () => {
-            User.create(dbUser, (err) => {
-                if (err) {
-                    return done(err);
-                }
+        User.create(dbUser, (err) => {
+            if (err) {
+                return done(err);
+            }
 
-                return done();
-            });
+            return done();
         });
     });
 
