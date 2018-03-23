@@ -6,13 +6,13 @@ import inititalizeApp from '../../..//config/app';
 import User from '../../../api/users/user.model';
 
 import config from '../config';
-
-import mongoose from 'mongoose';
+import * as testUtils from '../utils';
 
 describe('POST /api/users', () => {
     let dbUser;
     let user;
     let app;
+
 
     beforeEach((done) => {
         app = inititalizeApp(config);
@@ -40,16 +40,7 @@ describe('POST /api/users', () => {
     });
 
     afterEach((done) => {
-        mongoose.connection.db.dropDatabase()
-            .then(() => {
-                return mongoose.connection.close();
-            })
-            .then(() => {
-                done();
-            })
-            .catch(err => {
-                done(err);
-            });
+        testUtils.dropDatabase(done);
     });
 
     it('should register a new user when request is ok', (done) => {

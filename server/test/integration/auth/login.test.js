@@ -7,8 +7,7 @@ import inititalizeApp from '../../..//config/app';
 import User from '../../../api/users/user.model';
 
 import config from '../config';
-
-import mongoose from 'mongoose';
+import * as testUtils from '../utils';
 
 describe('POST /api/login', () => {
     let dbUser;
@@ -51,16 +50,7 @@ describe('POST /api/login', () => {
         user = null;
         dbUser = null;
 
-        mongoose.connection.db.dropDatabase()
-            .then(() => {
-                return mongoose.connection.close();
-            })
-            .then(() => {
-                done();
-            })
-            .catch(err => {
-                done(err);
-            });
+        testUtils.dropDatabase(done);
     });
 
     it('should login user when request is ok', (done) => {
