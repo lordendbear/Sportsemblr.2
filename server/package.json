@@ -1,7 +1,7 @@
 {
-  "name": "express-es6-rest-api",
-  "version": "0.3.0",
-  "description": "Starter project for an ES6 RESTful Express API",
+  "name": "sportsemlbr.v2-server",
+  "version": "0.0.1",
+  "description": "Server side project",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w ./ --exec \"babel-node index.js --presets es2015,stage-0\"",
