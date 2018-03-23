@@ -4,13 +4,14 @@
   "description": "Server side project",
   "main": "dist",
   "scripts": {
-    "dev": "nodemon -w ./ --exec \"clear && babel-node index.js --presets es2015,stage-0\"",
+    "dev": "nodemon -w ./ --exec \"clear && cross-env NODE_ENV=dev babel-node index.js --presets es2015,stage-0\"",
     "build": "babel ./ -s -D --ignore node_modules -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "test": "npm run lint && npm run unit-test",
+    "test": "npm run lint && npm run unit-test && npm run integration-test",
     "lint": "eslint ./",
-    "unit-test": "mocha  --compilers js:babel-core/register test --recursive --reporter spec "
+    "unit-test": "mocha  --compilers js:babel-core/register ./test/unit/ --recursive --reporter spec ",
+    "integration-test": "cross-env NODE_ENV=test mocha --exit --timeout 15000 --compilers js:babel-core/register ./test/integration/ --recursive --reporter spec "
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -48,9 +49,12 @@
     "babel-core": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-0": "^6.5.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.4",
     "eslint": "^3.1.1",
     "mocha": "^5.0.4",
     "nodemon": "^1.9.2",
-    "sinon": "^4.4.6"
+    "sinon": "^4.4.6",
+    "supertest": "^3.0.0"
   }
 }
