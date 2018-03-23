@@ -22,7 +22,6 @@ export default (data) => {
                 })
                 .then(() => {
                     return res
-                        .sendStatus(200)
                         .send({
                             email: user.email,
                             name: user.name
