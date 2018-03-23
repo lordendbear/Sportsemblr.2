@@ -2,6 +2,7 @@
 import { expect } from 'chai';
 import request from 'supertest';
 
+import inititalizeUtils from '../../../utils';
 import inititalizeApp from '../../..//config/app';
 import User from '../../../api/users/user.model';
 
@@ -13,13 +14,18 @@ describe('POST /api/login', () => {
     let dbUser;
     let user;
     let app;
+    let password = 'somepassword';
+
+    const { passwordHasher, tokenManager } = inititalizeUtils(config);
+
+    const hashedPassword = passwordHasher.hashPassword(password);
 
     beforeEach((done) => {
         app = inititalizeApp(config);
 
         dbUser = {
             email: 'branstark@gmail.com',
-            password: 'mypassword',
+            password: hashedPassword,
             name: 'Bran Stark',
             role: 'admin',
         };
@@ -30,16 +36,21 @@ describe('POST /api/login', () => {
             name: 'Daniel Sousa',
         };
 
-        User.create(dbUser, (err) => {
+        User.create(dbUser, (err, savedUser) => {
             if (err) {
                 return done(err);
             }
+
+            dbUser = savedUser;
 
             return done();
         });
     });
 
     afterEach((done) => {
+        user = null;
+        dbUser = null;
+
         mongoose.connection.db.dropDatabase()
             .then(() => {
                 return mongoose.connection.close();
@@ -53,11 +64,19 @@ describe('POST /api/login', () => {
     });
 
     it('should login user when request is ok', (done) => {
+        const payload = {
+            sub: dbUser._id
+        }
+
+        const token = tokenManager.encode(payload);
+
         request(app)
             .post('/api/login')
-            .send(dbUser)
+            .send({ email: dbUser.email, password })
             .expect(200)
             .then((res) => {
+                expect(res.body.token).to.equal(token);
+
                 done();
             });
     });
@@ -95,7 +114,7 @@ describe('POST /api/login', () => {
     it('should return unauthorized when passwords do not match', (done) => {
         request(app)
             .post('/api/login')
-            .send({ email: dbUser.email, password: 'somepassword' })
+            .send({ email: dbUser.email, password: 'wrongpassword' })
             .expect(401)
             .then((res) => {
                 done();
