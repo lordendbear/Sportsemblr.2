@@ -18,8 +18,10 @@ export default (User, { passwordHasher, tokenManager }) => {
                 }
 
                 const isMatch = passwordHasher.verifyPassword(user.password, password);
+
                 if (!isMatch) {
-                    return res.sendStatus(401);
+                    return res
+                        .sendStatus(401);
                 }
 
                 const payload = {
@@ -30,7 +32,8 @@ export default (User, { passwordHasher, tokenManager }) => {
 
                 const token = tokenManager.encode(payload);
 
-                return res.send(token);
+                return res
+                    .send({ token });
             });
         }
     };
