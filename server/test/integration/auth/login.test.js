@@ -35,14 +35,16 @@ describe('POST /api/login', () => {
             name: 'Daniel Sousa',
         };
 
-        User.create(dbUser, (err, savedUser) => {
-            if (err) {
-                return done(err);
-            }
+        User.remove({}, () => {
+            User.create(dbUser, (err, savedUser) => {
+                if (err) {
+                    return done(err);
+                }
 
-            dbUser = savedUser;
+                dbUser = savedUser;
 
-            return done();
+                return done();
+            });
         });
     });
 

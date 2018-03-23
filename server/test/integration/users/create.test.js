@@ -13,7 +13,6 @@ describe('POST /api/users', () => {
     let user;
     let app;
 
-
     beforeEach((done) => {
         app = inititalizeApp(config);
 
@@ -30,12 +29,16 @@ describe('POST /api/users', () => {
             name: 'Daniel Sousa',
         };
 
-        User.create(dbUser, (err) => {
-            if (err) {
-                return done(err);
-            }
+        User.remove({}, () => {
+            User.create(dbUser, (err, savedUser) => {
+                if (err) {
+                    return done(err);
+                }
 
-            return done();
+                dbUser = savedUser;
+
+                return done();
+            });
         });
     });
 
