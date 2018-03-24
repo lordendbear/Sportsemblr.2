@@ -8,13 +8,14 @@ import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Register from './components/auth/Register'
+import App from './components/App';
 
 const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
         <Router >
-            <Route path="/register" component={Register} />
+            <Route path="/" component={App} />
         </Router >
     </Provider >,
     document.getElementById('root')
