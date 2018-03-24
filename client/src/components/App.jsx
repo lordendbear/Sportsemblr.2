@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import './App.css';
 import Navbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
-import Register from './auth/Register';
-import Login from './auth/Login';
+import Register from './auth/register/Register';
+import Login from './auth/login/Login';
 
 class App extends Component {
   render() {

@@ -1,9 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
-    return (
-        <nav className="navbar navbar-inverse navbar-fixed-top">
+class Navbar extends React.Component {
+    renderNavLink = (label, to) => (<NavLink to={to} exact activeClassName="selected" >
+        {label}
+    </NavLink>);
+
+    render() {
+        return (<nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -14,16 +18,15 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-collapse collapse">
                     <ul className="nav navbar-nav">
-                        <li>
-                            <NavLink to="/" exact activeClassName="selected" >
-                                Home
-                                </NavLink>
-                        </li>
+                        <li>{this.renderNavLink('Home', '/')}</li>
+                        <li>{this.renderNavLink('Login', '/login')}</li>
+                        <li>{this.renderNavLink('Register', '/register')}</li>
                     </ul>
                 </div>
             </div>
         </nav>
     );
+    }
 }
 
 export default Navbar;
