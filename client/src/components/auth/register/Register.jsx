@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Register.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { register } from '../../actions/authActions';
+import { register } from '../../../actions/authActions';
 import { Link } from 'react-router-dom'
 
 class Register extends Component {

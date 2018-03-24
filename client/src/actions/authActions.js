@@ -23,10 +23,15 @@ export function login(user) {
     return (dispatch) => {
         return authApi.login(user)
             .then(response => {
-                console.log(response.data);
+                localStorage.setItem('token', response.data.token);
+                dispatch({
+                    type: types.LOGIN
+                })
             })
             .catch(err => {
-                console.log(err);
+                dispatch({
+                    type: types.LOGIN_FAIL
+                })
             });
     }
 }
