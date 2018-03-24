@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Register.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as authActions from '../../actions/authActions';
+import { register } from '../../actions/authActions';
 import { Link } from 'react-router-dom'
 
 class Register extends Component {
@@ -150,7 +150,7 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(authActions, dispatch)
+    return bindActionCreators({ register }, dispatch)
 };
 
 export default connect(null, mapDispatchToProps)(Register);
