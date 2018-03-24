@@ -10,9 +10,9 @@ import Login from './auth/Login';
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div >
         <Navbar />
-        <div className="container-fluid">
+        <div className="container">
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </div>

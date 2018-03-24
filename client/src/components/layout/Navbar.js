@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className="navbar navbar-inverse navbar-fixed-top">
+        <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +22,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }
 
