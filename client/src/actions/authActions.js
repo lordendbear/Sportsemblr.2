@@ -18,3 +18,15 @@ export function register(user) {
             });
     }
 }
+
+export function login(user) {
+    return (dispatch) => {
+        return authApi.login(user)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
