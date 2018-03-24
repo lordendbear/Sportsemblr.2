@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Register.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as authActions from '../../actions/authActions';
+import { register } from '../../actions/authActions';
+import { Link } from 'react-router-dom'
 
 class Register extends Component {
     constructor(props, context) {
@@ -138,7 +139,9 @@ class Register extends Component {
                         <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.onRegisterClick}>Register</button>
                     </div>
                     <div className="login-register">
-                        <a href="index.php">Login</a>
+                        <Link to="/login" >
+                            Login
+                                </Link>
                     </div>
                 </form>
             </div >
@@ -147,7 +150,7 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(authActions, dispatch)
+    return bindActionCreators({ register }, dispatch)
 };
 
 export default connect(null, mapDispatchToProps)(Register);
