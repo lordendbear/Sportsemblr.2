@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from '../../actions/authActions';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props, context) {
@@ -65,7 +66,9 @@ class Login extends Component {
                         <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={() => this.onLoginClick()}>Login</button>
                     </div>
                     <div className="login-register">
-                        <a href="index.php">Register</a>
+                        <Link to="/register" >
+                            Register
+                                </Link>
                     </div>
                 </form>
             </div >
