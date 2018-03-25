@@ -12,4 +12,4 @@ class PlaceApi {
     }
 }
 
-export default AuthApi;
+export default PlaceApi;
