@@ -66,8 +66,6 @@ export class ManagePlace extends React.Component {
     redirect() {
         this.setState({ saving: false });
         toastr.success('Place saved.');
-
-        //   this.context.router.push('/places');
     }
 
     render() {
@@ -87,10 +85,6 @@ export class ManagePlace extends React.Component {
 ManagePlace.propTypes = {
     place: PropTypes.object.isRequired,
     savePlace: PropTypes.func.isRequired
-};
-
-ManagePlace.contextTypes = {
-    router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
