@@ -22,6 +22,8 @@
  - **name**
  - **date and time**
  - **price**
+ - **place**
+ - **sport**
  - **number people needed**
  - **number people joined** (can be evaluated through joined users collection)
  - **difficulty**
@@ -35,6 +37,7 @@
  - **prices**
  - **pictures**
  - **description**
+ - **work time**
  - reviews / rating
 
 ### Review
@@ -49,6 +52,7 @@
  - ***Author***
  - **Date and time created**
  - Notes
+ - **event**
  - **Approved/Disapproved time**
 
 ### Message (in talks / chat), used for persistent messages

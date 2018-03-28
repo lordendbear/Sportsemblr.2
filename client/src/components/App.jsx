@@ -7,6 +7,7 @@ import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
 import EventsList from '../containers/EventsList';
+import ManagePlace from './place/ManagePlace';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/events" component={EventsList} />
+          <Route path="/places/new" component={ManagePlace} />
         </div>
       </div>
     );
