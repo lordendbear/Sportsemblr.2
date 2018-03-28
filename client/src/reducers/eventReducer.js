@@ -1,10 +1,10 @@
 import * as types from '../actions/actionTypes';
 
-export default function eventReducer(state = {}, action) {
+export default function eventReducer(state = [], action) {
     switch (action.type) {
         case types.LOAD_EVENTS_SUCCESS:
             return [
-                action.events
+                ...action.events
             ]
 
         default:
