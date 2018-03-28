@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
-//import routes from './routes';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './components/App';
+import { loadEvents } from './actions/eventActions';
+
+import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
+
+store.dispatch(loadEvents());
 
 ReactDOM.render(
     <Provider store={store}>
