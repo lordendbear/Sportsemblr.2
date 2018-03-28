@@ -6,6 +6,7 @@ import Navbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
+import ManagePlace from './place/ManagePlace';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <div className="container">
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/places/new" component={ManagePlace} />
         </div>
       </div>
     );
