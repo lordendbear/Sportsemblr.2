@@ -1,5 +1,13 @@
 const events = [
     {
+        id: 1,
+        title: 'best match',
+        totalPeople: 12,
+        peopleNeeded: 6,
+        date: new Date(),
+        sport: {
+            name: 'Football'
+        }
 
     }
 ]
