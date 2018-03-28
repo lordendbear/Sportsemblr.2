@@ -6,6 +6,7 @@ import Navbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
+import EventsList from '../containers/EventsList';
 import ManagePlace from './place/ManagePlace';
 
 class App extends Component {
@@ -13,9 +14,10 @@ class App extends Component {
     return (
       <div >
         <Navbar />
-        <div className="container">
+        <div className="container body-content">
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/events" component={EventsList} />
           <Route path="/places/new" component={ManagePlace} />
         </div>
       </div>
