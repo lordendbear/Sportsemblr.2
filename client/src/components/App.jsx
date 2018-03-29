@@ -8,12 +8,14 @@ import Register from './auth/register/Register';
 import Login from './auth/login/Login';
 import EventsList from '../containers/EventsList';
 import ManagePlace from './place/ManagePlace';
+import Notification from '../containers/Notification';
 
 class App extends Component {
   render() {
     return (
       <div >
         <Navbar />
+        <Notification />
         <div className="container body-content">
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
