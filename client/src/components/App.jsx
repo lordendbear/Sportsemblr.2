@@ -9,6 +9,7 @@ import Login from './auth/login/Login';
 import EventsList from '../containers/EventsList';
 import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
+import ManageEvent from '../containers/ManageEvent';
 
 class App extends Component {
   render() {
@@ -19,7 +20,8 @@ class App extends Component {
         <div className="container body-content">
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/events" component={EventsList} />
+          <Route path="/events/new" component={ManageEvent} />
+          <Route path="/events" component={EventsList} exact />
           <Route path="/places/new" component={ManagePlace} />
         </div>
       </div>
