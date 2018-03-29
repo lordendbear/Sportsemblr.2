@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import EventApi from '../api/eventApi';
+import * as notificationActions from './notificationActions';
 
 export function loadEventsSuccess(events) {
   return {
@@ -40,6 +41,10 @@ export function saveEvent(event) {
         } else {
           dispatch(createEventSuccess(savedEvent));
         }
+        dispatch(notificationActions.success({ message: 'Saved successfulyy' }));
+      })
+      .catch(err => {
+        dispatch(notificationActions.error({ message: 'Something went wrong' }));
       });
   };
 }
