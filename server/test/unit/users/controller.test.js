@@ -11,14 +11,14 @@ import sinon from 'sinon';
 
 describe('userController', () => {
   describe('create', () => {
-    const next = (er) => { };
+    const next = () => { };
 
     let controller = null;
     let data = null;
 
     beforeEach(() => {
       data = {
-        findByEmail: (email) => {
+        findByEmail: () => {
           return Promise.resolve({});
         },
         create: (user) => {
