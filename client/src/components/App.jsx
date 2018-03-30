@@ -10,6 +10,7 @@ import EventsList from '../containers/EventsList';
 import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
 import ManageEvent from '../containers/ManageEvent';
+import PlacesList from '../containers/place/PlacesList';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/events" component={EventsList} exact />
           <Route path="/place" component={ManagePlace} />
           <Route path="/places/:id" component={ManagePlace} />
+          <Route path="/places" component={PlacesList} exact />
         </div>
       </div>
     );
