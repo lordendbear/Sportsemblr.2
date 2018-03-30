@@ -1,5 +1,4 @@
 import * as types from './actionTypes';
-import * as notificationActions from './notificationActions';
 import SportApi from '../api/sportApi';
 
 export function loadSportsSuccess(sports) {
