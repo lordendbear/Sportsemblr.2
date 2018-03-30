@@ -15,6 +15,12 @@ export class ManageEvent extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.state.event.id !== nextProps.event.id) {
+      this.setState({ event: Object.assign({}, nextProps.event) });
+    }
+  }
+
   updateEventState(ev) {
     const field = ev.target.name;
     let event = Object.assign({}, this.state.event);
