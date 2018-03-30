@@ -11,6 +11,7 @@ import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
 import ManageEvent from '../containers/ManageEvent';
 import PlacesList from '../containers/place/PlacesList';
+import EventDetails from '../containers/event/EventDetails';
 
 class App extends Component {
   render() {
@@ -22,7 +23,8 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/event" component={ManageEvent} exact />
-          <Route path="/events/:id" component={ManageEvent} />
+          <Route path="/events/:id/edit" component={ManageEvent} />
+          <Route path="/events/:id" component={EventDetails} exact />
           <Route path="/events" component={EventsList} exact />
           <Route path="/place" component={ManagePlace} />
           <Route path="/places/:id" component={ManagePlace} />
