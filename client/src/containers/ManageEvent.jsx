@@ -60,11 +60,20 @@ export class ManageEvent extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const event = {
-    title: ''
+const getEventById = (events, id) => {
+  const eventList = events.filter((e) => e.id === id);
+
+  if (eventList.length) {
+    return eventList[0];
   }
 
+  return { title: '' };
+};
+
+const mapStateToProps = (state, ownProps) => {
+  const id = +ownProps.match.params.id;
+
+  const event = getEventById(state.events, id);
   return {
     event
   };
