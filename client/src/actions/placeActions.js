@@ -2,9 +2,9 @@ import * as types from './actionTypes';
 import PlaceApi from '../api/placeApi';
 import * as notificationActions from './notificationActions';
 
-export function savePlaceSuccess(place) {
+export function createPlaceSuccess(place) {
   return {
-    type: types.SAVE_PLACE_SUCCESS,
+    type: types.CREATE_PLACE_SUCCESS,
     place
   };
 }
@@ -23,7 +23,7 @@ export function savePlace(place) {
         if (place.id) {
           dispatch(updatePlaceSuccess(savedPlace));
         } else {
-          dispatch(savePlaceSuccess(savedPlace));
+          dispatch(createPlaceSuccess(savedPlace));
         }
 
         dispatch(notificationActions.success({ message: 'Place saved.' }));
