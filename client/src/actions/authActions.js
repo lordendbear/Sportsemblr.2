@@ -28,7 +28,13 @@ export function login(user) {
   return (dispatch) => {
     return authApi.login(user)
       .then(response => {
-        localStorage.setItem('token', response.data.token);
+        const auth = {
+          token: response.data.token,
+          expires: response.data.expires,
+          user: response.data.user
+        };
+
+        localStorage.setItem('auth', auth);
         dispatch({
           type: types.LOGIN
         })
