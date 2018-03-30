@@ -25,9 +25,9 @@ class EventApi {
 
   static saveEvent(event) {
     return new Promise((resolve, reject) => {
-
       if (event.id) {
-
+        const index = events.findIndex(e => e.id === event.id);
+        events.splice(index, 1, event);
       } else {
         event.id = lastId++;
         events.push(event);

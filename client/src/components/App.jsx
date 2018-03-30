@@ -20,7 +20,8 @@ class App extends Component {
         <div className="container body-content">
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/events/new" component={ManageEvent} />
+          <Route path="/event" component={ManageEvent} exact />
+          <Route path="/events/:id" component={ManageEvent} />
           <Route path="/events" component={EventsList} exact />
           <Route path="/places/new" component={ManagePlace} />
         </div>
