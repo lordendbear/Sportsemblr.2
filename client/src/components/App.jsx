@@ -39,8 +39,20 @@ App.propTypes = {
   children: PropTypes.object,
 }
 
+const checkAuthenticated = () => {
+  const auth = localStorage.getItem('auth');
+  if (auth) {
+    // TODO: checks for expired
+    return !!auth.token;
+  }
+
+  return false;
+};
+
 function mapStateToProps(state, ownProps) {
-  return {};
+  const isAuthenticated = checkAuthenticated();
+
+  return { isAuthenticated };
 }
 
 export default connect(mapStateToProps)(App);
