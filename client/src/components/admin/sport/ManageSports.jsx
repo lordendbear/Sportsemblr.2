@@ -8,9 +8,13 @@ class ManageSports extends React.Component {
     super(props, context);
   }
 
+  onEdit(sport) {
+    console.log(sport);
+  }
+
   render() {
     return (
-      <SportList sports={this.props.sports} />
+      <SportList sports={this.props.sports} onEdit={this.onEdit} />
     );
   }
 }
