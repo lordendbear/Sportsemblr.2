@@ -7,7 +7,7 @@ import notificationReducer from './notificationReducer';
 const rootReducer = combineReducers({
   auth: authReducer,
   events: eventReducer,
-  place: placeReducer,
+  places: placeReducer,
   notification: notificationReducer
 });
 
