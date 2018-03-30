@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlaceShortComponent = ({ place }) => {
+const PlaceShort = ({ place }) => {
     return (
         <div className="well">
             <h2 className="media-heading">
@@ -11,8 +11,8 @@ const PlaceShortComponent = ({ place }) => {
     );
 };
 
-PlaceShortComponent.propTypes = {
+PlaceShort.propTypes = {
     place: PropTypes.object
 }
 
-export default PlaceShortComponent;
+export default PlaceShort;
