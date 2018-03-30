@@ -20,7 +20,7 @@ export class ManagePlace extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.place.id !== nextProps.place.id) {
+    if (this.state.place.id !== nextProps.place.id) {
       this.setState({ place: Object.assign({}, nextProps.place) });
     }
   }
@@ -84,8 +84,20 @@ ManagePlace.propTypes = {
   savePlace: PropTypes.func.isRequired
 };
 
+const getPlaceById = (places, id) => {
+  const placeList = places.filter((e) => e.id === id);
+
+  if (placeList.length) {
+    return placeList[0];
+  }
+
+  return { name: '' };
+};
+
 function mapStateToProps(state, ownProps) {
-  let place = { id: '', name: '' };
+  const id = +ownProps.match.params.id;
+
+  const place = getPlaceById(state.places, id);
 
   return {
     place
