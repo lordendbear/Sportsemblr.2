@@ -1,11 +1,19 @@
-const places = [];
-let lastId = 0;
+const places = [{
+    id: 1,
+    title: 'MY AWESOME PLACE'
+}];
+let lastId = 2;
 
 class PlaceApi {
     static savePlace(place) {
         return new Promise((resolve, reject) => {
-            place.id = ++lastId;
-            places.push(place);
+            if (place.id) {
+                const index = places.findIndex(e => e.id === place.id);
+                places.splice(index, 1, place);
+            } else {
+                place.id = lastId++;
+                places.push(place);
+            }
 
             resolve(Object.assign({}, place));
         });
