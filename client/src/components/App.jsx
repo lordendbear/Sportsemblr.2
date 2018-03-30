@@ -30,7 +30,7 @@ class App extends Component {
           <Route path="/place" component={ManagePlace} />
           <Route path="/places/:id" component={ManagePlace} />
           <Route path="/places" component={PlacesList} exact />
-          <Route path="/admin" component={Admin} exact />
+          <Route path="/admin" component={Admin} />
         </div>
       </div>
     );
