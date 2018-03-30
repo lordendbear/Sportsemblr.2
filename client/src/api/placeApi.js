@@ -5,6 +5,14 @@ const places = [{
 let lastId = 2;
 
 class PlaceApi {
+    static getAll() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(Object.assign([], places));
+            }, 1000);
+        });
+    }
+
     static savePlace(place) {
         return new Promise((resolve, reject) => {
             if (place.id) {
