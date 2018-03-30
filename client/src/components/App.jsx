@@ -22,7 +22,8 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/events/new" component={ManageEvent} />
           <Route path="/events" component={EventsList} exact />
-          <Route path="/places/new" component={ManagePlace} />
+          <Route path="/place" component={ManagePlace} />
+          <Route path="/places/:id" component={ManagePlace} />
         </div>
       </div>
     );
