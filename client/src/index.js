@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './components/App';
 import { loadEvents } from './actions/eventActions';
 import { loadPlaces } from './actions/placeActions';
+import { loadSports } from './actions/sportActions';
 
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +17,7 @@ const store = configureStore();
 
 store.dispatch(loadEvents());
 store.dispatch(loadPlaces());
+store.dispatch(loadSports());
 
 ReactDOM.render(
     <Provider store={store}>
