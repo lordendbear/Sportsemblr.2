@@ -23,6 +23,7 @@ const SportList = ({ sports, onSave, onDelete, onCancel, onEdit }) => {
               key={sport.id}
               sport={sport}
               onEdit={onEdit}
+              isEditMode={sport.isEditMode}
             />
           )
         }

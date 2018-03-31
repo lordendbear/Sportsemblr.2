@@ -6,15 +6,52 @@ import SportList from './SportList';
 class ManageSports extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    const sports = props.sports
+      .map(s => {
+        s.isEditMode = false;
+        return s;
+      });
+
+    this.state = { sports };
+    this.onEdit = this.onEdit.bind(this);
+  }
+
+  componentWillReceiveProps(ownProps, nextProps) {
+    if (!this.state.sports.length && ownProps.sports && ownProps.sports.length) {
+      const sports = this.mapSports(ownProps.sports);
+      this.setState({ sports });
+    }
+  }
+
+  mapSports(sports) {
+    const sportsItems = sports
+      .map(s => {
+        s.isEditMode = false;
+        return s;
+      });
+
+    return sportsItems;
   }
 
   onEdit(sport) {
-    console.log(sport);
+    sport.isEditMode = true;
+
+    const sports = Object.assign([], this.state.sports);
+
+    const index = sports.findIndex(s => s.id === sport.id);
+    sport.original = Object.assign({}, sports[index]);
+
+    sports[index] = Object.assign({}, sport);
+
+    console.log(sports);
+
+    this.setState({ sports });
   }
 
   render() {
     return (
-      <SportList sports={this.props.sports} onEdit={this.onEdit} />
+      <SportList sports={this.state.sports} onEdit={this.onEdit} />
     );
   }
 }
