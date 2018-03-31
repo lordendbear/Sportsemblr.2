@@ -19,6 +19,15 @@ class SportApi {
             }, 1000);
         });
     }
+
+    static saveSport(sport) {
+        return new Promise((resolve, reject) => {
+            if (sport.id) {
+                const index = sports.findIndex(s => s.id === sport.id);
+                sports.splice(index, 1, sport);
+            }
+        });
+    }
 }
 
 export default SportApi;
