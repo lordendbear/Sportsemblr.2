@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../../common/TextInput';
 import Sport from './Sport';
 
-const SportList = ({ sports, onSave, onDelete, onCancel, onEdit }) => {
+const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode }) => {
   return (
     <table className="table table-bordered table-condensed">
       <thead>
@@ -18,7 +18,7 @@ const SportList = ({ sports, onSave, onDelete, onCancel, onEdit }) => {
 
       <tbody>
         {
-          sports.map(sport =>
+          sports.map((sport, index) =>
             <Sport
               key={sport.id}
               sport={sport}
@@ -26,7 +26,7 @@ const SportList = ({ sports, onSave, onDelete, onCancel, onEdit }) => {
               onSave={onSave}
               onCancel={onCancel}
               onDelete={onDelete}
-              isEditMode={sport.isEditMode}
+              isEditMode={isEditMode[index]}
             />
           )
         }

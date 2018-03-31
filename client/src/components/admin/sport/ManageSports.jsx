@@ -7,13 +7,7 @@ class ManageSports extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    const sports = props.sports
-      .map(s => {
-        s.isEditMode = false;
-        return s;
-      });
-
-    this.state = { sports };
+    this.state = { sports: [] };
 
     this.onEdit = this.onEdit.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -23,15 +17,15 @@ class ManageSports extends React.Component {
 
   componentWillReceiveProps(ownProps, nextProps) {
     if (!this.state.sports.length && ownProps.sports && ownProps.sports.length) {
-      const sports = this.mapSports(ownProps.sports);
-      this.setState({ sports });
+      const isEditMode = ownProps.sports
+        .map(s => false);
+      this.setState({ sports: ownProps.sports, isEditMode });
     }
   }
 
   mapSports(sports) {
     const sportsItems = sports
       .map(s => {
-        s.isEditMode = false;
         return s;
       });
 
@@ -47,8 +41,10 @@ class ManageSports extends React.Component {
     sport.original = Object.assign({}, sports[index]);
 
     sports[index] = Object.assign({}, sport);
+    const isEditMode = Object.assign([], this.state.isEditMode);
+    isEditMode[index] = true;
 
-    this.setState({ sports });
+    this.setState({ sports, isEditMode });
   }
 
   onCancel(sport) {
@@ -66,6 +62,7 @@ class ManageSports extends React.Component {
   render() {
     return (
       <SportList sports={this.state.sports}
+        isEditMode={this.state.isEditMode}
         onEdit={this.onEdit}
         onDelete={this.onDelete}
         onCancel={this.onCancel}
