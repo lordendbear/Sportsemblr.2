@@ -14,7 +14,11 @@ class ManageSports extends React.Component {
       });
 
     this.state = { sports };
+
     this.onEdit = this.onEdit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.onCancel = this.onCancel.bind(this);
   }
 
   componentWillReceiveProps(ownProps, nextProps) {
