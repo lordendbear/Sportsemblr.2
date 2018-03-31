@@ -5,17 +5,40 @@ const Sport = ({ sport, isEditMode, onSave, onDelete, onCancel, onEdit }) => {
   return (
     <tr>
       <td>
-        {sport.name}
+        {!isEditMode && sport.name}
       </td >
       <td>
-        {isEditMode ? null :
+        {!isEditMode &&
           <a className="btn btn-default btn-sm"
             onClick={(e) => onEdit(sport)}>
             <span className="fa-edit" >
             </span>
             Edit
-        </a>
-        }
+        </a>}
+
+        {isEditMode &&
+          <a className="btn btn-default btn-sm"
+            onClick={(e) => onSave(sport)}>
+            <span className="fa-edit" >
+            </span>
+            Save
+        </a>}
+
+        {isEditMode && sport.id &&
+          <a className="btn btn-default btn-sm"
+            onClick={(e) => onCancel(sport)}>
+            <span className="fa-edit" >
+            </span>
+            Cancel
+        </a>}
+
+        {isEditMode &&
+          <a className="btn btn-default btn-sm"
+            onClick={(e) => onDelete(sport)}>
+            <span className="fa-edit" >
+            </span>
+            Delete
+        </a>}
       </td >
     </tr >
   );
