@@ -48,14 +48,28 @@ class ManageSports extends React.Component {
 
     sports[index] = Object.assign({}, sport);
 
-    console.log(sports);
-
     this.setState({ sports });
+  }
+
+  onCancel(sport) {
+
+  }
+
+  onDelete(sport) {
+
+  }
+
+  onSave(sport) {
+
   }
 
   render() {
     return (
-      <SportList sports={this.state.sports} onEdit={this.onEdit} />
+      <SportList sports={this.state.sports}
+        onEdit={this.onEdit}
+        onDelete={this.onDelete}
+        onCancel={this.onCancel}
+        onSave={this.onSave} />
     );
   }
 }
