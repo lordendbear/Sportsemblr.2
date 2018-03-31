@@ -9,17 +9,17 @@ export function loadSportsSuccess(sports) {
     };
 }
 
-export function createSportSuccess(place) {
+export function createSportSuccess(sport) {
     return {
         type: types.CREATE_SPORT_SUCCESS,
-        place
+        sport
     };
 }
 
-export function updateSportSuccess(place) {
+export function updateSportSuccess(sport) {
     return {
         type: types.UPDATE_SPORT_SUCCESS,
-        place
+        sport
     };
 }
 
