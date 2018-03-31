@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import SportApi from '../api/sportApi';
+import * as notificationActions from './notificationActions';
 
 export function loadSportsSuccess(sports) {
     return {
@@ -8,11 +9,43 @@ export function loadSportsSuccess(sports) {
     };
 }
 
+export function createSportSuccess(place) {
+    return {
+        type: types.CREATE_SPORT_SUCCESS,
+        place
+    };
+}
+
+export function updateSportSuccess(place) {
+    return {
+        type: types.UPDATE_SPORT_SUCCESS,
+        place
+    };
+}
+
 export function loadSports() {
     return (dispatch) => {
         return SportApi.getAll()
             .then(sports => {
                 dispatch(loadSportsSuccess(sports));
+            });
+    };
+}
+
+export function saveSport(sport) {
+    return (dispatch) => {
+        return SportApi.saveSport(sport)
+            .then(savedSport => {
+                if (sport.id) {
+                    dispatch(updateSportSuccess(savedSport));
+                } else {
+                    dispatch(createSportSuccess(savedSport));
+                }
+
+                dispatch(notificationActions.success({ message: 'Saved' }));
+            })
+            .catch(err => {
+                dispatch(notificationActions.error({ message: 'Something went wrong...' }));
             });
     };
 }
