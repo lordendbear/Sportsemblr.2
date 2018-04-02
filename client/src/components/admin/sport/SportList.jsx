@@ -1,5 +1,4 @@
 import React from 'react';
-import TextInput from '../../common/TextInput';
 import Sport from './Sport';
 
 const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode }) => {
