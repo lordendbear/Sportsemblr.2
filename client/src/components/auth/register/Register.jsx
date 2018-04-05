@@ -3,7 +3,7 @@ import './Register.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { register } from '../../../actions/authActions';
-import { Link } from 'react-router-dom'
+import {Container, Row, Col, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
 
 class Register extends Component {
     constructor(props, context) {
@@ -83,70 +83,63 @@ class Register extends Component {
 
         this.props.register(user);
     }
-
     render() {
         return (
-            < div className="main-login main-center" >
-                <form className="form-horizontal" method="post" action="#">
-
-                    <div className="form-group">
-                        <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
-                        <div className="cols-sm-10">
-                            <div className="input-group">
-                                <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" className="form-control"
-                                    name="name" id="name"
-                                    onChange={this.onNameChange}
-                                    value={this.state.user.name}
-                                    placeholder="Enter your Name" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="email" className="cols-sm-2 control-label">Your Email</label>
-                        <div className="cols-sm-10">
-                            <div className="input-group">
-                                <span className="input-group-addon"><i className="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input onChange={this.onEmailChange}
-                                    value={this.state.user.email} type="text" className="form-control" name="email" id="email" placeholder="Enter your Email" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="password" className="cols-sm-2 control-label">Password</label>
-                        <div className="cols-sm-10">
-                            <div className="input-group">
-                                <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input onChange={this.onPasswordChange}
-                                    value={this.state.user.password} type="password" className="form-control" name="password" id="password" placeholder="Enter your Password" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label className="control-label" htmlFor="inputError">Confirm Password</label>
-                        <div className="input-group">
-                            <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input onChange={this.onConfirmPasswordChange}
-                                value={this.state.user.confirmPassword} type="password" className="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
-                        </div>
-                        <span className="help-block">{this.state.errors.confirmPassword}</span>
-                    </div>
-
-                    <div className="form-group ">
-                        <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.onRegisterClick}>Register</button>
-                    </div>
-                    <div className="login-register">
-                        <Link to="/login" >
-                            Login
-                                </Link>
-                    </div>
-                </form>
-            </div >
+          <div className="app flex-row align-items-center">
+            <Container>
+              <Row className="justify-content-center">
+                <Col md="6">
+                  <Card className="mx-4">
+                    <CardBody className="p-4">
+                      <h1>Register</h1>
+                      <p className="text-muted">Create your account</p>
+                      <InputGroup className="mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="icon-user"></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input onChange={this.onNameChange}
+                            value={this.state.user.name}
+                            placeholder="Enter your Name"type="text"/>
+                      </InputGroup>
+                      <InputGroup className="mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>@</InputGroupText>
+                        </InputGroupAddon>
+                        <Input onChange={this.onEmailChange}
+                            value={this.state.user.email}
+                            type="text" placeholder="Email"/>
+                      </InputGroup>
+                      <InputGroup className="mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="icon-lock"></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input onChange={this.onPasswordChange}
+                            value={this.state.user.password}
+                            type="password" placeholder="Password"/>
+                      </InputGroup>
+                      <InputGroup className="mb-4">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="icon-lock"></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input onChange={this.onConfirmPasswordChange}
+                            value={this.state.user.confirmPassword}
+                            type="password" placeholder="Repeat password"/>
+                      </InputGroup>
+                      <Button onClick={this.onRegisterClick} color="success" block>Create Account</Button>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          </div>
         );
-    }
+      }
 }
 
 const mapDispatchToProps = (dispatch) => {
