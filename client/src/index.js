@@ -12,6 +12,11 @@ import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
+import 'font-awesome/css/font-awesome.min.css';
+import 'simple-line-icons/css/simple-line-icons.css';
+import './scss/style.scss';
+import './scss/core/_dropdown-menu-right.scss'
+
 const store = configureStore();
 
 store.dispatch(loadEvents());
