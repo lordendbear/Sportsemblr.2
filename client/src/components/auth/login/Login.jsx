@@ -80,10 +80,9 @@ class Login extends Component {
                       <CardBody className="text-center">
                         <div>
                           <h2>Sign up</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
-                          <Button color="primary" className="mt-3" active>
-                              <Link to="/register">Register</Link>
+                          <p>Registration is free and will always be.</p>
+                          <Button tag={Link} to='/register' color="primary" className="mt-3" active>
+                            Create an account
                           </Button> 
                         </div>
                       </CardBody>

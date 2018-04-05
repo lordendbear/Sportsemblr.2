@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './App.css';
 import Navbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
