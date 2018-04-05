@@ -8,13 +8,15 @@ import App from './components/App';
 import { loadEvents } from './actions/eventActions';
 import { loadPlaces } from './actions/placeActions';
 
-import './index.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// TODO: Remove
 import '../node_modules/toastr/build/toastr.min.css';
 
 import 'font-awesome/css/font-awesome.min.css';
+// Import Simple Line Icons Set
 import 'simple-line-icons/css/simple-line-icons.css';
-import './scss/style.scss';
+// Import Main styles for this application
+import './scss/style.scss'
+// Temp fix for reactstrap
 import './scss/core/_dropdown-menu-right.scss'
 
 const store = configureStore();
