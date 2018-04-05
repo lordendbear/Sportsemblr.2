@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Register.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { register } from '../../../actions/authActions';

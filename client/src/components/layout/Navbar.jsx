@@ -1,31 +1,30 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import {
+    Nav,
+    NavItem,
+    NavLink
+  } from 'reactstrap';
 class Navbar extends React.Component {
-    renderNavLink = (label, to) => (<NavLink to={to} exact activeClassName="selected" >
+    renderNavLink = (label, to) => (<NavLink tag={Link} to={to} exact>
         {label}
     </NavLink>);
 
     render() {
-        return (<nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container">
-                <div className="navbar-header">
-                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                </div>
-                <div className="navbar-collapse collapse">
-                    <ul className="nav navbar-nav">
-                        <li>{this.renderNavLink('Home', '/')}</li>
-                        <li>{this.renderNavLink('Login', '/login')}</li>
-                        <li>{this.renderNavLink('Register', '/register')}</li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    );
+        return(
+         <header className="app-header navbar">
+            <Nav className="d-md-down-none" navbar>
+          <NavItem className="px-3">
+            {this.renderNavLink('Home', '/')}
+          </NavItem>
+          <NavItem className="px-3">
+            {this.renderNavLink('Login', '/login')}
+          </NavItem>
+          <NavItem className="px-3">
+            {this.renderNavLink('Register', '/register')}
+          </NavItem>
+        </Nav>
+        </header>);
     }
 }
 
