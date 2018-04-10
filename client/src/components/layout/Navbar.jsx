@@ -29,6 +29,9 @@ class Navbar extends React.Component {
           <NavItem className="px-3">
             {this.renderNavLink('Register', '/register')}
           </NavItem>
+          <NavItem className="px-3">
+            {this.renderNavLink('Events', '/events')}
+          </NavItem>
         </Nav>
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>
