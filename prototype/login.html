@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color"
+        content="#000000">
+  <link rel="manifest"
+        href="http://localhost:3000/manifest.json">
+  <link rel="shortcut icon"
+        href="http://localhost:3000/favicon.ico">
+  <title>React App</title>
+  <link href="./style.css"
+        rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+</head>
+
+<body cz-shortcut-listen="true">
+  <div id="root">
+    <div class="app">
+      <header class="app-header navbar">
+        <ul class="d-md-down-none navbar-nav">
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./index.html">Home</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./login.html">Login</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./register.html">Register</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./events.html">Events</a>
+          </li>
+        </ul>
+        <button type="button"
+                class="d-md-down-none navbar-toggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </header>
+      <div class="hidden"></div>
+      <div class="app-body">
+        <main class="main">
+          <div class="container-fluid">
+            <div class="app flex-row align-items-center">
+              <div class="container">
+                <div class="justify-content-center row">
+                  <div class="col col-md-8">
+                    <div class="card-group">
+                      <div class="p-4 card">
+                        <div class="card-body">
+                          <h1>Login</h1>
+                          <p class="text-muted">Sign In to your account</p>
+                          <div class="mb-3 input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-user"></i>
+                              </span>
+                            </div>
+                            <input type="text"
+                                   value="magadisho1@abv.bg"
+                                   placeholder="Enter your email"
+                                   class="form-control">
+                          </div>
+                          <div class="mb-4 input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-lock"></i>
+                              </span>
+                            </div>
+                            <input type="password"
+                                   value="bazinga14"
+                                   placeholder="Password"
+                                   class="form-control">
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <button type="button"
+                                      class="px-4 btn btn-primary">Login</button>
+                            </div>
+                            <div class="text-right col-6">
+                              <button class="px-0 btn btn-link">Forgot password?</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-white bg-primary py-5 d-md-down-none card"
+                           style="width: 44%;">
+                        <div class="text-center card-body">
+                          <div>
+                            <h2>Sign up</h2>
+                            <p>Registration is free and will always be.</p>
+                            <a class="mt-3 btn btn-primary active"
+                               href="http://localhost:3000/register">Create an account</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <aside class="aside-menu">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="active nav-link">
+                <i class="icon-list"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="icon-speech"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="icon-settings"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active">
+              <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
+                <small>
+                  <b>Today</b>
+                </small>
+              </div>
+              <hr class="transparent mx-3 my-0">
+              <div class="callout callout-warning m-0 py-3">
+                <div>Meeting with
+                  <strong>Lucas</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+                <small class="text-muted">
+                  <i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
+              </div>
+              <hr class="mx-3 my-0">
+              <div class="callout callout-info m-0 py-3">
+                <div>Skype with
+                  <strong>Megan</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 4 - 5pm</small>
+                <small class="text-muted">
+                  <i class="icon-social-skype"></i>&nbsp; On-line</small>
+              </div>
+              <hr class="transparent mx-3 my-0">
+              <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
+                <small>
+                  <b>Tomorrow</b>
+                </small>
+              </div>
+              <hr class="transparent mx-3 my-0">
+              <div class="callout callout-danger m-0 py-3">
+                <div>New UI Project -
+                  <strong>deadline</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 10 - 11pm</small>
+                <small class="text-muted">
+                  <i class="icon-home"></i>&nbsp; creativeLabs HQ</small>
+              </div>
+              <hr class="mx-3 my-0">
+              <div class="callout callout-success m-0 py-3">
+                <div>
+                  <strong>#10 Startups.Garden</strong> Meetup</div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+                <small class="text-muted">
+                  <i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
+              </div>
+              <hr class="mx-3 my-0">
+              <div class="callout callout-primary m-0 py-3">
+                <div>
+                  <strong>Team meeting</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 4 - 6pm</small>
+                <small class="text-muted">
+                  <i class="icon-home"></i>&nbsp; creativeLabs HQ</small>
+              </div>
+              <hr class="mx-3 my-0">
+            </div>
+            <div class="tab-pane p-3">
+              <h6>Settings</h6>
+              <div class="aside-options">
+                <div class="clearfix mt-4">
+                  <small>
+                    <b>Option 1</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+                <div>
+                  <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.</small>
+                </div>
+              </div>
+              <div class="aside-options">
+                <div class="clearfix mt-3">
+                  <small>
+                    <b>Option 2</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+                <div>
+                  <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.</small>
+                </div>
+              </div>
+              <div class="aside-options">
+                <div class="clearfix mt-3">
+                  <small>
+                    <b>Option 3</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="aside-options">
+                <div class="clearfix mt-3">
+                  <small>
+                    <b>Option 4</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+              </div>
+              <hr>
+              <h6>System Utilization</h6>
+              <div class="text-uppercase mb-1 mt-4">
+                <small>
+                  <b>CPU Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-info"
+                     role="progressbar"
+                     aria-valuenow="25"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 25%;"></div>
+              </div>
+              <small class="text-muted">348 Processes. 1/4 Cores.</small>
+              <div class="text-uppercase mb-1 mt-2">
+                <small>
+                  <b>Memory Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-warning"
+                     role="progressbar"
+                     aria-valuenow="70"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 70%;"></div>
+              </div>
+              <small class="text-muted">11444GB/16384MB</small>
+              <div class="text-uppercase mb-1 mt-2">
+                <small>
+                  <b>SSD 1 Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-danger"
+                     role="progressbar"
+                     aria-valuenow="95"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 95%;"></div>
+              </div>
+              <small class="text-muted">243GB/256GB</small>
+              <div class="text-uppercase mb-1 mt-2">
+                <small>
+                  <b>SSD 2 Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+                     aria-valuenow="10"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 10%;"></div>
+              </div>
+              <small class="text-muted">25GB/256GB</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
