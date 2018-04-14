@@ -24,8 +24,5 @@
   "homepage": "https://github.com/lordendbear/Sportsemblr.2#readme",
   "devDependencies": {
     "husky": "^0.14.3"
-  },
-  "dependencies": {
-    "react-date-range": "^0.9.4"
   }
 }
