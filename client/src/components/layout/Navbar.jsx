@@ -19,9 +19,10 @@ class Navbar extends React.Component {
       </NavLink>);
 
     render() {
-        return(
-         <header className="app-header navbar">
-            <Nav className="d-md-down-none" navbar>
+      return(
+      <header className="app-header navbar">
+        <Nav className="d-md-down-none" navbar>
+          <HeaderDropdown />
           <NavItem className="px-3">
             {this.renderNavLink('Home', '/')}
           </NavItem>
@@ -39,9 +40,6 @@ class Navbar extends React.Component {
           </NavItem>
           <NavItem className="px-3">
             {this.renderNavLink('Create/Edit Event', '/events/5/edit')}
-          </NavItem>
-          <NavItem className="px-3">
-            <HeaderDropdown />
           </NavItem>
         </Nav>
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
