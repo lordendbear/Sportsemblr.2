@@ -41,6 +41,9 @@ class Navbar extends React.Component {
           <NavItem className="px-3">
             {this.renderNavLink('Create/Edit Event', '/events/5/edit')}
           </NavItem>
+          <NavItem className="px-3">
+            {this.renderNavLink('See/Edit Profile', '/profile')}
+          </NavItem>
         </Nav>
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>

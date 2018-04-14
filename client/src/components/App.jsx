@@ -12,6 +12,7 @@ import ManageEvent from '../containers/ManageEvent';
 import PlacesList from '../containers/place/PlacesList';
 import EventDetails from '../containers/event/EventDetails';
 import Aside from '../components/aside/Aside';
+import Profile from '../components/profile/Profile';
 
 import {Container} from 'reactstrap';
 
@@ -33,6 +34,7 @@ class App extends Component {
               <Route path="/place" component={ManagePlace} />
               <Route path="/places/:id" component={ManagePlace} />
               <Route path="/places" component={PlacesList} exact />
+              <Route path="/profile" component={Profile} exact />
             </Container>
           </main>
           <Aside />
