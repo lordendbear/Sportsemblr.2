@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {TabContent, TabPane, Nav, NavItem, NavLink, Progress, Label, Input} from 'reactstrap';
 import classnames from 'classnames';
+import avatar from '../../img/avatars/1.jpg';
 
 class Aside extends Component {
   constructor(props) {
@@ -83,6 +84,41 @@ class Aside extends Component {
               <small className="text-muted"><i className="icon-home"></i>&nbsp; creativeLabs HQ</small>
             </div>
             <hr className="mx-3 my-0"/>
+          </TabPane>
+          <TabPane tabId="2" className="p-3">
+            <div className="message">
+              <div className="py-3 pb-5 mr-3 float-left">
+                <div className="avatar">
+                  <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                  <span className="avatar-status badge-success"></span>
+                </div>
+              </div>
+              <div>
+                <small className="text-muted">Lukasz Holeczek</small>
+                <small className="text-muted float-right mt-1">1:52 PM</small>
+              </div>
+              <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt...
+              </small>
+            </div>
+            <hr/>
+            <div className="message">
+              <div className="py-3 pb-5 mr-3 float-left">
+                <div className="avatar">
+                  <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                  <span className="avatar-status badge-success"></span>
+                </div>
+              </div>
+              <div>
+                <small className="text-muted">Lukasz Holeczek</small>
+                <small className="text-muted float-right mt-1">2:32 PM</small>
+              </div>
+              <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt...
+              </small>
+            </div>
           </TabPane>
           <TabPane tabId="3" className="p-3">
             <h6>Settings</h6>
