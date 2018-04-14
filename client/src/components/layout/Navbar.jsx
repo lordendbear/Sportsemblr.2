@@ -6,6 +6,8 @@ import {
     NavLink,
     NavbarToggler
   } from 'reactstrap';
+  import HeaderDropdown from './HeaderDropdown.jsx';
+
 class Navbar extends React.Component {
     asideToggle(e) {
       e.preventDefault();
@@ -36,13 +38,16 @@ class Navbar extends React.Component {
             {this.renderNavLink('Single Event', '/events/5')}
           </NavItem>
           <NavItem className="px-3">
-            {this.renderNavLink('Edit Event', '/events/5/edit')}
+            {this.renderNavLink('Create/Edit Event', '/events/5/edit')}
+          </NavItem>
+          <NavItem className="px-3">
+            <HeaderDropdown />
           </NavItem>
         </Nav>
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>
         </NavbarToggler>
-        </header>);
+      </header>);
     }
 }
 
