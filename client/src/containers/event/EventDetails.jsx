@@ -8,7 +8,7 @@ const getEventById = (events, id) => {
         return eventList[0];
     }
 
-    return null;
+    return 'no';
 };
 
 const mapStateToProps = (state, ownProps) => {
