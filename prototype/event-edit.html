@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color"
+        content="#000000">
+  <link rel="manifest"
+        href="http://localhost:3000/manifest.json">
+  <link rel="shortcut icon"
+        href="http://localhost:3000/favicon.ico">
+  <title>React App</title>
+  <link href="./style.css"
+        rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+</head>
+
+<body cz-shortcut-listen="true">
+  <div id="root">
+    <div class="app">
+      <header class="app-header navbar">
+        <ul class="d-md-down-none navbar-nav">
+          <li class="right dropdown nav-item">
+            <a aria-haspopup="true"
+               href="#"
+               class="nav-link"
+               aria-expanded="false">
+              <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAACAgICAgICAgICAwICAgMEAwICAwQFBAQEBAQFBgUFBQUFBQYGBwcIBwcGCQkKCgkJDAwMDAwMDAwMDAwMDAwMAQMDAwUEBQkGBgkNCwkLDQ8ODg4ODw8MDAwMDA8PDAwMDAwMDwwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAyADIDAREAAhEBAxEB/8QAowAAAgIDAQAAAAAAAAAAAAAABgkHCAMFCgQBAAICAwEAAAAAAAAAAAAAAAACAwQBBQYHEAABAwIEAgYFCAcJAAAAAAABAgMEEQUAEgYHITFBUSITMwhhMlI0FXGBkUIjFBYJ8KHB0YLCNpJDU2MkVDVVVhEAAgECBAIIBAcAAAAAAAAAAAECEQMhMUEEEjJhcYGRwTMFBlFCExShsdEigkM0/9oADAMBAAIRAxEAPwBhF8tWpkqX95QSDzyknABH1zu9v09EeuF8nsWqFHoH5cpYbQCrgBVXMk8gOJwspqOY0YuTolUr1f8AzR6TZlu2/SVjuWsH40gR5twSpu3W9qnFZ+8Se0op9lLZOIvuI6FqOxm88A6tHmD21CYsW93gWKfNbSpEaUxJy5zWraXg1kcNBUFHMdHDB9xEJbKayJoSwbrCj3K2BmdCmtB2HLYUFtuIUKpUlQNCDiZOpUaazAp2yXV+WpsRV5lK4EA4yYN7+A73/tV+Fn/ThgAuXqWMw4FgMNqNOwSnADOezz1+Ya4X/cW57Q6ejJtdh0TMH319rtS7tcUDtd0tKwlDDSqpqDmKgeXRDepT4v8AIvbSDScq0RQGFudcG4j8J2U7GkEgsvPcChxK1ZvRQ1xG9s28GXI3E2nWiD2Dre/WgOahQ5L+6hwJeZjSC81IJoS02mmZJ7WYg1FOKT0YjdiPKNK9R0SLsbK+b+btbOtt1mw5F221uchpjV+my4X50BtQSlNxhNH1VIUsB5oCiwcwAUKmfa04uBvq6/0Km7g5Li1H3afOlbpDgXBt9t2NPYakw38hQFNOoC21UIBFUqB44nNcGXd6d/x0erl5DAAunzeeZK87PbXTLoxPet971LMasVjusZtDrsFcmpfmobWQFKYZStaB7eXDQjxOhlKpz3+Y3WOhNW706sve1z1w/CBMdi2yJaUoW4uKyhhx9kZlKCHVIzgqIUalRAJxlwSzLtq5piRHHuDbzrCJOV9NfDfaStJV0VKeOMuESbii9Kh/aLhcocN0trXFVHdXIjxO6dcQSpPEBKaUPI1zYWVqMsxXLREz7UaxVt9uptpuPqaHcZunrJeYU+9Rm22Qp5pp1BcbGcji8DQBZIPXiJbf9y4RZ3aQY77yEbpMa+s24e3DjN1+Gbd3qY9tjcLugIlv6SkS3EQY74C1/aQyO6HaV9mW+PDFq7alFJvU11RgvwEdR9v5sQGROH5qun2WtJ7Qx4rpMS5Xi6BSzSgkNsMd2kkdaVK+jFnaWncuKK1GUlFMQQ7/AKS6LbXzbWUOD0jgRiW/bVu5Qa1cfEmGcGFHbSh1Lae9qexSqSBxqSfkphZW6qps+BaBci4JMBUR9n7VNER3Ao5i3WoQTxJoD14jlFLBCqzjgzLrG8j4DpqOhZQidcEPZTXspipANCTwBKhywbeL+okULqpgN4/Ku3IvOst5NXWm4SXXtP6X0E+53a0gBuRKucPLQgVOYJNKn5MWN3KsV0FdW+F9Y9v4pa+tzn1H92NeML084Wyy/MNs2/pexTIcfWemp4vukFvHu0PvtsuNORS59QvIXRKjwCgmvDjhoTlBpxeQ0Wq45HNra9g94L5qfUtuf0DebJP0jb37xqs3SE/Gbhx2EglTqnEBILlRkFe1XhwxNcvym+LUs24wldVMme93R9/taFNXCxuNqbPakM1UkgdNRUCuI/uG8zdSsKmB7LVou9XR1ZgWN9+oHdpoqvVUAca4rXd1gRxijd3ry6b56hXoy52jQF61HbNSTZVls7lsiOyG2p0dxpKmHloSUMqWX28ucpzfMcNtr7acksdCjfhb+sk3SNMR+X5fflgneWbQuoNQ7gxVK3M3PEVd+tIWkps8CEXDFglbZUlTpLhcdKTQHKkVy1MrnKarIo3nBzfBy6F//jtn/wCvPP2zzwpER/AtEOPl71bkojoVlV/LgAizfOPDa0LuWzHYDaNTaDu5mslFQZFqDJZeHDgotPqQT1JR7IwSwTeiLG086HWhSendBXaUlifLitiDIQFN51p7ST1p5/TjmL3u3Y2puLk3T4J07zul6Vflkl3k42DT0K1M5GWGI61cApsJqK+mmKV33Z6fJVU33Mgl6Juflh+KL0eXVqZE0lbrbBtyJ1v05cp94lRw4Eh25T3VIjKUBzDDCCodGZaDzTjovSt5Z3dritSUl0PLrOV9T29yzdpOLXWWCuGq9RpbWlWhu8Txo62sKP7cbI1wH/iXUH/jnvEzer+rlgAKGOnl/FgArr5l/cdMe/eBcfd/deTPvHo9r0UxyvuvyF5mvLy/yOm9s+a+TPXm7Cpsfwfq8v7r1fmx5Td8T0i2bFnxUc+j1vV6OfoxUvdgzJl2q/qyD/yvT/Tni9Pi/wCX142vtj/b/Zp5fian1z/N8mvP4dIwRjwkeL6v1/5vT1490hks8tc+3pPJ3m8vDsMf9n18MKf/2Q=="
+            
+                   class="img-avatar"
+                   alt="admin@bootstrapmaster.com">
+            </a>
+            <div tabindex="-1"
+                 role="menu"
+                 aria-hidden="true"
+                 class="dropdown-menu dropdown-menu-right">
+              <div tabindex="-1"
+                   class="text-center dropdown-header">
+                <strong>Account</strong>
+              </div>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-envelope-o"></i> Messages
+                <span class="badge badge-success">42</span>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-bell-o"></i> Updates
+                <span class="badge badge-info">42</span>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-comments"></i> Comments
+                <span class="badge badge-warning">42</span>
+              </button>
+              <div tabindex="-1"
+                   class="text-center dropdown-header">
+                <strong>Settings</strong>
+              </div>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-user"></i>
+                <a class="nav-link"
+                   href="/profile"> Profile </a>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-wrench"></i> Settings</button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-usd"></i> Payments
+                <span class="badge badge-secondary">42</span>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-file"></i> Projects
+                <span class="badge badge-primary">42</span>
+              </button>
+              <div tabindex="-1"
+                   class="dropdown-divider"></div>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-shield"></i> Lock Account</button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-lock"></i> Logout</button>
+            </div>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./index.html">Home</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./login.html">Login</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./register.html">Register</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./events.html">Events</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./event-details.html">Single Event</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./event-edit.html">Create/Edit Event</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./profile.html">See/Edit Profile</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./place-edit.html">Manage place</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./sports.html">Manage sports</a>
+          </li>
+        </ul>
+        <button type="button"
+                class="d-md-down-none navbar-toggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </header>
+      <div class="hidden"></div>
+      <div class="app-body">
+        <main class="main">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Create an event</strong>
+                  </div>
+                  <div class="card-body">
+                    <form action=""
+                          method="post"
+                          enctype="multipart/form-data"
+                          class="form-horizontal">
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label for="text-input"
+                                 class="">Event Name</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                          <input type="text"
+                                 id="text-input"
+                                 name="text-input"
+                                 placeholder="Enter name"
+                                 class="form-control">
+                          <small class="form-text text-muted">Enter something meaningful</small>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label for="password-input"
+                                 class="">Select date</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                          <div class="rdr-DateRange"
+                               style="display: block; box-sizing: border-box; background: rgb(255, 255, 255); border-radius: 2px;">
+                            <div class="rdr-Calendar"
+                                 style="width: 280px; padding: 10px; background: rgb(255, 255, 255); border-radius: 2px; display: inline-block; box-sizing: border-box; letter-spacing: 0px; color: rgb(0, 0, 0);">
+                              <div class="rdr-MonthAndYear">
+                                <div class="rdr-MonthAndYear-innerWrapper"
+                                     style="text-align: center; box-sizing: border-box; font-size: 12px; padding: 10px 0px; height: 38px; line-height: 18px;">
+                                  <button type="button"
+                                          class="rdr-MonthAndYear-button prev"
+                                          style="display: block; box-sizing: border-box; height: 18px; width: 18px; padding: 0px; margin: 0px 10px; border: none; background: rgb(189, 195, 199); box-shadow: none; outline: none; border-radius: 50%; float: left;">
+                                    <i style="display: block; width: 0px; height: 0px; padding: 0px; margin: 0px 0px 0px 1px; border-width: 4px 6px 4px 4px; border-style: solid; border-color: transparent rgb(52, 73, 94) transparent transparent; border-image: initial; text-align: center;"></i>
+                                  </button>
+                                  <span>
+                                    <span class="rdr-MonthAndYear-month">March</span>
+                                    <span class="rdr-MonthAndYear-divider"> - </span>
+                                    <span class="rdr-MonthAndYear-year">2018</span>
+                                  </span>
+                                  <button type="button"
+                                          class="rdr-MonthAndYear-button next"
+                                          style="display: block; box-sizing: border-box; height: 18px; width: 18px; padding: 0px; margin: 0px 10px; border: none; background: rgb(189, 195, 199); box-shadow: none; outline: none; border-radius: 50%; float: right;">
+                                    <i style="display: block; width: 0px; height: 0px; padding: 0px; margin: 0px 0px 0px 7px; border-width: 4px 4px 4px 6px; border-style: solid; border-color: transparent transparent transparent rgb(52, 73, 94); border-image: initial; text-align: center;"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="rdr-WeekDays">
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Su</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Mo</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Tu</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">We</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Th</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Fr</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Sa</span>
+                              </div>
+                              <div class="rdr-Days">
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">25</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">26</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">27</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">28</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">1</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">2</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">3</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">4</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">5</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">6</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">7</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">8</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">9</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">10</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">11</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">12</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">13</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">14</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">15</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">16</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">17</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">18</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">19</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">20</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">21</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">22</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">23</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">24</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">25</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">26</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">27</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">28</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">29</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">30</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">31</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">1</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">2</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">3</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">4</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">5</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">6</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">7</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="rdr-Calendar"
+                                 style="width: 280px; padding: 10px; background: rgb(255, 255, 255); border-radius: 2px; display: inline-block; box-sizing: border-box; letter-spacing: 0px; color: rgb(0, 0, 0);">
+                              <div class="rdr-MonthAndYear">
+                                <div class="rdr-MonthAndYear-innerWrapper"
+                                     style="text-align: center; box-sizing: border-box; font-size: 12px; padding: 10px 0px; height: 38px; line-height: 18px;">
+                                  <button type="button"
+                                          class="rdr-MonthAndYear-button prev"
+                                          style="display: block; box-sizing: border-box; height: 18px; width: 18px; padding: 0px; margin: 0px 10px; border: none; background: rgb(189, 195, 199); box-shadow: none; outline: none; border-radius: 50%; float: left;">
+                                    <i style="display: block; width: 0px; height: 0px; padding: 0px; margin: 0px 0px 0px 1px; border-width: 4px 6px 4px 4px; border-style: solid; border-color: transparent rgb(52, 73, 94) transparent transparent; border-image: initial; text-align: center;"></i>
+                                  </button>
+                                  <span>
+                                    <span class="rdr-MonthAndYear-month">April</span>
+                                    <span class="rdr-MonthAndYear-divider"> - </span>
+                                    <span class="rdr-MonthAndYear-year">2018</span>
+                                  </span>
+                                  <button type="button"
+                                          class="rdr-MonthAndYear-button next"
+                                          style="display: block; box-sizing: border-box; height: 18px; width: 18px; padding: 0px; margin: 0px 10px; border: none; background: rgb(189, 195, 199); box-shadow: none; outline: none; border-radius: 50%; float: right;">
+                                    <i style="display: block; width: 0px; height: 0px; padding: 0px; margin: 0px 0px 0px 7px; border-width: 4px 4px 4px 6px; border-style: solid; border-color: transparent transparent transparent rgb(52, 73, 94); border-image: initial; text-align: center;"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="rdr-WeekDays">
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Su</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Mo</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Tu</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">We</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Th</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Fr</span>
+                                <span class="rdr-WeekDay"
+                                      style="width: 37.1429px; height: 18.5714px; line-height: 18.5714px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 1px;">Sa</span>
+                              </div>
+                              <div class="rdr-Days">
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">1</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">2</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">3</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">4</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">5</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">6</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">7</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">8</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">9</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">10</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">11</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">12</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">13</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-selected"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease; background: rgb(231, 76, 60); color: rgb(255, 255, 255);">14</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">15</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">16</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">17</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">18</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">19</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">20</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">21</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">22</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">23</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">24</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">25</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">26</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">27</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">28</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">29</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; cursor: pointer; transition: transform 0.1s ease;">30</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">1</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">2</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">3</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">4</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">5</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive rdr-Sunday"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">6</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">7</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">8</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">9</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">10</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">11</span>
+                                </span>
+                                <span style="width: 37.1429px; height: 37.1429px; display: inline-block;">
+                                  <span class="rdr-Day is-passive"
+                                        style="width: 37.1429px; height: 37.1429px; line-height: 37.1429px; box-sizing: border-box; display: inline-block; letter-spacing: initial; text-align: center; font-size: 12px; transition: transform 0.1s ease; opacity: 0.4;">12</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label for="textarea-input"
+                                 class="">Event notes</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                          <textarea name="textarea-input"
+                                    id="textarea-input"
+                                    rows="9"
+                                    placeholder="Describe the event"
+                                    type="textarea"
+                                    class="form-control"></textarea>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label for="select"
+                                 class="">People needed</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                          <select name="select"
+                                  id="select"
+                                  type="select"
+                                  class="form-control">
+                            <option value="0">Please select</option>
+                            <option value="1">Option #1</option>
+                            <option value="2">Option #2</option>
+                            <option value="3">Option #3</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label for="select"
+                                 class="">Price per person</label>
+                        </div>
+                        <div class="col-9 col-md-2">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fa fa-euro"></i>
+                              </span>
+                            </div>
+                            <input type="text"
+                                   id="input3-group1"
+                                   name="input3-group1"
+                                   placeholder=".."
+                                   class="form-control">
+                            <div class="input-group-append">
+                              <span class="input-group-text"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label class="">Difficulty</label>
+                        </div>
+                        <div class="col col-md-9">
+                          <div class="radio form-check">
+                            <input type="radio"
+                                   id="radio1"
+                                   name="radios"
+                                   value="option1"
+                                   class="form-check-input form-check-input">
+                            <label for="radio1"
+                                   class="form-check-label form-check-label ">Beginner</label>
+                          </div>
+                          <div class="radio form-check">
+                            <input type="radio"
+                                   id="radio2"
+                                   name="radios"
+                                   value="option2"
+                                   class="form-check-input form-check-input">
+                            <label for="radio2"
+                                   class="form-check-label form-check-label ">Advanced</label>
+                          </div>
+                          <div class="radio form-check">
+                            <input type="radio"
+                                   id="radio3"
+                                   name="radios"
+                                   value="option3"
+                                   class="form-check-input form-check-input">
+                            <label for="radio3"
+                                   class="form-check-label form-check-label ">Feel like a PRO</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <div class="col col-md-3">
+                          <label for="file-input"
+                                 class="">Add photo</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                          <input type="file"
+                                 id="file-input"
+                                 name="file-input"
+                                 class="form-control-file">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit"
+                            class="btn btn-primary btn-xl">
+                      <i class="fa fa-dot-circle-o"></i> Create</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <aside class="aside-menu">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="icon-list"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="active nav-link">
+                <i class="icon-speech"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="icon-settings"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane">
+              <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
+                <small>
+                  <b>Today</b>
+                </small>
+              </div>
+              <hr class="transparent mx-3 my-0">
+              <div class="callout callout-warning m-0 py-3">
+                <div>Meeting with
+                  <strong>Lucas</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+                <small class="text-muted">
+                  <i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
+              </div>
+              <hr class="mx-3 my-0">
+              <div class="callout callout-info m-0 py-3">
+                <div>Skype with
+                  <strong>Megan</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 4 - 5pm</small>
+                <small class="text-muted">
+                  <i class="icon-social-skype"></i>&nbsp; On-line</small>
+              </div>
+              <hr class="transparent mx-3 my-0">
+              <div class="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
+                <small>
+                  <b>Tomorrow</b>
+                </small>
+              </div>
+              <hr class="transparent mx-3 my-0">
+              <div class="callout callout-danger m-0 py-3">
+                <div>New UI Project -
+                  <strong>deadline</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 10 - 11pm</small>
+                <small class="text-muted">
+                  <i class="icon-home"></i>&nbsp; creativeLabs HQ</small>
+              </div>
+              <hr class="mx-3 my-0">
+              <div class="callout callout-success m-0 py-3">
+                <div>
+                  <strong>#10 Startups.Garden</strong> Meetup</div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+                <small class="text-muted">
+                  <i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
+              </div>
+              <hr class="mx-3 my-0">
+              <div class="callout callout-primary m-0 py-3">
+                <div>
+                  <strong>Team meeting</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>&nbsp; 4 - 6pm</small>
+                <small class="text-muted">
+                  <i class="icon-home"></i>&nbsp; creativeLabs HQ</small>
+              </div>
+              <hr class="mx-3 my-0">
+            </div>
+            <div class="tab-pane p-3 active">
+              <div class="message">
+                <div class="py-3 pb-5 mr-3 float-left">
+                  <div class="avatar">
+                    <img src="data:image/jpeg;base64,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"
+                  
+                         class="img-avatar"
+                         alt="admin@bootstrapmaster.com">
+                    <span class="avatar-status badge-success"></span>
+                  </div>
+                </div>
+                <div>
+                  <small class="text-muted">Lukasz Holeczek</small>
+                  <small class="text-muted float-right mt-1">1:52 PM</small>
+                </div>
+                <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+              </div>
+              <hr>
+              <div class="message">
+                <div class="py-3 pb-5 mr-3 float-left">
+                  <div class="avatar">
+                    <img src="data:image/jpeg;base64,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"
+                  
+                         class="img-avatar"
+                         alt="admin@bootstrapmaster.com">
+                    <span class="avatar-status badge-success"></span>
+                  </div>
+                </div>
+                <div>
+                  <small class="text-muted">Lukasz Holeczek</small>
+                  <small class="text-muted float-right mt-1">2:32 PM</small>
+                </div>
+                <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+              </div>
+            </div>
+            <div class="tab-pane p-3">
+              <h6>Settings</h6>
+              <div class="aside-options">
+                <div class="clearfix mt-4">
+                  <small>
+                    <b>Option 1</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on"
+                           checked="">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+                <div>
+                  <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.</small>
+                </div>
+              </div>
+              <div class="aside-options">
+                <div class="clearfix mt-3">
+                  <small>
+                    <b>Option 2</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+                <div>
+                  <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.</small>
+                </div>
+              </div>
+              <div class="aside-options">
+                <div class="clearfix mt-3">
+                  <small>
+                    <b>Option 3</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="aside-options">
+                <div class="clearfix mt-3">
+                  <small>
+                    <b>Option 4</b>
+                  </small>
+                  <label class="switch switch-text switch-pill switch-success switch-sm float-right ">
+                    <input type="checkbox"
+                           class="switch-input form-check-input"
+                           value="on"
+                           checked="">
+                    <span class="switch-label"
+                          data-on="On"
+                          data-off="Off"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+              </div>
+              <hr>
+              <h6>System Utilization</h6>
+              <div class="text-uppercase mb-1 mt-4">
+                <small>
+                  <b>CPU Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-info"
+                     role="progressbar"
+                     aria-valuenow="25"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 25%;"></div>
+              </div>
+              <small class="text-muted">348 Processes. 1/4 Cores.</small>
+              <div class="text-uppercase mb-1 mt-2">
+                <small>
+                  <b>Memory Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-warning"
+                     role="progressbar"
+                     aria-valuenow="70"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 70%;"></div>
+              </div>
+              <small class="text-muted">11444GB/16384MB</small>
+              <div class="text-uppercase mb-1 mt-2">
+                <small>
+                  <b>SSD 1 Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-danger"
+                     role="progressbar"
+                     aria-valuenow="95"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 95%;"></div>
+              </div>
+              <small class="text-muted">243GB/256GB</small>
+              <div class="text-uppercase mb-1 mt-2">
+                <small>
+                  <b>SSD 2 Usage</b>
+                </small>
+              </div>
+              <div class="progress-xs progress">
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+                     aria-valuenow="10"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 10%;"></div>
+              </div>
+              <small class="text-muted">25GB/256GB</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

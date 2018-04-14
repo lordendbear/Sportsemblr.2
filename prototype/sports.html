@@ -23,6 +23,9 @@
 </head>
 
 <body cz-shortcut-listen="true">
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
   <div id="root">
     <div class="app">
       <header class="app-header navbar">
@@ -153,84 +156,56 @@
                 <div class="col-12 col-lg-12">
                   <div class="card">
                     <div class="card-header">
-                      <i class="fa fa-align-justify"></i> All Events</div>
+                      <i class="fa fa-align-justify"></i> All Sports</div>
                     <div class="card-body">
                       <div class="table-responsive">
                         <table class="table table-striped">
                           <thead>
                             <tr>
                               <th>Title</th>
-                              <th>When</th>
-                              <th>Organizer</th>
-                              <th>People</th>
                               <th>Status</th>
+                              <th>Manage</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>best match</td>
-                              <td>13.04.2018 г.</td>
-                              <td></td>
-                              <td>6 / 12</td>
+                              <td>Football</td>
                               <td>
                                 <span class="badge badge-success">Active</span>
                               </td>
-                            </tr>
-                            <tr>
-                              <td>Game</td>
-                              <td>10.04.2018 г.</td>
-                              <td>Ivan Ivanov</td>
-                              <td>9 / 11</td>
                               <td>
-                                <span class="badge badge-danger">Finished</span>
+                                <button class="btn btn-primary">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
                               </td>
                             </tr>
                             <tr>
-                              <td>Mocked event 2</td>
-                              <td>10.04.2018 г.</td>
-                              <td>Ivan Ivanov</td>
-                              <td>9 / 11</td>
+                              <td>Basketball</td>
                               <td>
                                 <span class="badge badge-success">Active</span>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input type="text"
+                                       class="form-control"
+                                       value="Tennis">
+                              </td>
+                              <td>
+                                <span class="badge badge-danger">Editing</span>
+                              </td>
+                              <td>
+                                <button class="btn btn-success">Save</button>
+                                <button class="btn btn-warning">Cancel</button>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
-                      <ul class="pagination">
-                        <li class="page-item disabled">
-                          <a href="#"
-                             class="page-link"
-                             aria-label="Previous">
-                            <span aria-hidden="true">Prev</span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                        </li>
-                        <li class="page-item active">
-                          <a href="#"
-                             class="page-link">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#"
-                             class="page-link">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#"
-                             class="page-link">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#"
-                             class="page-link">4</a>
-                        </li>
-                        <li class="page-item">
-                          <a href="#"
-                             class="page-link"
-                             aria-label="Next">
-                            <span aria-hidden="true">Next</span>
-                            <span class="sr-only">Next</span>
-                          </a>
-                        </li>
-                      </ul>
+
                     </div>
                   </div>
                 </div>
