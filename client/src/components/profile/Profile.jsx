@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Radar } from 'react-chartjs-2';
+
+
 import {
   Row,
   Col,
@@ -11,13 +14,35 @@ import {
   Form,
   FormGroup,
   FormText,
-  Collapse,
   Label,
   Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText
 } from 'reactstrap';
+
+const radar = {
+    labels: ['Football', 'Volleyball', 'Tennis', 'Basketball', 'Squash', 'Cycling'],
+    datasets: [
+      {
+        label: 'Last month',
+        backgroundColor: 'rgba(179,181,198,0.2)',
+        borderColor: 'rgba(179,181,198,1)',
+        pointBackgroundColor: 'rgba(179,181,198,1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(179,181,198,1)',
+        data: [7, 1, 3, 1, 2, 5]
+      },
+      {
+        label: 'This month',
+        backgroundColor: 'rgba(255,99,132,0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        pointBackgroundColor: 'rgba(255,99,132,1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(255,99,132,1)',
+        data: [5, 1, 3, 1, 0, 6]
+      }
+    ]
+  };
 
 const Profile = ({ event, onSave, onChange, saving, errors }) => {
   return (
@@ -104,6 +129,16 @@ const Profile = ({ event, onSave, onChange, saving, errors }) => {
             <Button type="submit" size="xl" color="primary"><i className="fa fa-dot-circle-o"></i> Create</Button>
           </CardFooter>
         </Card>
+        <Card>
+            <CardHeader>
+              Your sports on a chart
+            </CardHeader>
+            <CardBody>
+              <div className="chart-wrapper">
+                <Radar data={radar}/>
+              </div>
+            </CardBody>
+          </Card>
       </Col>
       </Row>
   );
