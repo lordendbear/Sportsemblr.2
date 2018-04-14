@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color"
+        content="#000000">
+  <link rel="manifest"
+        href="http://localhost:3000/manifest.json">
+  <link rel="shortcut icon"
+        href="http://localhost:3000/favicon.ico">
+  <title>React App</title>
+  <link href="./style.css"
+        rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+</head>
+
+<body cz-shortcut-listen="true">
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root">
+    <div class="app">
+      <header class="app-header navbar">
+        <ul class="d-md-down-none navbar-nav">
+          <li class="right dropdown nav-item">
+            <a aria-haspopup="true"
+               href="#"
+               class="nav-link"
+               aria-expanded="false">
+              <img src="data:image/jpeg;base64,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"
+            
+                   class="img-avatar"
+                   alt="admin@bootstrapmaster.com">
+            </a>
+            <div tabindex="-1"
+                 role="menu"
+                 aria-hidden="true"
+                 class="dropdown-menu dropdown-menu-right">
+              <div tabindex="-1"
+                   class="text-center dropdown-header">
+                <strong>Account</strong>
+              </div>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-envelope-o"></i> Messages
+                <span class="badge badge-success">42</span>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-bell-o"></i> Updates
+                <span class="badge badge-info">42</span>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-comments"></i> Comments
+                <span class="badge badge-warning">42</span>
+              </button>
+              <div tabindex="-1"
+                   class="text-center dropdown-header">
+                <strong>Settings</strong>
+              </div>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-user"></i>
+                <a class="nav-link"
+                   href="/profile"> Profile </a>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-wrench"></i> Settings</button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-usd"></i> Payments
+                <span class="badge badge-secondary">42</span>
+              </button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-file"></i> Projects
+                <span class="badge badge-primary">42</span>
+              </button>
+              <div tabindex="-1"
+                   class="dropdown-divider"></div>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-shield"></i> Lock Account</button>
+              <button type="button"
+                      tabindex="0"
+                      class="dropdown-item">
+                <i class="fa fa-lock"></i> Logout</button>
+            </div>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./index.html">Home</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./login.html">Login</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./register.html">Register</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./events.html">Events</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./event-details.html">Single Event</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./event-edit.html">Create/Edit Event</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./profile.html">See/Edit Profile</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./place-edit.html">Manage place</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./sports.html">Manage sports</a>
+          </li>
+          <li class="px-3 nav-item">
+            <a class="nav-link"
+               href="./sports.html">Manage sports</a>
+          </li>
+        </ul>
+        <button type="button"
+                class="d-md-down-none navbar-toggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </header>
+      <div class="hidden"></div>
+
+    </div>
+  </div>
+</body>
+
+</html>
