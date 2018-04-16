@@ -18,8 +18,7 @@ import {
   Label,
   Input,
   InputGroup,
-  InputGroupAddon,
-  InputGroupText
+  InputGroupAddon
 } from 'reactstrap';
 
 export class ManagePlace extends React.Component {
@@ -85,77 +84,77 @@ export class ManagePlace extends React.Component {
   render() {
     return (
       <Row>
-<Col xs="12" md="12">
-  <Card>
-    <CardHeader>
-      <strong>Create/Edit place</strong>
-    </CardHeader>
-    <CardBody>
-      <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
-        <FormGroup row>
-          <Col md="3">
-            <Label htmlFor="text-input">Name</Label>
-          </Col>
-          <Col xs="12" md="9">
-            <Input type="text" id="text-input" name="text-input" placeholder="Enter name"/>
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Col md="3">
-            <Label htmlFor="textarea-input">Description</Label>
-          </Col>
-          <Col xs="12" md="9">
-            <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                   placeholder="Wonderful place, come to us"/>
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-        <Col md="3">
-          <Label htmlFor="multiple-select">Sports you are interested in</Label>
+        <Col xs="12" md="12">
+          <Card>
+            <CardHeader>
+              <strong>Create/Edit place</strong>
+            </CardHeader>
+            <CardBody>
+              <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="text-input">Name</Label>
+                  </Col>
+                  <Col xs="12" md="9">
+                    <Input type="text" id="text-input" name="text-input" placeholder="Enter name" />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="textarea-input">Description</Label>
+                  </Col>
+                  <Col xs="12" md="9">
+                    <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                      placeholder="Wonderful place, come to us" />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="multiple-select">Sports you are interested in</Label>
+                  </Col>
+                  <Col md="9">
+                    <FormText color="muted">Press ctrl or drag</FormText>
+                    <Input type="select" name="multiple-select" id="multiple-select" multiple>
+                      <option value="1">Football</option>
+                      <option value="2">Basketball</option>
+                      <option value="3">Tennis</option>
+                      <option value="4">Volleyball</option>
+                      <option value="5">Cricket</option>
+                      <option value="6">Table Tennis</option>
+                    </Input>
+                  </Col>
+                </FormGroup>
+                {/* Fuck linters */}
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="select">Social link</Label>
+                  </Col>
+                  <Col md="9">
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <Button type="button" color="primary"><i className="fa fa-facebook"></i></Button>
+                      </InputGroupAddon>
+                      <Input type="text" id="input3-group2" name="input3-group2" placeholder="Facebook page" />
+                    </InputGroup>
+                  </Col>
+                </FormGroup>
+                {/* Fuck tabs, no time for that, no save configured */}
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="file-input">Add photo</Label>
+                  </Col>
+                  <Col xs="12" md="9">
+                    <Input type="file" id="file-input" name="file-input" />
+                  </Col>
+                </FormGroup>
+              </Form>
+            </CardBody>
+            <CardFooter>
+              <Button type="submit" size="xl" color="primary"><i className="fa fa-dot-circle-o"></i> Create</Button>
+            </CardFooter>
+          </Card>
         </Col>
-        <Col md="9">
-          <FormText color="muted">Press ctrl or drag</FormText>
-          <Input type="select" name="multiple-select" id="multiple-select" multiple>
-            <option value="1">Football</option>
-            <option value="2">Basketball</option>
-            <option value="3">Tennis</option>
-            <option value="4">Volleyball</option>
-            <option value="5">Cricket</option>
-            <option value="6">Table Tennis</option>
-          </Input>
-        </Col>
-      </FormGroup>
-        {/* Fuck linters */}
-        <FormGroup row>
-        <Col md="3">
-            <Label htmlFor="select">Social link</Label>
-          </Col>
-                    <Col md="9">
-                      <InputGroup>
-                        <InputGroupAddon addonType="prepend">
-                          <Button type="button" color="primary"><i className="fa fa-facebook"></i></Button>
-                        </InputGroupAddon>
-                        <Input type="text" id="input3-group2" name="input3-group2" placeholder="Facebook page"/>
-                      </InputGroup>
-                    </Col>
-        </FormGroup>
-        {/* Fuck tabs, no time for that, no save configured */}
-        <FormGroup row>
-          <Col md="3">
-            <Label htmlFor="file-input">Add photo</Label>
-          </Col>
-          <Col xs="12" md="9">
-            <Input type="file" id="file-input" name="file-input"/>
-          </Col>
-        </FormGroup>
-      </Form>
-    </CardBody>
-    <CardFooter>
-      <Button type="submit" size="xl" color="primary"><i className="fa fa-dot-circle-o"></i> Create</Button>
-    </CardFooter>
-  </Card>
-</Col>
-</Row>
+      </Row>
     );
   }
 }
