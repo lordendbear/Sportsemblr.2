@@ -34,7 +34,7 @@ export function login(user) {
           user: response.data.user
         };
 
-        localStorage.setItem('auth', auth);
+        localStorage.setItem('auth', JSON.stringify(auth));
         dispatch({
           type: types.LOGIN
         })
