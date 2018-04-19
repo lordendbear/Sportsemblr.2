@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from '../../../actions/authActions';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
 
 class Login extends Component {
@@ -33,10 +33,20 @@ class Login extends Component {
 
     onLoginClick() {
         const user = this.state.user;
-        this.props.login(user);
+
+        this.props.login(user).then(() => {
+          this.setState({ redirectToReferrer: true });
+        });
     }
 
     render() {
+        const { from } = this.props.location.state || { from: { pathname: "/" } };
+        const { redirectToReferrer } = this.state;
+
+        if(redirectToReferrer) {
+          return <Redirect to={from} />;
+        }
+
         return (
           <div className="app flex-row align-items-center">
             <Container>
