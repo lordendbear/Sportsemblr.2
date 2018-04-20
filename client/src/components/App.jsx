@@ -13,6 +13,7 @@ import PlacesList from '../containers/place/PlacesList';
 import EventDetails from '../containers/event/EventDetails';
 import Aside from '../components/aside/Aside';
 import Profile from '../components/profile/Profile';
+import Home from '../components/home/Home';
 
 import {Container} from 'reactstrap';
 
@@ -25,16 +26,17 @@ class App extends Component {
         <div className="app-body">
           <main className="main">
             <Container fluid>
-              <Route path="/register" component={Register} />
-              <Route path="/login" component={Login} />
-              <Route path="/event" component={ManageEvent} exact />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/event" component={ManageEvent} />
               <Route path="/events/:id/edit" component={ManageEvent} />
-              <Route path="/events/:id" component={EventDetails} exact />
-              <Route path="/events" component={EventsList} exact />
+              <Route exact path="/events/:id" component={EventDetails} />
+              <Route exact path="/events" component={EventsList} />
               <Route path="/place" component={ManagePlace} />
               <Route path="/places/:id" component={ManagePlace} />
-              <Route path="/places" component={PlacesList} exact />
-              <Route path="/profile" component={Profile} exact />
+              <Route exact path="/places" component={PlacesList} />
+              <Route exact path="/profile" component={Profile} />
             </Container>
           </main>
           <Aside />
