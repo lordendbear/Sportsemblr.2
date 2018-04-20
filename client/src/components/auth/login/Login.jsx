@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { login } from '../../../actions/authActions';
+import { login, isLoggedIn } from '../../../actions/authActions';
 import { Link, Redirect } from 'react-router-dom';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
 
@@ -40,9 +40,15 @@ class Login extends Component {
     }
 
     render() {
+        const isLoggedIn = this.props.isLoggedIn();
+        
+        if(isLoggedIn) {
+          return <Redirect to="/" />
+        }
+      
         const { from } = this.props.location.state || { from: { pathname: "/" } };
         const { redirectToReferrer } = this.state;
-
+    
         if(redirectToReferrer) {
           return <Redirect to={from} />;
         }
@@ -107,7 +113,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ login }, dispatch)
+    return bindActionCreators({ login, isLoggedIn }, dispatch)
 };
 
 export default connect(null, mapDispatchToProps)(Login);

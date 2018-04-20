@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
         index: true,
         trim: true,
     },
+    age: Number,
     services: {
         // facebook: String,
         // google: String,
@@ -34,6 +35,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    sports: [{ name: String, skill: Number }],
+    places: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }],
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
 }, {
         timestamps: true
     });

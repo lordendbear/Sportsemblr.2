@@ -14,14 +14,23 @@ import EventDetails from '../containers/event/EventDetails';
 import Aside from '../components/aside/Aside';
 import Profile from '../components/profile/Profile';
 import Home from '../components/home/Home';
+import PrivateRoute from '../components/auth/PrivateRoute.js';
 
 import {Container} from 'reactstrap';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAuthenticated: this.props.isAuthenticated
+    }
+  }
+
   render() {
     return (
       <div className="app">
-        <Navbar />
+        <Navbar isAuthenticated={this.state.isAuthenticated} />
         <Notification />
         <div className="app-body">
           <main className="main">
@@ -29,14 +38,14 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/event" component={ManageEvent} />
-              <Route path="/events/:id/edit" component={ManageEvent} />
-              <Route exact path="/events/:id" component={EventDetails} />
+              <PrivateRoute exact path="/event" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute path="/events/:id/edit" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/events/:id" component={EventDetails} isAuthenticated={this.state.isAuthenticated} />
               <Route exact path="/events" component={EventsList} />
-              <Route path="/place" component={ManagePlace} />
-              <Route path="/places/:id" component={ManagePlace} />
-              <Route exact path="/places" component={PlacesList} />
-              <Route exact path="/profile" component={Profile} />
+              <PrivateRoute path="/place" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/places" component={PlacesList} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
             </Container>
           </main>
           <Aside />
@@ -51,7 +60,8 @@ App.propTypes = {
 }
 
 const checkAuthenticated = () => {
-  const auth = localStorage.getItem('auth');
+  const auth = JSON.parse(localStorage.getItem('auth'));
+
   if (auth) {
     // TODO: checks for expired
     return !!auth.token;

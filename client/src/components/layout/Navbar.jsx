@@ -19,6 +19,8 @@ class Navbar extends React.Component {
       </NavLink>);
 
     render() {
+      const isAuthenticated = this.props.isAuthenticated;
+
       return(
       <header className="app-header navbar">
         <Nav className="d-md-down-none" navbar>
@@ -26,12 +28,16 @@ class Navbar extends React.Component {
           <NavItem className="px-3">
             {this.renderNavLink('Home', '/')}
           </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Login', '/login')}
-          </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Register', '/register')}
-          </NavItem>
+          { !isAuthenticated && 
+            <NavItem className="px-3">
+              {this.renderNavLink('Login', '/login')}
+            </NavItem>
+          }
+          { !isAuthenticated && 
+            <NavItem className="px-3">
+              {this.renderNavLink('Register', '/register')}
+            </NavItem> 
+          }
           <NavItem className="px-3">
             {this.renderNavLink('Events', '/events')}
           </NavItem>
