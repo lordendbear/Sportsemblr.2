@@ -27,6 +27,10 @@ class App extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ isAuthenticated: nextProps.isAuthenticated });
+  }
+
   render() {
     return (
       <div className="app">

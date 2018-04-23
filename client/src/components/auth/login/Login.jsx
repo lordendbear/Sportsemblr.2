@@ -13,7 +13,8 @@ class Login extends Component {
             user: {
                 email: '',
                 password: ''
-            }
+            },
+            redirectToReferrer: false
         }
     }
 
@@ -40,19 +41,20 @@ class Login extends Component {
     }
 
     render() {
-        const isLoggedIn = this.props.isLoggedIn();
-        
-        if(isLoggedIn) {
-          return <Redirect to="/" />
-        }
-      
         const { from } = this.props.location.state || { from: { pathname: "/" } };
         const { redirectToReferrer } = this.state;
-    
+        const isLoggedIn = this.props.isLoggedIn();
+
+      console.log(redirectToReferrer);
+      console.log(isLoggedIn);
+
         if(redirectToReferrer) {
           return <Redirect to={from} />;
         }
 
+        if(isLoggedIn) {
+          return <Redirect to={from} />
+        }
         return (
           <div className="app flex-row align-items-center">
             <Container>
