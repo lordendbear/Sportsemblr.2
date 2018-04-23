@@ -10,8 +10,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Dropdown,
-  NavLink
+  Dropdown
 } from 'reactstrap';
 import avatar from '../../img/avatars/7.jpg';
 
