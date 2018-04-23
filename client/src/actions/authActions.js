@@ -56,3 +56,10 @@ export function login(user) {
 export function isLoggedIn() {
   return (dispatch) => authApi.isLoggedIn();
 }
+
+export function logOut() {
+  return (dispatch) => {
+    authApi.logOut();
+    dispatch(notificationActions.success({ message: 'See you soon!' }));    
+  }
+}

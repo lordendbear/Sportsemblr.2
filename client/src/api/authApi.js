@@ -27,6 +27,10 @@ class AuthApi {
             return !!parsed.token;
         }
     }
+
+    static logOut() {
+        localStorage.removeItem('auth');
+    }
 }
 
 export default AuthApi;

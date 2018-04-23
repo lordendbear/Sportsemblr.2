@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { logOut } from '../../actions/authActions.js';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 import {
   Badge,
@@ -19,7 +23,8 @@ class HeaderDropdown extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      loggedOut: false
     };
   }
 
@@ -29,7 +34,17 @@ class HeaderDropdown extends Component {
     });
   }
 
+  logOut() {
+    this.props.logOut();
+
+    this.setState({ loggedOut: true });
+  }
+
   dropAccnt() {
+    if(this.state.loggedOut){
+      return <Redirect to="/" />
+    }
+
     return (
       <Dropdown className="right" nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle nav>
@@ -49,7 +64,7 @@ class HeaderDropdown extends Component {
           <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
           <DropdownItem divider />
           <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
-          <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+          <DropdownItem onClick={() => this.logOut()}><i className="fa fa-lock" ></i> Logout </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     );
@@ -63,4 +78,9 @@ class HeaderDropdown extends Component {
   }
 }
 
-export default HeaderDropdown;
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ logOut }, dispatch)
+};
+
+export default connect(null, mapDispatchToProps)(HeaderDropdown);
