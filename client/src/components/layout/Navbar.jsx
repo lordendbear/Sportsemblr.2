@@ -42,9 +42,11 @@ class Navbar extends React.Component {
             {this.renderNavLink('Events', '/events')}
           </NavItem>
         </Nav>
+        { isAuthenticated && 
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>
         </NavbarToggler>
+        }
       </header>);
     }
 }

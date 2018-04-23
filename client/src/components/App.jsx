@@ -52,7 +52,7 @@ class App extends Component {
               <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
             </Container>
           </main>
-          <Aside />
+          {this.state.isAuthenticated && <Aside />}
         </div>
       </div>
     );
