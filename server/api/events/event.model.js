@@ -6,12 +6,14 @@ const eventSchema = new mongoose.Schema({}, {
         maxlength: 128,
         index: true,
         trim: true,
+        required: true        
     },
     sport: {
         type: String,
         maxlength: 128,
         index: true,
-        trim: true
+        trim: true,
+        required: true        
     },
     description: {
         type: String,
@@ -23,14 +25,16 @@ const eventSchema = new mongoose.Schema({}, {
     },
     difficulty: {
         type: String,
-        enum: ['beginner', 'advanced', 'semi-pro', 'pro']
+        enum: ['beginner', 'advanced', 'semi-pro', 'pro'],
+        required: true        
     },
     picture: {
         type: String,
         trim: true,
     },
     peopleNeeded: {
-        type: Number
+        type: Number,
+        required: true        
     },
     peopleJoined: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -41,15 +45,17 @@ const eventSchema = new mongoose.Schema({}, {
         enum: ['active', 'started', 'ended']
     },
     date: {
-        type: Date
+        type: Date,
+        required: true,       
     },
     organizer: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true        
     },
     totalPrice: {
         type: mongoose.Schema.Types.Decimal128,
-
+        required: true        
     }
 },{
     timestamps: true
