@@ -24,7 +24,7 @@ class Navbar extends React.Component {
       return(
       <header className="app-header navbar">
         <Nav className="d-md-down-none" navbar>
-          <HeaderDropdown />
+        { isAuthenticated && <HeaderDropdown /> }
           <NavItem className="px-3">
             {this.renderNavLink('Home', '/')}
           </NavItem>

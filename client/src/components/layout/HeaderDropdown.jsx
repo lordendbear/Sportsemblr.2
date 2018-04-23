@@ -51,19 +51,11 @@ class HeaderDropdown extends Component {
           <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com" />
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>
+          <DropdownItem header tag="div" className="text-center"><strong>Activities</strong></DropdownItem>
           <DropdownItem><i className="fa fa-envelope-o"></i> Messages<Badge color="success">42</Badge></DropdownItem>
-          <DropdownItem><i className="fa fa-bell-o"></i> Updates<Badge color="info">42</Badge></DropdownItem>
-          <DropdownItem><i className="fa fa-comments"></i> Comments<Badge color="warning">42</Badge></DropdownItem>
-          <DropdownItem header tag="div" className="text-center"><strong>Settings</strong></DropdownItem>
-          <DropdownItem><i className="fa fa-user"></i>
-            <NavLink tag={Link} to="/profile" exact> Profile </NavLink>
-          </DropdownItem>
-          <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem>
-          <DropdownItem><i className="fa fa-usd"></i> Payments<Badge color="secondary">42</Badge></DropdownItem>
-          <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
+          <DropdownItem><i className="fa fa-bell-o"></i> Events<Badge color="info">42</Badge></DropdownItem>
+          <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>
+          <DropdownItem tag={Link} to="/profile" exact><i className="fa fa-user"></i>Profile</DropdownItem>
           <DropdownItem onClick={() => this.logOut()}><i className="fa fa-lock" ></i> Logout </DropdownItem>
         </DropdownMenu>
       </Dropdown>
