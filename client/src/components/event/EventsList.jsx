@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import EventShort from './EventShort';
 import {
-  Badge,
   Row,
   Col,
   Card,

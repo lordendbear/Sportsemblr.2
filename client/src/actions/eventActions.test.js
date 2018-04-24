@@ -2,10 +2,6 @@ import expect from 'expect';
 import * as eventActions from './eventActions';
 import * as types from './actionTypes';
 
-import thunk from 'redux-thunk';
-import nock from 'nock';
-import configureMockStore from 'redux-mock-store';
-
 describe('Event Actions', () => {
   describe('loadEventsSuccess', () => {
     it('should create a LOAD_EVENTS_SUCCESS action', () => {
