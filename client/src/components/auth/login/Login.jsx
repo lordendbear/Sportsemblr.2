@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { login } from '../../../actions/authActions';
-import { Link } from 'react-router-dom';
+import { login, isLoggedIn } from '../../../actions/authActions';
+import { Link, Redirect } from 'react-router-dom';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
 
 class Login extends Component {
@@ -13,7 +13,8 @@ class Login extends Component {
             user: {
                 email: '',
                 password: ''
-            }
+            },
+            redirectToReferrer: false
         }
     }
 
@@ -33,10 +34,27 @@ class Login extends Component {
 
     onLoginClick() {
         const user = this.state.user;
-        this.props.login(user);
+
+        this.props.login(user).then(() => {
+          this.setState({ redirectToReferrer: true });
+        });
     }
 
     render() {
+        const { from } = this.props.location.state || { from: { pathname: "/" } };
+        const { redirectToReferrer } = this.state;
+        const isLoggedIn = this.props.isLoggedIn();
+
+      console.log(redirectToReferrer);
+      console.log(isLoggedIn);
+
+        if(redirectToReferrer) {
+          return <Redirect to={from} />;
+        }
+
+        if(isLoggedIn) {
+          return <Redirect to={from} />
+        }
         return (
           <div className="app flex-row align-items-center">
             <Container>
@@ -97,7 +115,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ login }, dispatch)
+    return bindActionCreators({ login, isLoggedIn }, dispatch)
 };
 
 export default connect(null, mapDispatchToProps)(Login);

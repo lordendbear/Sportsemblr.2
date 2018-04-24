@@ -11,7 +11,9 @@ export function register(user) {
           user: response
         });
 
-        dispatch(notificationActions.success({ message: 'Registered successfully' }));
+        dispatch(notificationActions.success({ message: 'Automatically logging you in... ' }));
+
+        dispatch(login(user));
       })
       .catch(err => {
         dispatch({
@@ -34,12 +36,12 @@ export function login(user) {
           user: response.data.user
         };
 
-        localStorage.setItem('auth', auth);
+        localStorage.setItem('auth', JSON.stringify(auth));
         dispatch({
           type: types.LOGIN
         })
 
-        dispatch(notificationActions.success({ message: 'Success' }));
+        dispatch(notificationActions.success({ message: 'Log in successful!' }));
       })
       .catch(err => {
         dispatch({
@@ -48,5 +50,16 @@ export function login(user) {
 
         dispatch(notificationActions.error({ message: 'Invalid credentials' }));
       });
+  }
+}
+
+export function isLoggedIn() {
+  return (dispatch) => authApi.isLoggedIn();
+}
+
+export function logOut() {
+  return (dispatch) => {
+    authApi.logOut();
+    dispatch(notificationActions.success({ message: 'See you soon!' }));    
   }
 }

@@ -19,38 +19,34 @@ class Navbar extends React.Component {
       </NavLink>);
 
     render() {
+      const isAuthenticated = this.props.isAuthenticated;
+
       return(
       <header className="app-header navbar">
         <Nav className="d-md-down-none" navbar>
-          <HeaderDropdown />
+        { isAuthenticated && <HeaderDropdown /> }
           <NavItem className="px-3">
             {this.renderNavLink('Home', '/')}
           </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Login', '/login')}
-          </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Register', '/register')}
-          </NavItem>
+          { !isAuthenticated && 
+            <NavItem className="px-3">
+              {this.renderNavLink('Login', '/login')}
+            </NavItem>
+          }
+          { !isAuthenticated && 
+            <NavItem className="px-3">
+              {this.renderNavLink('Register', '/register')}
+            </NavItem> 
+          }
           <NavItem className="px-3">
             {this.renderNavLink('Events', '/events')}
           </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Single Event', '/events/5')}
-          </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Create/Edit Event', '/events/5/edit')}
-          </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('See/Edit Profile', '/profile')}
-          </NavItem>
-          <NavItem className="px-3">
-            {this.renderNavLink('Manage place', '/places/5')}
-          </NavItem>
         </Nav>
+        { isAuthenticated && 
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>
         </NavbarToggler>
+        }
       </header>);
     }
 }

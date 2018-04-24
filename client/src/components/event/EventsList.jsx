@@ -42,24 +42,6 @@ const EventsList = ({ events }) => {
                       isActive={true}
                     />
                   )}
-                  <tr>
-                    <td>Mocked event</td>
-                    <td>10.04.2018 г.</td>
-                    <td>Ivan Ivanov</td>
-                    <td>9 / 11</td>
-                    <td>
-                      <Badge color="success">Active</Badge>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Mocked event 2</td>
-                    <td>10.04.2018 г.</td>
-                    <td>Ivan Ivanov</td>
-                    <td>9 / 11</td>
-                    <td>
-                      <Badge color="success">Active</Badge>
-                    </td>
-                  </tr>
                 </tbody>
               </Table>
               <Pagination>

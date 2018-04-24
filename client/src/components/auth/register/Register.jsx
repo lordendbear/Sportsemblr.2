@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { register } from '../../../actions/authActions';
+import { register, isLoggedIn } from '../../../actions/authActions';
+import { Redirect } from 'react-router-dom';
 import {Container, Row, Col, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
 
 class Register extends Component {
@@ -28,6 +29,7 @@ class Register extends Component {
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this);
         this.onRegisterClick = this.onRegisterClick.bind(this);
+        this.onAgeChange = this.onAgeChange.bind(this);
     }
 
     onNameChange(event) {
@@ -48,6 +50,13 @@ class Register extends Component {
         const user = this.state.user;
 
         user.password = event.target.value;
+        this.setState({ user });
+    }
+
+    onAgeChange(event) {
+        const user = this.state.user;
+
+        user.age = event.target.value;
         this.setState({ user });
     }
 
@@ -80,9 +89,24 @@ class Register extends Component {
     onRegisterClick() {
         const user = this.state.user;
 
-        this.props.register(user);
+        this.props.register(user).then(() => {
+            this.setState({ redirectToReferrer: true });            
+        });
     }
     render() {
+        const isLoggedIn = this.props.isLoggedIn();
+
+        if(isLoggedIn) {
+            return <Redirect to="/" />
+        }
+
+        const { from } = this.props.location.state || { from: { pathname: "/" } };
+        const { redirectToReferrer } = this.state;
+    
+        if(redirectToReferrer) {
+          return <Redirect to={from} />;
+        }
+
         return (
           <div className="app flex-row align-items-center">
             <Container>
@@ -109,6 +133,16 @@ class Register extends Component {
                         <Input onChange={this.onEmailChange}
                             value={this.state.user.email}
                             type="text" placeholder="Email"/>
+                      </InputGroup>
+                      <InputGroup className="mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="icon-calendar"></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input onChange={this.onAgeChange}
+                            value={this.state.user.age}
+                            placeholder="Enter your age" type="number" min={10}/>
                       </InputGroup>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
@@ -142,7 +176,7 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ register }, dispatch)
+    return bindActionCreators({ register, isLoggedIn }, dispatch)
 };
 
 export default connect(null, mapDispatchToProps)(Register);
