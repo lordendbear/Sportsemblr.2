@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Navbar from './layout/Navbar';
+import ExtendedNavbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Navbar isAuthenticated={this.state.isAuthenticated} />
+        <ExtendedNavbar isAuthenticated={this.state.isAuthenticated} />
         <Notification />
         <div className="app-body">
           <main className="main">
