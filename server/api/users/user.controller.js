@@ -33,17 +33,13 @@ export default (data) => {
       const id = req.params.id,
         options = req.body;
 
-      data
-        .getById(id)
+      data.updateUser(id, options)
         .then(user => {
           if (!user) {
             return res.sendStatus(404);
           }
 
-          return data.updateUser(id, options)
-        })
-        .then(user => {
-          res.send(user);
+          return res.send(user);
         })
         .catch(err => {
           res.send(err)

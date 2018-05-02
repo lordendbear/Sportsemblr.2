@@ -52,6 +52,10 @@ export default (User, { passwordHasher }) => {
             reject(err);
           }
 
+          if (!user) {
+            return resolve(null);
+          }
+
           user.email = options.email || user.email;
           user.name = options.name || user.name;
 
