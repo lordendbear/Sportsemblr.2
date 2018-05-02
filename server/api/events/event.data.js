@@ -1,3 +1,5 @@
+import { Promise } from 'bluebird';
+
 export default (Event) => {
   return {
     deleteEvent: (id) => {
