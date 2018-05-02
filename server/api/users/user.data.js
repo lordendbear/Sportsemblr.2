@@ -34,6 +34,15 @@ export default (User, { passwordHasher }) => {
         });
       });
     },
+    getById: (id) => {
+      User.findById(id, (err, user) => {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(user);
+      });
+    },
     updateUser: (id, options) => {
       return new Promise((resolve, reject) => {
         User.findById(id, (err, user) => {
