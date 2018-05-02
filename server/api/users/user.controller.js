@@ -33,7 +33,15 @@ export default (data) => {
       const id = req.params.id,
         options = req.body;
 
-      data.updateUser(id, options)
+      data
+        .getById(id)
+        .then(user => {
+          if (!user) {
+            return res.sendStatus(404);
+          }
+
+          return data.updateUser(id, options)
+        })
         .then(user => {
           res.send(user);
         })
