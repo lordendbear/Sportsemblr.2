@@ -8,6 +8,8 @@ import User from '../../../api/users/user.model';
 import config from '../config';
 import * as testUtils from '../utils';
 
+import { Types } from 'mongoose';
+
 describe('POST /api/users/{id}', () => {
   let dbUser;
   let updatedUser;
@@ -62,8 +64,9 @@ describe('POST /api/users/{id}', () => {
   });
 
   it('should return 404 when user does not exist', (done) => {
+    const id = new Types.ObjectId();
     request(app)
-      .post(`/api/users/${updatedUser.id}`)
+      .post(`/api/users/${id}`)
       .send(updatedUser)
       .expect(404)
       .then(() => {
