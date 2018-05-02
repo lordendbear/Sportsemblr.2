@@ -1,5 +1,12 @@
 export default (data) => {
-    return {
+  return {
+    delete: (req, res, next) => {
+      const id = req.params.id;
 
+      data.deleteEvent(id)
+        .then(() => {
+          res.sendStatus(204);
+        });
     }
+  }
 }
