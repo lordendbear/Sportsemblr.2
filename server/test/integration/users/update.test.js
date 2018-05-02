@@ -52,7 +52,7 @@ describe('POST /api/users/{id}', () => {
 
   it('should update user data when request is ok', (done) => {
     request(app)
-      .post(`/api/users/${dbUser.id}`)
+      .put(`/api/users/${dbUser.id}`)
       .send(updatedUser)
       .expect(200)
       .then((res) => {
@@ -66,7 +66,7 @@ describe('POST /api/users/{id}', () => {
   it('should return 404 when user does not exist', (done) => {
     const id = new Types.ObjectId();
     request(app)
-      .post(`/api/users/${id}`)
+      .put(`/api/users/${id}`)
       .send(updatedUser)
       .expect(404)
       .then(() => {
