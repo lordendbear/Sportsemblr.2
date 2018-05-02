@@ -53,7 +53,7 @@ export default (User, { passwordHasher }) => {
           }
 
           user.email = options.email || user.email;
-          user.username = options.username || user.username;
+          user.name = options.name || user.name;
 
           user.save((err) => {
             if (err) {
