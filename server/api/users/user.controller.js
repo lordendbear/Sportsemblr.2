@@ -44,6 +44,19 @@ export default (data) => {
         .catch(err => {
           res.send(err)
         });
+    },
+    getProfile: (req, res, next) => {
+      const id = req.params.id;
+
+      data
+        .getById(id)
+        .then(user => {
+          if (!user) {
+            return res.sendStatus(404);
+          }
+
+          return res.send(user);
+        });
     }
   }
 }
