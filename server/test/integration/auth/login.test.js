@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import request from 'supertest';
 
 import inititalizeUtils from '../../../utils';
-import inititalizeApp from '../../..//config/app';
+import inititalizeApp from '../../../config/app';
 import User from '../../../api/users/user.model';
 
 import config from '../config';
