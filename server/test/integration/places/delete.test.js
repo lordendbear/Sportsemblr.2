@@ -16,7 +16,7 @@ describe('DELETE /api/places/{id}', () => {
     app = inititalizeApp(config);
 
     dbPlace = {
-      title: 'Test Place'
+      name: 'Test Place'
     };
 
     Place.remove({}, () => {

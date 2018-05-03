@@ -8,22 +8,20 @@ import Place from '../../../api/place/place.model';
 import config from '../config';
 import * as testUtils from '../utils';
 
-import { Types } from 'mongoose';
-
-describe('POST /api/places/{id}', () => {
+describe('POST /api/places', () => {
   let dbPlace;
-  let updatedPlace;
+  let place;
   let app;
 
   beforeEach((done) => {
     app = inititalizeApp(config);
 
     dbPlace = {
-      name: 'Place in db'
+      name: 'Db place'
     };
 
-    updatedPlace = {
-      name: 'Updated place'
+    place = {
+      name: 'test place'
     };
 
     Place.remove({}, () => {
@@ -43,24 +41,33 @@ describe('POST /api/places/{id}', () => {
     testUtils.dropDatabase(done);
   });
 
-  it('should update place data when request is ok', (done) => {
+  it('should create a new place when request is ok', (done) => {
     request(app)
-      .put(`/api/places/${dbPlace.id}`)
-      .send(updatedPlace)
+      .post('/api/places')
+      .send(place)
       .expect(200)
       .then((res) => {
-        expect(res.body.name).to.equal(updatedPlace.name);
+        expect(res.body.name).to.equal(place.name);
 
         done();
       });
   });
 
-  it('should return 404 when place does not exist', (done) => {
-    const id = new Types.ObjectId();
+  it('should return 400 when no place', (done) => {
     request(app)
-      .put(`/api/places/${id}`)
-      .send(updatedPlace)
-      .expect(404)
+      .post('/api/places')
+      .send()
+      .expect(400)
+      .then(() => {
+        done();
+      });
+  });
+
+  it('should return 400 when no name', (done) => {
+    request(app)
+      .post('/api/places')
+      .send({})
+      .expect(400)
       .then(() => {
         done();
       });

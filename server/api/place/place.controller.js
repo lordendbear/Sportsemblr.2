@@ -24,5 +24,20 @@ export default (data) => {
           res.send(err)
         });
     },
+    create: (req, res, next) => {
+      const place = req.body;
+
+      if (!place || !place.name) {
+        return res
+          .sendStatus(400);
+      }
+
+      data.create(place)
+        .then((newPlace) => {
+          return res
+            .send(newPlace)
+        })
+        .catch(err => next(err));
+    }
   }
 }

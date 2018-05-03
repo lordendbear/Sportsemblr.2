@@ -15,6 +15,21 @@ export default (Place) => {
         });
       })
     },
+    create: (place) => {
+      const newPlace = new Place({
+        name: place.name
+      });
+
+      return new Promise((resolve, reject) => {
+        newPlace.save((err) => {
+          if (err) {
+            reject(err);
+          }
+
+          resolve(place);
+        })
+      });
+    },
     updatePlace: (id, options) => {
       return new Promise((resolve, reject) => {
         Place.findById(id, (err, place) => {
@@ -26,7 +41,7 @@ export default (Place) => {
             return resolve(null);
           }
 
-          place.title = options.title || place.title;
+          place.name = options.name || place.name;
 
           place.save((err) => {
             if (err) {
