@@ -1,7 +1,9 @@
 import { Router } from 'express';
 
-export default (controllers) => {
-    const router = new Router();
+export default (controller) => {
+  const router = new Router();
 
-    return router;
+  router.delete('/:id', controller.delete);
+
+  return router;
 }
