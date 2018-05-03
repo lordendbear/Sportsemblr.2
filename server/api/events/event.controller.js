@@ -8,7 +8,7 @@ export default (data) => {
           res.sendStatus(204);
         });
     },
-    getById: (req, res, next) => {
+    details: (req, res, next) => {
       const id = req.params.id;
 
       data
