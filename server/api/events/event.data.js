@@ -14,6 +14,17 @@ export default (Event) => {
           return resolve();
         });
       })
+    },
+    getById: (id) => {
+      return new Promise((resolve, reject) => {
+        Event.findById(id, (err, event) => {
+          if (err) {
+            reject(err);
+          }
+
+          resolve(event);
+        });
+      });
     }
   };
 }
