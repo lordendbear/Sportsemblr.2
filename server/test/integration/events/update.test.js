@@ -10,7 +10,7 @@ import * as testUtils from '../utils';
 
 import { Types } from 'mongoose';
 
-describe('GET /api/events/{id}', () => {
+describe('PUT /api/events/{id}', () => {
   let dbEvent;
   let updatedEvent;
   let app;
@@ -24,7 +24,16 @@ describe('GET /api/events/{id}', () => {
       difficulty: 'beginner',
       peopleNeeded: 5,
       date: new Date(),
-      totalPrice: 12
+      totalPrice: 12.1
+    };
+
+    updatedEvent = {
+      title: 'Test Event v2',
+      sport: 'basketball',
+      difficulty: 'beginner',
+      peopleNeeded: 3,
+      date: new Date(),
+      totalPrice: 5.00
     };
 
     Event.remove({}, () => {
@@ -44,28 +53,28 @@ describe('GET /api/events/{id}', () => {
     testUtils.dropDatabase(done);
   });
 
-  it('should return event data when request is ok', (done) => {
-    const id = dbEvent._id;
-
+  it('should update event data when request is ok', (done) => {
     request(app)
-      .get(`/api/events/${id}`)
+      .put(`/api/events/${dbEvent.id}`)
+      .send(updatedEvent)
       .expect(200)
       .then((res) => {
-        expect(res.body.title).to.equal(dbEvent.title);
-        expect(res.body.sport).to.equal(dbEvent.sport);
-        expect(res.body.difficulty).to.equal(dbEvent.difficulty);
-        expect(res.body.peopleNeeded).to.equal(dbEvent.peopleNeeded);
-        expect(res.body.totalPrice).to.equal(dbEvent.totalPrice);
+        expect(res.body.title).to.equal(updatedEvent.title);
+        expect(res.body.sport).to.equal(updatedEvent.sport);
+        expect(res.body.difficulty).to.equal(updatedEvent.difficulty);
+        expect(res.body.peopleNeeded).to.equal(updatedEvent.peopleNeeded);
+        expect(res.body.totalPrice).to.equal(updatedEvent.totalPrice);
+        expect(res.body.sport).to.equal(updatedEvent.sport);
 
         done();
       });
   });
 
-  it('should return 404 when event does not exist', (done) => {
+  it('should return 404 when Event does not exist', (done) => {
     const id = new Types.ObjectId();
-
     request(app)
-      .get(`/api/events/${id}`)
+      .put(`/api/events/${id}`)
+      .send(updatedEvent)
       .expect(404)
       .then(() => {
         done();

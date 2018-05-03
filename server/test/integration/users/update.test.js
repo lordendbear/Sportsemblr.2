@@ -10,7 +10,7 @@ import * as testUtils from '../utils';
 
 import { Types } from 'mongoose';
 
-describe('POST /api/users/{id}', () => {
+describe('PUT /api/users/{id}', () => {
   let dbUser;
   let updatedUser;
   let app;
