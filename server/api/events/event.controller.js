@@ -20,6 +20,21 @@ export default (data) => {
 
           return res.send(event);
         });
+    },
+    create: (req, res, next) => {
+      const event = req.body;
+
+      if (!event || !event.title) {
+        return res
+          .sendStatus(400);
+      }
+
+      data.create(event)
+        .then((newEvent) => {
+          return res
+            .send(newEvent);
+        })
+        .catch(err => next(err));
     }
   }
 }
