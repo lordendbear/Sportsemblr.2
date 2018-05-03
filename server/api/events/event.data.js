@@ -25,6 +25,19 @@ export default (Event) => {
           resolve(event);
         });
       });
+    },
+    create: (event) => {
+      const newEvent = new Event(event);
+
+      return new Promise((resolve, reject) => {
+        newEvent.save((err) => {
+          if (err) {
+            reject(err);
+          }
+
+          resolve(newEvent);
+        })
+      });
     }
   };
 }

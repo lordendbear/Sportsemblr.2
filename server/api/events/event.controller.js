@@ -32,7 +32,7 @@ export default (data) => {
       data.create(event)
         .then((newEvent) => {
           return res
-            .send(newEvent)
+            .send(newEvent);
         })
         .catch(err => next(err));
     }
