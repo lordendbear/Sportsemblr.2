@@ -11,10 +11,10 @@ export default (app, config, utils, middleware) => {
   const eventRouter = eventRouterInit(config);
   router.use('/events', eventRouter);
 
-  const userRouter = placeRouterInit(config, utils);
+  const userRouter = userRouterInit(config, utils);
   router.use('/users', userRouter);
 
-  const placeRouter = userRouterInit(config, utils);
+  const placeRouter = placeRouterInit(config, utils);
   router.use('/places', placeRouter);
 
   const authRouter = authRouterInit(config, utils);

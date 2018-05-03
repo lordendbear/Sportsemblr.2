@@ -3,7 +3,7 @@ export default (data) => {
     delete: (req, res, next) => {
       const id = req.params.id;
 
-      data.deleteEvent(id)
+      data.deletePlace(id)
         .then(() => {
           res.sendStatus(204);
         });
