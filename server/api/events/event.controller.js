@@ -35,6 +35,22 @@ export default (data) => {
             .send(newEvent);
         })
         .catch(err => next(err));
+    },
+    update: (req, res, next) => {
+      const id = req.params.id,
+        options = req.body;
+
+      data.updateEvent(id, options)
+        .then(event => {
+          if (!event) {
+            return res.sendStatus(404);
+          }
+
+          return res.send(event);
+        })
+        .catch(err => {
+          res.send(err)
+        });
     }
   }
 }
