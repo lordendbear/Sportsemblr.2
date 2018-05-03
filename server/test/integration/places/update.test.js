@@ -19,11 +19,11 @@ describe('POST /api/places/{id}', () => {
     app = inititalizeApp(config);
 
     dbPlace = {
-      title: 'Place in db'
+      name: 'Place in db'
     };
 
     updatedPlace = {
-      title: 'Updated place'
+      name: 'Updated place'
     };
 
     Place.remove({}, () => {
@@ -49,7 +49,7 @@ describe('POST /api/places/{id}', () => {
       .send(updatedPlace)
       .expect(200)
       .then((res) => {
-        expect(res.body.title).to.equal(updatedPlace.title);
+        expect(res.body.name).to.equal(updatedPlace.name);
 
         done();
       });

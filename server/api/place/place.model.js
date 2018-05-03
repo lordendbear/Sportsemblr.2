@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const placeSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     maxlength: 128,
     index: true,

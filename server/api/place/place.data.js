@@ -26,7 +26,7 @@ export default (Place) => {
             return resolve(null);
           }
 
-          place.title = options.title || place.title;
+          place.name = options.name || place.name;
 
           place.save((err) => {
             if (err) {
