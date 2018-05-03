@@ -38,6 +38,30 @@ export default (Event) => {
           resolve(newEvent);
         })
       });
+    },
+    updateEvent: (id, options) => {
+      return new Promise((resolve, reject) => {
+        Event.findById(id, (err, event) => {
+          if (err) {
+            reject(err);
+          }
+
+          if (!event) {
+            return resolve(null);
+          }
+
+          event.title = options.title || event.title;
+          event.sport = options.sport || event.sport;
+
+          event.save((err) => {
+            if (err) {
+              reject(err);
+            }
+
+            resolve(event);
+          });
+        });
+      });
     }
   };
 }
