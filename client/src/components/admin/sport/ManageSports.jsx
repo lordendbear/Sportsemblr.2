@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SportList from './SportList';
+import { deleteSport, saveSport } from '../../../actions/sportActions';
 
 class ManageSports extends React.Component {
   constructor(props, context) {
@@ -80,4 +81,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(ManageSports);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    delete: deleteSport, save: saveSport
+  }, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageSports);

@@ -8,7 +8,7 @@ const Sport = ({ sport, isEditMode, onSave, onDelete, onCancel, onEdit }) => {
       <td>
         {!isEditMode && sport.name}
 
-        {isEditMode && <Input onChange={(e) => this.onEmailChange(e.target.value)}
+        {isEditMode && <Input onChange={(e) => { }}
           value={sport.name} type="text" />}
       </td >
       <td>
