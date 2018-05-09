@@ -1,5 +1,6 @@
 import React from 'react';
 import Sport from './Sport';
+import { Button } from 'reactstrap';
 
 const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode, onAdd }) => {
   return (
@@ -10,12 +11,7 @@ const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode, onA
             Name
            </th>
           <th className="col-md-2">
-            <a className="btn btn-default btn-sm"
-              onClick={(e) => onAdd()}>
-              <span className="fa-plus" >
-              </span>
-              Add
-        </a>
+            <Button color="primary" size="sm" onClick={() => onAdd()}>Add</Button>
           </th>
         </tr>
       </thead>
