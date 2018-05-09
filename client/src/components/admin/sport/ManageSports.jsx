@@ -13,6 +13,7 @@ class ManageSports extends React.Component {
     this.onDelete = this.onDelete.bind(this);
     this.onSave = this.onSave.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.onAdd = this.onAdd.bind(this);
   }
 
   componentWillReceiveProps(ownProps, nextProps) {
@@ -50,6 +51,16 @@ class ManageSports extends React.Component {
 
   }
 
+  onAdd() {
+    const sports = Object.assign([], this.state.sports);
+    sports.push({ name: '', id: 0 });
+
+    const isEditMode = Object.assign([], this.state.isEditMode);
+    isEditMode.push(true);
+
+    this.setState({ isEditMode, sports });
+  }
+
   render() {
     return (
       <SportList sports={this.state.sports.map(s => Object.assign({}, s))}
@@ -57,7 +68,8 @@ class ManageSports extends React.Component {
         onEdit={this.onEdit}
         onDelete={this.onDelete}
         onCancel={this.onCancel}
-        onSave={this.onSave} />
+        onSave={this.onSave}
+        onAdd={this.onAdd} />
     );
   }
 }

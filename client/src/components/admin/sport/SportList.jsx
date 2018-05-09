@@ -1,7 +1,7 @@
 import React from 'react';
 import Sport from './Sport';
 
-const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode }) => {
+const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode, onAdd }) => {
   return (
     <table className="table table-bordered table-condensed">
       <thead>
@@ -10,7 +10,12 @@ const SportList = ({ sports, onSave, onDelete, onCancel, onEdit, isEditMode }) =
             Name
            </th>
           <th className="col-md-2">
-
+            <a className="btn btn-default btn-sm"
+              onClick={(e) => onAdd()}>
+              <span className="fa-plus" >
+              </span>
+              Add
+        </a>
           </th>
         </tr>
       </thead>
