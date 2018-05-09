@@ -8,7 +8,7 @@ class ManageSports extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { sports: [], isEditMode: [] };
+    this.state = { sports: [], isEditMode: [], originalSports: [] };
 
     this.onEdit = this.onEdit.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -22,6 +22,10 @@ class ManageSports extends React.Component {
     if (ownProps.sports) {
       const isEditMode = ownProps.sports
         .map(s => false);
+
+      this.state.originalSports = ownProps.sports.map(s => {
+        return Object.assign({}, s);
+      });
 
       this.setState({ sports: ownProps.sports, isEditMode });
     }
@@ -39,10 +43,15 @@ class ManageSports extends React.Component {
   onCancel(sport) {
     const index = this.state.sports.findIndex(s => s.id === sport.id);
 
+    const sports = Object.assign([], this.state.sports);
+    const originalSport = this.state.originalSports[index];
+
+    sports.splice(index, 1, Object.assign({}, originalSport));
+
     const isEditMode = Object.assign([], this.state.isEditMode);
     isEditMode[index] = false;
 
-    this.setState({ isEditMode });
+    this.setState({ isEditMode, sports });
   }
 
   onDelete(sport) {
