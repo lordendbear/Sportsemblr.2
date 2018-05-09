@@ -23,11 +23,11 @@ class ManageSports extends React.Component {
       const isEditMode = ownProps.sports
         .map(s => false);
 
-      this.state.originalSports = ownProps.sports.map(s => {
+      const originalSports = ownProps.sports.map(s => {
         return Object.assign({}, s);
       });
 
-      this.setState({ sports: ownProps.sports, isEditMode });
+      this.setState({ sports: ownProps.sports, isEditMode, originalSports });
     }
   }
 
