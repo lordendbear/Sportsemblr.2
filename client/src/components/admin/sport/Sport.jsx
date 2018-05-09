@@ -1,5 +1,4 @@
 import React from 'react';
-import TextInput from '../../common/TextInput';
 import { Input, Button } from 'reactstrap';
 
 const Sport = ({ sport, isEditMode, onSave, onDelete, onCancel, onEdit }) => {

@@ -5,10 +5,6 @@ import AdminRoute from './common/AdminRoute';
 import ManageSports from './sport/ManageSports';
 
 class Admin extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   render() {
     return (
       <div>
