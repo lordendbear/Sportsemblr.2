@@ -33,6 +33,15 @@ class SportApi {
             return resolve(Object.assign({}, sport));
         });
     }
+
+    static deleteSport(id) {
+        return new Promise((resolve, reject) => {
+            const index = sports.findIndex(s => s.id === id);
+            sports.splice(index, 1);
+
+            return resolve(true);
+        });
+    }
 }
 
 export default SportApi;
