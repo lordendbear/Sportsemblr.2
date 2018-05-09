@@ -15,8 +15,9 @@ import Aside from '../components/aside/Aside';
 import Profile from '../components/profile/Profile';
 import Home from '../components/home/Home';
 import PrivateRoute from '../components/auth/PrivateRoute.js';
+import Admin from '../components/admin/Admin';
 
-import {Container} from 'reactstrap';
+import { Container } from 'reactstrap';
 
 class App extends Component {
   constructor(props) {
@@ -50,6 +51,7 @@ class App extends Component {
               <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/places" component={PlacesList} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute path="/admin" component={Admin} isAuthenticated={this.state.isAuthenticated} />
             </Container>
           </main>
           {this.state.isAuthenticated && <Aside />}

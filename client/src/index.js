@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './components/App';
 import { loadEvents } from './actions/eventActions';
 import { loadPlaces } from './actions/placeActions';
+import { loadSports } from './actions/sportActions';
 
 // TODO: Remove
 import '../node_modules/toastr/build/toastr.min.css';
@@ -23,6 +24,7 @@ const store = configureStore();
 
 store.dispatch(loadEvents());
 store.dispatch(loadPlaces());
+store.dispatch(loadSports());
 
 ReactDOM.render(
     <Provider store={store}>

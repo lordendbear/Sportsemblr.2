@@ -40,7 +40,7 @@ class HeaderDropdown extends Component {
   }
 
   dropAccnt() {
-    if(this.state.loggedOut){
+    if (this.state.loggedOut) {
       return <Redirect to="/" />
     }
 
@@ -54,7 +54,7 @@ class HeaderDropdown extends Component {
           <DropdownItem><i className="fa fa-envelope-o"></i> Messages<Badge color="success">42</Badge></DropdownItem>
           <DropdownItem><i className="fa fa-bell-o"></i> Events<Badge color="info">42</Badge></DropdownItem>
           <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>
-          <DropdownItem tag={Link} to="/profile" exact><i className="fa fa-user"></i>Profile</DropdownItem>
+          <DropdownItem tag={Link} to="/profile"><i className="fa fa-user"></i>Profile</DropdownItem>
           <DropdownItem onClick={() => this.logOut()}><i className="fa fa-lock" ></i> Logout </DropdownItem>
         </DropdownMenu>
       </Dropdown>

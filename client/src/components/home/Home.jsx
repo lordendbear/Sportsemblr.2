@@ -43,7 +43,7 @@ class Home extends Component {
         <div className="home-title-wrapper"> {
           isLoggedIn ?
             `Hi, User` :
-            <NavLink className="login-link" tag={Link} to='/login' exact> LOGIN OR SIGN UP TO DISCOVER SPORT EVENTS </NavLink>
+            <NavLink className="login-link" tag={Link} to='/login'> LOGIN OR SIGN UP TO DISCOVER SPORT EVENTS </NavLink>
         }
         </div>
       </div>
