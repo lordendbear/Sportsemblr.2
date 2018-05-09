@@ -1,13 +1,13 @@
 import React from 'react';
 import { Input, Button } from 'reactstrap';
 
-const Sport = ({ sport, isEditMode, onSave, onDelete, onCancel, onEdit }) => {
+const Sport = ({ sport, isEditMode, onSave, onDelete, onCancel, onEdit, onNameChange }) => {
   return (
     <tr>
       <td>
         {!isEditMode && sport.name}
 
-        {isEditMode && <Input onChange={(e) => { }}
+        {isEditMode && <Input onChange={(e) => { onNameChange(sport, e.target.value) }}
           value={sport.name} type="text" />}
       </td >
       <td>
