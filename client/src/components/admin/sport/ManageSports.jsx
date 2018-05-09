@@ -18,7 +18,7 @@ class ManageSports extends React.Component {
   }
 
   componentWillReceiveProps(ownProps, nextProps) {
-    if (!this.state.sports.length && ownProps.sports && ownProps.sports.length) {
+    if (ownProps.sports) {
       const isEditMode = ownProps.sports
         .map(s => false);
 
@@ -45,11 +45,21 @@ class ManageSports extends React.Component {
   }
 
   onDelete(sport) {
-
+    this.props.delete(sport.id);
   }
 
   onSave(sport) {
+    this.props.save(sport)
+    // .then(savedSport => {
+    //   const index = this.state.sports.findIndex(s => s.id === sport.id);
 
+    //   const sports = Object.assign([], this.state.sports);
+    //   sports.splice(index, 1, savedSport);
+
+    //   const isEditMode = Object.assign([], this.state.isEditMode);
+    //   isEditMode[index] = false;
+    //   this.setState({ isEditMode, sports });
+    // });
   }
 
   onAdd() {

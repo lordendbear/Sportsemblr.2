@@ -23,9 +23,10 @@ export function updateSportSuccess(sport) {
     };
 }
 
-export function deleteSportSuccess() {
+export function deleteSportSuccess(id) {
     return {
-        type: types.DELETE_SPORT_SUCCESS
+        type: types.DELETE_SPORT_SUCCESS,
+        id
     };
 }
 
@@ -33,7 +34,7 @@ export function deleteSport(id) {
     return (dispatch) => {
         return SportApi.deleteSport()
             .then(() => {
-                dispatch(deleteSportSuccess());
+                dispatch(deleteSportSuccess(id));
             });
     };
 }
