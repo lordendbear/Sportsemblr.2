@@ -1,31 +1,53 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {
+    Nav,
+    NavItem,
+    NavLink,
+    NavbarToggler
+  } from 'reactstrap';
+  import HeaderDropdown from './HeaderDropdown.jsx';
 
 class Navbar extends React.Component {
-    renderNavLink = (label, to) => (<NavLink to={to} exact activeClassName="selected" >
-        {label}
-    </NavLink>);
+    asideToggle(e) {
+      e.preventDefault();
+      document.body.classList.toggle('aside-menu-hidden');
+    }
+      
+    renderNavLink = (label, to) => (<NavLink tag={Link} to={to} exact>
+          {label}
+      </NavLink>);
 
     render() {
-        return (<nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container">
-                <div className="navbar-header">
-                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                </div>
-                <div className="navbar-collapse collapse">
-                    <ul className="nav navbar-nav">
-                        <li>{this.renderNavLink('Home', '/')}</li>
-                        <li>{this.renderNavLink('Login', '/login')}</li>
-                        <li>{this.renderNavLink('Register', '/register')}</li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    );
+      const isAuthenticated = this.props.isAuthenticated;
+
+      return(
+      <header className="app-header navbar">
+        <Nav className="d-md-down-none" navbar>
+        { isAuthenticated && <HeaderDropdown /> }
+          <NavItem className="px-3">
+            {this.renderNavLink('Home', '/')}
+          </NavItem>
+          { !isAuthenticated && 
+            <NavItem className="px-3">
+              {this.renderNavLink('Login', '/login')}
+            </NavItem>
+          }
+          { !isAuthenticated && 
+            <NavItem className="px-3">
+              {this.renderNavLink('Register', '/register')}
+            </NavItem> 
+          }
+          <NavItem className="px-3">
+            {this.renderNavLink('Events', '/events')}
+          </NavItem>
+        </Nav>
+        { isAuthenticated && 
+        <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
+          <span className="navbar-toggler-icon"></span>
+        </NavbarToggler>
+        }
+      </header>);
     }
 }
 

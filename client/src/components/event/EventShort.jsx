@@ -1,26 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+    Badge
+  } from 'reactstrap';
 
 const EventShortComponent = (props) => {
     const event = props.event;
     return (
-        <div className="well">
-            <h2 className="media-heading">
-                {event.title}
-            </h2>
-            {event.author}
-            <ul className="list-inline list-unstyled">
-                <li><span><i className="glyphicon glyphicon-calendar"></i>{event.date.toLocaleDateString("bg-BG")}</span></li>
-                <li>|</li>
-                <li> <span><i className="glyphicon glyphicon-comment"></i> {event.peopleNeeded} / {event.totalPeople}</span></li>
-                <li>|</li>
-                <li>
-                    <span className="glyphicon glyphicon-star"></span> Rating: @Model.Votes
-        </li>
-            </ul>
-        </div>
-    )
-
+        <tr>
+            <td>{event.title}</td>
+            <td>{event.date.toLocaleDateString("bg-BG")}</td>
+            <td>{event.author}</td>
+            <td>{event.peopleNeeded} / {event.totalPeople}</td>
+            <td>
+                <Badge color={props.isActive ? 'success' : 'danger'}>{props.isActive ? 'Active' : 'Inactive'}</Badge>
+            </td>
+        </tr>)
 };
 
 EventShortComponent.propTypes = {

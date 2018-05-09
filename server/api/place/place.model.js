@@ -1,8 +1,16 @@
 import mongoose from 'mongoose';
 
-const placeSchema = new mongoose.Schema({}, {
+const placeSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    maxlength: 128,
+    index: true,
+    trim: true,
+    required: true
+  }
+}, {
     timestamps: true
-});
+  });
 
 const Place = mongoose.model('Place', placeSchema);
 

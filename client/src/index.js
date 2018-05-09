@@ -9,9 +9,16 @@ import { loadEvents } from './actions/eventActions';
 import { loadPlaces } from './actions/placeActions';
 import { loadSports } from './actions/sportActions';
 
-import './index.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// TODO: Remove
 import '../node_modules/toastr/build/toastr.min.css';
+
+import 'font-awesome/css/font-awesome.min.css';
+// Import Simple Line Icons Set
+import 'simple-line-icons/css/simple-line-icons.css';
+// Import Main styles for this application
+import './scss/style.scss'
+// Temp fix for reactstrap
+import './scss/core/_dropdown-menu-right.scss'
 
 const store = configureStore();
 

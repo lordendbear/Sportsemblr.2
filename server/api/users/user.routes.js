@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
-export default (controllers) => {
-    const router = new Router();
+export default (controller) => {
+  const router = new Router();
 
-    router.post('', controllers.create);
+  router.post('', controller.create);
+  router.put('/:id', controller.update);
+  router.get('/:id', controller.getProfile);
 
-    return router;
+  return router;
 }

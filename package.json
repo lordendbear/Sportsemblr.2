@@ -7,6 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "npm run start-client & npm run start-server",
+    "start-client": "cd client && npm run start",
+    "server-build": "cd server && npm run build && npm run start",
     "prepush": "cd client && npm test && cd ../server && npm test"
   },
   "repository": {
