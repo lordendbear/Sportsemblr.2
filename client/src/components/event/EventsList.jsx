@@ -10,10 +10,11 @@ import {
   Table,
   Pagination,
   PaginationItem,
-  PaginationLink
+  PaginationLink,
+  Button
 } from 'reactstrap';
 
-const EventsList = ({ events }) => {
+const EventsList = ({ events, onNewEventClick }) => {
   return (
     <div className="animated fadeIn">
       <Row>
@@ -21,7 +22,9 @@ const EventsList = ({ events }) => {
           <Card>
             <CardHeader>
               <i className="fa fa-align-justify"></i> All Events
-              </CardHeader>
+
+               <Button color="primary" size="sm" className="float-right" onClick={onNewEventClick}>New</Button>
+            </CardHeader>
             <CardBody>
               <Table responsive striped>
                 <thead>

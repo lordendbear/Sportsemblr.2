@@ -46,7 +46,6 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/users/:id" component={UserProfile} />
               <PrivateRoute exact path="/event" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
-              <PrivateRoute path="/events/:id/edit" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/events/:id" component={EventDetails} isAuthenticated={this.state.isAuthenticated} />
               <Route exact path="/events" component={EventsList} />
               <PrivateRoute path="/place" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
