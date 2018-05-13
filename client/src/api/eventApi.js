@@ -1,3 +1,6 @@
+import axios from "axios";
+import AuthApi from './authApi';
+
 const events = [
   {
     id: 1,
@@ -12,7 +15,7 @@ const events = [
   }
 ]
 
-let lastId = 2;
+const API_URL = 'http://localhost:4040/api';
 
 class EventApi {
   static getAll() {
@@ -24,17 +27,31 @@ class EventApi {
   }
 
   static saveEvent(event) {
-    return new Promise((resolve, reject) => {
-      if (event.id) {
-        const index = events.findIndex(e => e.id === event.id);
-        events.splice(index, 1, event);
-      } else {
-        event.id = lastId++;
-        events.push(event);
-      }
+    if (event.id) {
+      return this.updateEvent(event);
+    }
 
-      resolve(Object.assign({}, event));
-    });
+    return this.createEvent(event);
+  }
+
+  static updateEvent(event) {
+
+  }
+
+  static createEvent(event) {
+    const config = this.getConfig();
+
+    const url = `${API_URL}/events`;
+
+    return axios.post(url, event, config);
+  }
+
+  static getConfig() {
+    const token = AuthApi.getToken();
+
+    let config = {
+      headers: { 'Authorization': "bearer" + token }
+    };
   }
 }
 
