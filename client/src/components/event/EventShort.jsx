@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import {
     Badge
-  } from 'reactstrap';
+} from 'reactstrap';
 
 const EventShortComponent = (props) => {
     const event = props.event;
     return (
         <tr>
-            <td>{event.title}</td>
+            <td><Link to={'/events/' + event.id}>{event.title}</Link></td>
             <td>{event.date.toLocaleDateString("bg-BG")}</td>
             <td>{event.author}</td>
             <td>{event.peopleNeeded} / {event.totalPeople}</td>
