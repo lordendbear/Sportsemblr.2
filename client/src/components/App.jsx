@@ -16,6 +16,7 @@ import Profile from '../components/profile/Profile';
 import Home from '../components/home/Home';
 import PrivateRoute from '../components/auth/PrivateRoute.js';
 import Admin from '../components/admin/Admin';
+import UserProfile from '../containers/user/UserProfile';
 
 import { Container } from 'reactstrap';
 
@@ -43,6 +44,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/users/:id" component={UserProfile} />
               <PrivateRoute exact path="/event" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute path="/events/:id/edit" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/events/:id" component={EventDetails} isAuthenticated={this.state.isAuthenticated} />
