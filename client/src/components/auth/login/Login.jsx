@@ -36,7 +36,7 @@ class Login extends Component {
     const user = this.state.user;
 
     this.props.login(user).then(() => {
-      this.setState({ redirectToReferrer: true });
+      // this.setState({ redirectToReferrer: true });
     });
   }
 
