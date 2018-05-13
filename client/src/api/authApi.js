@@ -13,6 +13,14 @@ class AuthApi {
     }
 
     static isLoggedIn() {
+        return !!this.getToken();
+    }
+
+    static logOut() {
+        localStorage.removeItem('auth');
+    }
+
+    static getToken() {
         const auth = localStorage.getItem('auth');
 
         if (auth) {
@@ -20,16 +28,12 @@ class AuthApi {
             try {
                 parsed = JSON.parse(auth);
             }
-            catch(error) {
+            catch (error) {
                 // TODO: catch error
             }
             // TODO: checks for expired
-            return !!parsed.token;
+            return parsed.token;
         }
-    }
-
-    static logOut() {
-        localStorage.removeItem('auth');
     }
 }
 
