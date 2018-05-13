@@ -13,6 +13,7 @@ class EventsContainer extends React.Component {
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
+        this.inputChange = this.inputChange.bind(this);
     }
 
     componentDidMount() {
@@ -26,15 +27,21 @@ class EventsContainer extends React.Component {
         return (
             <div>
                 <EventsList events={this.props.events} onNewEventClick={this.toggleModal} ></EventsList>
-                {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} saveEvent={this.saveEvent}></EditEventModal>}
+                {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
             </div>
         );
     }
 
-    inputChange
+    inputChange(value, property) {
+        let event = Object.assign({}, this.state.event);
 
-    saveEvent(event) {
-        this.props.saveEvent(event)
+        event[property] = value;
+
+        this.setState({ event });
+    }
+
+    saveEvent() {
+        this.props.saveEvent(this.state.event)
             .then(response => {
                 console.log(response);
             });
@@ -45,9 +52,19 @@ class EventsContainer extends React.Component {
     }
 }
 
+const emptyEvent = {
+    title: '',
+    peopleNeeded: 0,
+    sport: '',
+    description: '',
+    difficulty: 'beginner',
+    date: new Date(),
+    totalPrice: 0
+};
+
 const mapStateToProps = state => {
     return {
-        event: state.event || { title: '' },
+        event: state.event || emptyEvent,
         events: state.events
     };
 }
@@ -57,7 +74,6 @@ const mapDispatchToProps = (dispatch) => {
         saveEvent: bindActionCreators(eventActions.saveEvent, dispatch)
     };
 };
-
 
 export default connect(
     mapStateToProps,
