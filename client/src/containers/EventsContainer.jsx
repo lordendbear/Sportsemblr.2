@@ -5,7 +5,7 @@ import EditEventModal from '../components/event/EditEventModal';
 import { bindActionCreators } from 'redux';
 import * as eventActions from '../actions/eventActions';
 
-class EventsListContainer extends React.Component {
+class EventsContainer extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -30,6 +30,8 @@ class EventsListContainer extends React.Component {
             </div>
         );
     }
+
+    inputChange
 
     saveEvent(event) {
         this.props.saveEvent(event)
@@ -60,4 +62,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(EventsListContainer)
+)(EventsContainer)
