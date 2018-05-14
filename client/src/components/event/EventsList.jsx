@@ -39,7 +39,7 @@ const EventsList = ({ events, onNewEventClick }) => {
                 <tbody>
                   {events.map(event =>
                     <EventShort
-                      key={event.id}
+                      key={event._id}
                       event={event}
                       isActive={true}
                     />

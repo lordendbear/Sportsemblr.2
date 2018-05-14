@@ -16,13 +16,6 @@ class EventsContainer extends React.Component {
         this.inputChange = this.inputChange.bind(this);
     }
 
-    componentDidMount() {
-        const id = this.props.match.params.id;
-        if (id) {
-            this.props.getEvent(id);
-        }
-    }
-
     render() {
         return (
             <div>
@@ -42,8 +35,8 @@ class EventsContainer extends React.Component {
 
     saveEvent() {
         this.props.saveEvent(this.state.event)
-            .then(response => {
-                console.log(response);
+            .then(res => {
+                this.toggleModal();
             });
     }
 
@@ -64,7 +57,7 @@ const emptyEvent = {
 
 const mapStateToProps = state => {
     return {
-        event: state.event || emptyEvent,
+        event: Object.assign({}, emptyEvent),
         events: state.events
     };
 }

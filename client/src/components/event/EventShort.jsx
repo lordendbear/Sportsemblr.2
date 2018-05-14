@@ -8,7 +8,7 @@ import {
 const EventShortComponent = ({ event, isActive }) => {
     return (
         <tr>
-            <td><Link to={'/events/' + event.id}>{event.title}</Link></td>
+            <td><Link to={'/events/' + event._id}>{event.title}</Link></td>
             <td>{event.date.toLocaleDateString("bg-BG")}</td>
             <td>{event.author}</td>
             <td>{event.peopleNeeded} / {event.totalPeople}</td>

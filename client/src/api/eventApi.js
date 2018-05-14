@@ -3,7 +3,7 @@ import AuthApi from './authApi';
 
 const events = [
   {
-    id: 1,
+    _id: 1,
     title: 'best match',
     totalPeople: 12,
     peopleNeeded: 6,
@@ -52,6 +52,8 @@ class EventApi {
     let config = {
       headers: { 'Authorization': "bearer" + token }
     };
+
+    return config;
   }
 }
 

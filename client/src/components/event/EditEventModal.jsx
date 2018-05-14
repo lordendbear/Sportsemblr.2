@@ -58,6 +58,18 @@ const EditEventModal = ({ event, closeModal, onInputChange, saveEvent }) => {
               <Label>Date</Label>
             </Col>
           </Row>
+          <Row>
+            <Col md="6">
+              <Label>Sport</Label>
+              <Input type="select" onChange={(e) => onInputChange(e.target.value, 'sport')}
+                value={event.sport}>
+                <option>Select</option>
+                <option>Football</option>
+                <option>Basketball</option>
+                <option>Voleyball</option>
+              </Input>
+            </Col>
+          </Row>
         </FormGroup>
 
         <FormGroup>
@@ -66,7 +78,7 @@ const EditEventModal = ({ event, closeModal, onInputChange, saveEvent }) => {
           <Button size="xl" color="primary" className="float-right" onClick={closeModal}><i className="fa fa-dot-circle-o"></i> Close</Button>
         </FormGroup>
       </Form>
-    </Modal>
+    </Modal >
   );
 }
 

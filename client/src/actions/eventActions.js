@@ -35,7 +35,10 @@ export function loadEvents() {
 export function saveEvent(event) {
   return (dispatch) => {
     return EventApi.saveEvent(event)
-      .then(savedEvent => {
+      .then(response => {
+        const savedEvent = response.data;
+        savedEvent.date = new Date(savedEvent.date);
+
         if (event.id) {
           dispatch(updateEventSuccess(savedEvent));
         } else {
