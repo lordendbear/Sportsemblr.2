@@ -5,8 +5,7 @@ import {
     Badge
 } from 'reactstrap';
 
-const EventShortComponent = (props) => {
-    const event = props.event;
+const EventShortComponent = ({ event, isActive }) => {
     return (
         <tr>
             <td><Link to={'/events/' + event.id}>{event.title}</Link></td>
@@ -14,7 +13,7 @@ const EventShortComponent = (props) => {
             <td>{event.author}</td>
             <td>{event.peopleNeeded} / {event.totalPeople}</td>
             <td>
-                <Badge color={props.isActive ? 'success' : 'danger'}>{props.isActive ? 'Active' : 'Inactive'}</Badge>
+                <Badge color={isActive ? 'success' : 'danger'}>{isActive ? 'Active' : 'Inactive'}</Badge>
             </td>
         </tr>)
 };
