@@ -1,5 +1,4 @@
-import axios from "axios";
-import AuthApi from './authApi';
+import requester from './requester';
 
 const events = [
   {
@@ -35,25 +34,15 @@ class EventApi {
   }
 
   static updateEvent(event) {
+    const url = `${API_URL}/events/${event._id}`;
 
+    return requester.postAuthorized(url, event);
   }
 
   static createEvent(event) {
-    const config = this.getConfig();
-
     const url = `${API_URL}/events`;
 
-    return axios.post(url, event, config);
-  }
-
-  static getConfig() {
-    const token = AuthApi.getToken();
-
-    let config = {
-      headers: { 'Authorization': "bearer" + token }
-    };
-
-    return config;
+    return requester.postAuthorized(url, event);
   }
 }
 
