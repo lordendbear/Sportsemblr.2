@@ -25,6 +25,12 @@ class EventApi {
     });
   }
 
+  static getById(id) {
+    const url = `${API_URL}/events/${id}`;
+
+    return requester.get(url);
+  }
+
   static saveEvent(event) {
     if (event.id) {
       return this.updateEvent(event);
