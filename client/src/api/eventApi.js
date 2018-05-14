@@ -1,6 +1,8 @@
+import requester from './requester';
+
 const events = [
   {
-    id: 1,
+    _id: 1,
     title: 'best match',
     totalPeople: 12,
     peopleNeeded: 6,
@@ -12,7 +14,7 @@ const events = [
   }
 ]
 
-let lastId = 2;
+const API_URL = 'http://localhost:4040/api';
 
 class EventApi {
   static getAll() {
@@ -23,18 +25,30 @@ class EventApi {
     });
   }
 
-  static saveEvent(event) {
-    return new Promise((resolve, reject) => {
-      if (event.id) {
-        const index = events.findIndex(e => e.id === event.id);
-        events.splice(index, 1, event);
-      } else {
-        event.id = lastId++;
-        events.push(event);
-      }
+  static getById(id) {
+    const url = `${API_URL}/events/${id}`;
 
-      resolve(Object.assign({}, event));
-    });
+    return requester.get(url);
+  }
+
+  static saveEvent(event) {
+    if (event._id) {
+      return this.updateEvent(event);
+    }
+
+    return this.createEvent(event);
+  }
+
+  static updateEvent(event) {
+    const url = `${API_URL}/events/${event._id}`;
+
+    return requester.putAuthorized(url, event);
+  }
+
+  static createEvent(event) {
+    const url = `${API_URL}/events`;
+
+    return requester.postAuthorized(url, event);
   }
 }
 

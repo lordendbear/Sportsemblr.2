@@ -5,12 +5,12 @@ import ExtendedNavbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
-import EventsList from '../containers/EventsList';
+import EventsContainer from '../containers/EventsContainer';
 import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
 import ManageEvent from '../containers/ManageEvent';
 import PlacesList from '../containers/place/PlacesList';
-import EventDetails from '../containers/event/EventDetails';
+import EventDetailsContainer from '../containers/event/EventDetailsContainer';
 import Aside from '../components/aside/Aside';
 import Profile from '../components/profile/Profile';
 import Home from '../components/home/Home';
@@ -46,9 +46,8 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/users/:id" component={UserProfile} />
               <PrivateRoute exact path="/event" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
-              <PrivateRoute path="/events/:id/edit" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
-              <PrivateRoute exact path="/events/:id" component={EventDetails} isAuthenticated={this.state.isAuthenticated} />
-              <Route exact path="/events" component={EventsList} />
+              <PrivateRoute exact path="/events/:id" component={EventDetailsContainer} isAuthenticated={this.state.isAuthenticated} />
+              <Route exact path="/events" component={EventsContainer} />
               <PrivateRoute path="/place" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/places" component={PlacesList} isAuthenticated={this.state.isAuthenticated} />

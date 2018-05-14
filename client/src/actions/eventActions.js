@@ -9,6 +9,13 @@ export function loadEventsSuccess(events) {
   };
 }
 
+export function loadEventSuccess(event) {
+  return {
+    type: types.LOAD_EVENT_SUCCESS,
+    event
+  };
+}
+
 export function updateEventSuccess(event) {
   return {
     type: types.UPDATE_EVENT_SUCCESS,
@@ -35,7 +42,10 @@ export function loadEvents() {
 export function saveEvent(event) {
   return (dispatch) => {
     return EventApi.saveEvent(event)
-      .then(savedEvent => {
+      .then(response => {
+        const savedEvent = response.data;
+        savedEvent.date = new Date(savedEvent.date);
+
         if (event.id) {
           dispatch(updateEventSuccess(savedEvent));
         } else {
@@ -46,5 +56,17 @@ export function saveEvent(event) {
       .catch(err => {
         dispatch(notificationActions.error({ message: 'Something went wrong' }));
       });
+  };
+}
+
+export function getEventById(id) {
+  return (dispatch) => {
+    return EventApi.getById(id)
+      .then(response => {
+        dispatch(loadEventSuccess(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      })
   };
 }
