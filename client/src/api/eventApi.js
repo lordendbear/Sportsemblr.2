@@ -32,7 +32,7 @@ class EventApi {
   }
 
   static saveEvent(event) {
-    if (event.id) {
+    if (event._id) {
       return this.updateEvent(event);
     }
 
@@ -42,7 +42,7 @@ class EventApi {
   static updateEvent(event) {
     const url = `${API_URL}/events/${event._id}`;
 
-    return requester.postAuthorized(url, event);
+    return requester.putAuthorized(url, event);
   }
 
   static createEvent(event) {
