@@ -20,7 +20,23 @@ class AuthApi {
         localStorage.removeItem('auth');
     }
 
+    static getCurrentUser() {
+        const auth = this.getAuth();
+
+        if (auth) {
+            return auth.user;
+        }
+    }
+
     static getToken() {
+        const auth = this.getAuth();
+
+        if (auth) {
+            return auth.token;
+        }
+    }
+
+    static getAuth() {
         const auth = localStorage.getItem('auth');
 
         if (auth) {
@@ -32,7 +48,7 @@ class AuthApi {
                 // TODO: catch error
             }
             // TODO: checks for expired
-            return parsed.token;
+            return parsed;
         }
     }
 }

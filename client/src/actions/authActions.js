@@ -2,6 +2,17 @@ import * as types from './actionTypes';
 import authApi from '../api/authApi';
 import * as notificationActions from './notificationActions';
 
+export function getAuthenticatedUser() {
+  return (dispatch) => {
+    const user = authApi.getCurrentUser();
+
+    dispatch({
+      type: types.GET_LOGGED_USER,
+      user
+    });
+  };
+}
+
 export function register(user) {
   return (dispatch) => {
     return authApi.register(user)

@@ -32,8 +32,10 @@ export default (User, { passwordHasher, tokenManager }) => {
 
                 const token = tokenManager.encode(payload);
 
+                delete user.password;
+
                 return res
-                    .send({ token });
+                    .send({ token, user });
             });
         }
     };

@@ -12,12 +12,14 @@ export class EventDetailsContainer extends React.Component {
 
         this.state = {
             isOpen: false,
-            event: Object.assign({}, props.event)
+            event: Object.assign({}, props.event),
+            canJoin: props.canJoin
         }
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
         this.inputChange = this.inputChange.bind(this);
+        this.join = this.join.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +28,7 @@ export class EventDetailsContainer extends React.Component {
 
     componentWillReceiveProps(nextProps, ownProps) {
         if (!ownProps.event && nextProps.event) {
-            this.setState({ event: nextProps.event });
+            this.setState({ event: nextProps.event, canJoin: nextProps.canJoin });
         }
     }
 
@@ -34,10 +36,15 @@ export class EventDetailsContainer extends React.Component {
         return (
             <div>
                 <Button color="primary" size="sm" className="float-right" onClick={this.toggleModal}>Edit</Button>
+                {this.state.canJoin && <Button color="primary" size="sm" onClick={this.join}>Join</Button>}
                 <EventDetails event={this.props.event}></EventDetails>
                 {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
             </div>
         );
+    }
+
+    join() {
+        this.props.joinEvent(this.state.event, this.props.user);
     }
 
     inputChange(value, property) {
@@ -61,16 +68,33 @@ export class EventDetailsContainer extends React.Component {
     }
 }
 
+const checkIfCanJoin = (event, user) => {
+    if (user && event) {
+        const hasJoined = !!event.peopleJoined.find(u => u._id === user._id);
+
+        return !hasJoined;
+    }
+
+    return false;
+}
+
 const mapStateToProps = (state, ownProps) => {
+    const event = state.events.event;
+    const user = state.auth.user;
+    const canJoin = checkIfCanJoin(event, user);
+
     return {
-        event: state.events.event
+        event,
+        canJoin,
+        user
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getEvent: bindActionCreators(eventActions.getEventById, dispatch),
-        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch)
+        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
+        joinEvent: bindActionCreators(eventActions.joinEvent, dispatch)
     };
 };
 
