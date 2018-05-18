@@ -16,6 +16,10 @@ class EventsContainer extends React.Component {
         this.inputChange = this.inputChange.bind(this);
     }
 
+    componentDidMount() {
+        this.props.getEvents();
+    }
+
     render() {
         return (
             <div>
@@ -64,7 +68,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch)
+        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
+        getEvents: bindActionCreators(eventActions.loadEvents, dispatch)
     };
 };
 

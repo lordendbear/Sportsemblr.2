@@ -18,11 +18,9 @@ const API_URL = 'http://localhost:4040/api';
 
 class EventApi {
   static getAll() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], events));
-      }, 1000);
-    });
+    const url = `${API_URL}/events/active`;
+
+    return requester.get(url);
   }
 
   static getById(id) {
