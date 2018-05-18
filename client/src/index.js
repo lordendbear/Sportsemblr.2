@@ -16,7 +16,11 @@ import './scss/style.scss'
 // Temp fix for reactstrap
 import './scss/core/_dropdown-menu-right.scss'
 
+import * as authActions from './actions/authActions';
+
 const store = configureStore();
+
+store.dispatch(authActions.getAuthenticatedUser());
 
 ReactDOM.render(
     <Provider store={store}>

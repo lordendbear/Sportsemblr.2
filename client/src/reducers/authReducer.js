@@ -12,7 +12,7 @@ export default function authReducer(state = {}, action) {
                 ...state,
                 registerFailure: true
             }
-        case types.LOGIN: 
+        case types.LOGIN:
             return {
                 ...state,
                 isAuthenticated: true
@@ -22,6 +22,12 @@ export default function authReducer(state = {}, action) {
             return {
                 ...state,
                 isAuthenticated: false
+            }
+
+        case types.GET_LOGGED_USER:
+            return {
+                ...state,
+                user: action.user
             }
 
         default:

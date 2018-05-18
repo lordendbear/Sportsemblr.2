@@ -12,12 +12,14 @@ export class EventDetailsContainer extends React.Component {
 
         this.state = {
             isOpen: false,
-            event: Object.assign({}, props.event)
+            event: Object.assign({}, props.event),
+            canJoin: props.canJoin
         }
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
         this.inputChange = this.inputChange.bind(this);
+        this.join = this.join.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +28,7 @@ export class EventDetailsContainer extends React.Component {
 
     componentWillReceiveProps(nextProps, ownProps) {
         if (!ownProps.event && nextProps.event) {
-            this.setState({ event: nextProps.event });
+            this.setState({ event: nextProps.event, canJoin: nextProps.canJoin });
         }
     }
 
@@ -61,16 +63,33 @@ export class EventDetailsContainer extends React.Component {
     }
 }
 
+const checkIfCanJoin = (event, user) => {
+    if (user && event) {
+        const hasJoined = !!user.events.find(e => e._id === event._id);
+
+        return !hasJoined;
+    }
+
+    return false;
+}
+
 const mapStateToProps = (state, ownProps) => {
+    const event = state.events.event;
+    const user = state.auth.user;
+    const canJoin = checkIfCanJoin(event, user);
+
     return {
-        event: state.events.event
+        event,
+        canJoin,
+        user
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getEvent: bindActionCreators(eventActions.getEventById, dispatch),
-        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch)
+        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
+        joinEvent: bindActionCreators(eventActions.joinEvent, dispatch)
     };
 };
 
