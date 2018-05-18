@@ -7,6 +7,7 @@ const handleLoadEventSuccess = (action) => {
 };
 
 const handleLoadEventsSuccess = (action) => {
+    console.log(action)
     return [
         ...action.events
     ];

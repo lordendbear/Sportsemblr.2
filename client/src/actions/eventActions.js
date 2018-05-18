@@ -33,7 +33,13 @@ export function createEventSuccess(event) {
 export function loadEvents() {
   return (dispatch) => {
     return EventApi.getAll()
-      .then(events => {
+      .then(response => {
+        const events = response.data.events
+          .map(e => {
+            e['date'] = new Date(e['date']);
+            return e;
+          });
+
         dispatch(loadEventsSuccess(events));
       })
   };
