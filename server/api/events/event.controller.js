@@ -51,6 +51,24 @@ export default (data) => {
         .catch(err => {
           res.send(err)
         });
+    },
+    getActive: (req, res, next) => {
+      data.getActiveEvents()
+        .then(events => {
+          res.send({ events });
+        })
+        .catch(err => {
+          next(err);
+        })
+    },
+    getAll: (req, res, next) => {
+      data.getAllEvents()
+        .then(events => {
+          res.send({ events });
+        })
+        .catch(err => {
+          next(err);
+        })
     }
   }
 }
