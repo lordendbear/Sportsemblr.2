@@ -36,10 +36,15 @@ export class EventDetailsContainer extends React.Component {
         return (
             <div>
                 <Button color="primary" size="sm" className="float-right" onClick={this.toggleModal}>Edit</Button>
+                {this.state.canJoin && <Button color="primary" size="sm" onClick={this.join}>Join</Button>}
                 <EventDetails event={this.props.event}></EventDetails>
                 {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
             </div>
         );
+    }
+
+    join() {
+        this.props.joinEvent(this.state.event, this.props.user);
     }
 
     inputChange(value, property) {
@@ -65,7 +70,7 @@ export class EventDetailsContainer extends React.Component {
 
 const checkIfCanJoin = (event, user) => {
     if (user && event) {
-        const hasJoined = !!user.events.find(e => e._id === event._id);
+        const hasJoined = !!event.peopleJoined.find(u => u._id === user._id);
 
         return !hasJoined;
     }

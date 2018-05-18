@@ -76,3 +76,23 @@ export function getEventById(id) {
       })
   };
 }
+
+export function joinEvent(event, user) {
+  return (dispatch) => {
+    return EventApi.joinEvent(event, user)
+      .then(response => {
+        dispatch({
+          type: types.JOIN_REQUEST_SUCCESS
+        })
+
+        dispatch(notificationActions.success({ message: 'Request sent' }));
+      })
+      .catch(err => {
+        dispatch({
+          type: types.LOGIN_FAIL
+        });
+
+        dispatch(notificationActions.error({ message: 'Something went wrong' }));
+      });
+  }
+}
