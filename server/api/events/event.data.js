@@ -27,6 +27,7 @@ export default (Event) => {
       });
     },
     create: (event) => {
+      event.status = 'active';
       const newEvent = new Event(event);
 
       return new Promise((resolve, reject) => {
@@ -65,6 +66,28 @@ export default (Event) => {
 
             resolve(event);
           });
+        });
+      });
+    },
+    getActiveEvents: () => {
+      return new Promise((resolve, reject) => {
+        Event.find({ status: 'active' }, (err, events) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(events);
+        });
+      });
+    },
+    getAllEvents: () => {
+      return new Promise((resolve, reject) => {
+        Event.find({}, (err, events) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(events);
         });
       });
     }
