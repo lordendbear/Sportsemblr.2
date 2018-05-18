@@ -4,12 +4,16 @@ import eventRouterInit from './events'
 import authRouterInit from './auth'
 import userRouterInit from './users'
 import placeRouterInit from './place'
+import requestRouterInit from './request'
 
 export default (app, config, utils, middleware) => {
   const router = Router();
 
   const eventRouter = eventRouterInit(config);
   router.use('/events', eventRouter);
+
+  const requestRouter = requestRouterInit(config, middleware.auth);
+  router.use('/events', requestRouter);
 
   const userRouter = userRouterInit(config, utils);
   router.use('/users', userRouter);

@@ -33,7 +33,7 @@ export default function (config) {
   const authMiddleware = initializeAuthMiddleware(passport);
 
   const middleware = {
-    authMiddleware
+    auth: authMiddleware
   }
 
   initializeDb(config);
