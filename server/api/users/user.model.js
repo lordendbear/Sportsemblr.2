@@ -37,7 +37,11 @@ const userSchema = new mongoose.Schema({
     },
     sports: [{ name: String, skill: Number }],
     places: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }],
-    events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+    requests: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Request'
+    }]
 }, {
         timestamps: true
     });

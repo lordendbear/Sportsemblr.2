@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 
 const eventSchema = new mongoose.Schema({
   title: {
@@ -55,10 +55,12 @@ const eventSchema = new mongoose.Schema({
   totalPrice: {
     type: Number,
     required: true
-  }
-}, {
-    timestamps: true
-  });
+  },
+  requests: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Request'
+  }]
+});
 
 const Event = mongoose.model('Event', eventSchema);
 
