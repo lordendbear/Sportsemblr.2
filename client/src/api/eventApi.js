@@ -34,6 +34,12 @@ class EventApi {
 
     return requester.postAuthorized(url, event);
   }
+
+  static joinEvent(event, user) {
+    const url = `${API_URL}/events/${event._id}/join`;
+
+    return requester.postAuthorized(url, { userId: user._id });
+  }
 }
 
 export default EventApi;
