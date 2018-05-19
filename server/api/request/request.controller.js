@@ -29,7 +29,7 @@ export default (data) => {
       promise
         .then(() => {
           res.sendStatus(200);
-        })
+        });
     }
   }
 }

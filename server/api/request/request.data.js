@@ -24,8 +24,8 @@ export default (Request) => {
 
           return request.sender.save();
         })
-        .then((savedRequest) => {
-          return Promise.resolve(savedRequest);
+        .then(() => {
+          return Promise.resolve(request);
         })
         .catch(err => {
           return Promise.reject(err);
@@ -60,7 +60,33 @@ export default (Request) => {
         });
     },
     declineRequest: (requestId) => {
+      let request;
 
+      return Request
+        .findById(requestId)
+        .populate({
+          path: 'event sender', populate: {
+            path: 'requests'
+          }
+        })
+        .then(populated => {
+          request = populated;
+          let eventRequest = request.event.requests.find(r => r._id.equals(request._id));
+
+          request.event.requests.splice(eventRequest, 1);
+
+          return request.event.save()
+        })
+        .then(res => {
+          let senderRequest = request.sender.requests.find(r => r._id.equals(request._id));
+
+          request.sender.requests.splice(senderRequest, 1);
+
+          return request.sender.save()
+        })
+        .then(() => {
+          return Request.remove({ _id: requestId });
+        });
     }
   }
 }
