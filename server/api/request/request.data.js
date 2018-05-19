@@ -30,6 +30,37 @@ export default (Request) => {
         .catch(err => {
           return Promise.reject(err);
         });
+    },
+    acceptRequest: (requestId) => {
+      let request;
+
+      return Request
+        .findById(requestId)
+        .populate({
+          path: 'event sender', populate: {
+            path: 'requests'
+          }
+        })
+        .then(populated => {
+          request = populated;
+          let eventRequest = request.event.requests.find(r => r._id.equals(request._id));
+
+          request.event.requests.splice(eventRequest, 1);
+          request.event.peopleJoined.push(request.sender);
+
+          return request.event.save()
+        })
+        .then(res => {
+          let senderRequest = request.sender.requests.find(r => r._id.equals(request._id));
+
+          request.sender.requests.splice(senderRequest, 1);
+          request.sender.events.push(request.event);
+
+          return request.sender.save()
+        });
+    },
+    declineRequest: (requestId) => {
+
     }
   }
 }

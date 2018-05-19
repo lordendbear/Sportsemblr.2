@@ -12,6 +12,24 @@ export default (data) => {
         .then((request) => {
           res.send(request);
         })
+    },
+    respondToRequest: (req, res, next) => {
+      const eventId = req.params.id;
+      const requestId = req.params.requestId;
+
+      const accepted = req.body.accepted;
+
+      let promise;
+      if (accepted) {
+        promise = data.acceptRequest(requestId);
+      } else {
+        promise = data.declineRequest(requestId);
+      }
+
+      promise
+        .then(() => {
+          res.sendStatus(200);
+        })
     }
   }
 }

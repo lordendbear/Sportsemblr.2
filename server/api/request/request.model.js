@@ -10,6 +10,10 @@ const requestSchema = new mongoose.Schema({
     ref: 'Event'
   },
   sentDate: Date,
+  isAnwered: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const Request = mongoose.model('Request', requestSchema);
