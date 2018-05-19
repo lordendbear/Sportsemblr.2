@@ -3,20 +3,27 @@ import { Promise } from 'bluebird';
 export default (Request) => {
   return {
     createRequest: (userId, eventId) => {
-      return new Promise((resolve, reject) => {
-        const request = new Request();
-        request.sentDate = new Date();
-        request.sender = userId;
-        request.event = eventId;
+      const request = new Request();
+      request.sentDate = new Date();
+      request.sender = userId;
+      request.event = eventId;
 
-        request.save((err, savedRequest) => {
-          if (err) {
-            return reject(err);
-          } else {
-            return resolve(savedRequest);
-          }
+      return request.save()
+        .then((savedRequest) => {
+          return Request.populate(savedRequest, { path: 'event sender' });
+        })
+        .then(populatedRequest => {
+          populatedRequest.sender.requests.push(populatedRequest._id);
+          populatedRequest.event.requests.push(populatedRequest._id);
+
+          return populatedRequest.save();
+        })
+        .then((savedRequest) => {
+          return Promise.resolve(savedRequest);
+        })
+        .catch(err => {
+          return Promise.reject(err);
         });
-      });
     }
   }
 }
