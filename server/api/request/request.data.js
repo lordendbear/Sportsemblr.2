@@ -3,7 +3,7 @@ import { Promise } from 'bluebird';
 export default (Request) => {
   return {
     createRequest: (userId, eventId) => {
-      const request = new Request();
+      let request = new Request();
       request.sentDate = new Date();
       request.sender = userId;
       request.event = eventId;
@@ -13,10 +13,16 @@ export default (Request) => {
           return Request.populate(savedRequest, { path: 'event sender' });
         })
         .then(populatedRequest => {
-          populatedRequest.sender.requests.push(populatedRequest._id);
-          populatedRequest.event.requests.push(populatedRequest._id);
+          request = populatedRequest;
 
-          return populatedRequest.save();
+          request.event.requests.push(request._id);
+
+          return request.event.save();
+        })
+        .then(() => {
+          request.sender.requests.push(request._id);
+
+          return request.sender.save();
         })
         .then((savedRequest) => {
           return Promise.resolve(savedRequest);
