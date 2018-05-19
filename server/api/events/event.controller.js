@@ -29,7 +29,9 @@ export default (data) => {
           .sendStatus(400);
       }
 
-      data.create(event)
+      const userId = req.user._id;
+
+      data.create(event, userId)
         .then((newEvent) => {
           return res
             .send(newEvent);

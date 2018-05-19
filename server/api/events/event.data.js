@@ -26,9 +26,10 @@ export default (Event) => {
         });
       });
     },
-    create: (event) => {
+    create: (event, userId) => {
       event.status = 'active';
       const newEvent = new Event(event);
+      newEvent.organizer = userId;
 
       return new Promise((resolve, reject) => {
         newEvent.save((err) => {
