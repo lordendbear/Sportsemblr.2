@@ -3,12 +3,12 @@ import controllerInit from './event.controller';
 import routerInit from './event.routes'
 import Event from './event.model';
 
-export default (config) => {
+export default (config, auth) => {
     const data = dataInit(Event);
 
     const controller = controllerInit(data);
 
-    const router = routerInit(controller);
+    const router = routerInit(controller, auth);
 
     return router;
 };
