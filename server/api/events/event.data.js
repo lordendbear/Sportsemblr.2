@@ -16,15 +16,12 @@ export default (Event) => {
       })
     },
     getById: (id) => {
-      return new Promise((resolve, reject) => {
-        Event.findById(id, (err, event) => {
-          if (err) {
-            reject(err);
-          }
-
-          resolve(event);
+      return Event
+        .findById(id)
+        .populate('requests peopleJoined')
+        .then(populated => {
+          return Promise.resolve(populated);
         });
-      });
     },
     create: (event, userId) => {
       event.status = 'active';
