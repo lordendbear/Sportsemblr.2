@@ -18,7 +18,11 @@ export default (Event) => {
     getById: (id) => {
       return Event
         .findById(id)
-        .populate('requests peopleJoined')
+        .populate({
+          path: 'requests peopleJoined', populate: {
+            path: 'sender'
+          }
+        })
         .then(populated => {
           return Promise.resolve(populated);
         });
