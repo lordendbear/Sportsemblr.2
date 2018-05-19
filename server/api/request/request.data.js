@@ -47,8 +47,13 @@ export default (Request) => {
 
           request.event.requests.splice(eventRequest, 1);
           request.event.peopleJoined.push(request.sender);
+          if (request.event.peopleNeeded > 0) {
+            request.event.peopleNeeded -= 1;
+          } else {
+            throw new Error('No more places in event');
+          }
 
-          return request.event.save()
+          return request.event.save();
         })
         .then(res => {
           let senderRequest = request.sender.requests.find(r => r._id.equals(request._id));
