@@ -4,6 +4,7 @@ import request from 'supertest';
 
 import inititalizeApp from '../../../config/app';
 import Event from '../../../api/events/event.model';
+import User from '../../../api/users/user.model';
 
 import config from '../config';
 import * as testUtils from '../utils';
@@ -12,6 +13,8 @@ describe('POST /api/events', () => {
   let dbEvent;
   let event;
   let app;
+  let token;
+  let user;
 
   beforeEach((done) => {
     app = inititalizeApp(config);
@@ -34,17 +37,35 @@ describe('POST /api/events', () => {
       totalPrice: 5
     };
 
-    Event.remove({}, () => {
-      Event.create(dbEvent, (err, savedEvent) => {
-        if (err) {
-          return done(err);
-        }
+    user = {
+      email: 'sousa.dfs@gmail.com',
+      password: '123456',
+      name: 'Daniel Sousa',
+    };
 
+    Event.remove({})
+      .then(() => {
+        return Event.create(dbEvent);
+      })
+      .then((savedEvent) => {
         dbEvent = savedEvent;
 
-        return done();
+        return request(app)
+          .post('/api/users')
+          .send(user)
+      })
+      .then((response) => {
+        return request(app)
+          .post('/api/login')
+          .send(user);
+      })
+      .then((response) => {
+        token = response.body.token;
+        done();
+      })
+      .catch(err => {
+        done(err);
       });
-    });
   });
 
   afterEach((done) => {
@@ -54,6 +75,7 @@ describe('POST /api/events', () => {
   it('should create a new event when request is ok', (done) => {
     request(app)
       .post('/api/Events')
+      .set('Authorization', `Bearer ${token}`)
       .send(event)
       .expect(200)
       .then((res) => {
@@ -66,6 +88,7 @@ describe('POST /api/events', () => {
   it('should return 400 when no Event', (done) => {
     request(app)
       .post('/api/Events')
+      .set('Authorization', `Bearer ${token}`)
       .send()
       .expect(400)
       .then(() => {
@@ -76,6 +99,7 @@ describe('POST /api/events', () => {
   it('should return 400 when no name', (done) => {
     request(app)
       .post('/api/Events')
+      .set('Authorization', `Bearer ${token}`)
       .send({})
       .expect(400)
       .then(() => {
