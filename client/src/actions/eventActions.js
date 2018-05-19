@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import EventApi from '../api/eventApi';
+import RequestApi from '../api/requestApi';
 import * as notificationActions from './notificationActions';
 
 export function loadEventsSuccess(events) {
@@ -93,6 +94,19 @@ export function joinEvent(event, user) {
         });
 
         dispatch(notificationActions.error({ message: 'Something went wrong' }));
+      });
+  }
+}
+
+export function respondToRequest(event, request, accept) {
+  return (dispatch) => {
+    return RequestApi.respondToRequest(event._id, request._id, accept)
+      .then(response => {
+        dispatch({
+          type: types.RESPOND_TO_REQUEST_SUCCESS
+        })
+
+        dispatch(notificationActions.success({ message: accept ? 'Request accepted' : 'Request declined' }));
       });
   }
 }

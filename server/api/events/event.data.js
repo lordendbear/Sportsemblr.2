@@ -16,19 +16,21 @@ export default (Event) => {
       })
     },
     getById: (id) => {
-      return new Promise((resolve, reject) => {
-        Event.findById(id, (err, event) => {
-          if (err) {
-            reject(err);
+      return Event
+        .findById(id)
+        .populate({
+          path: 'requests peopleJoined', populate: {
+            path: 'sender'
           }
-
-          resolve(event);
+        })
+        .then(populated => {
+          return Promise.resolve(populated);
         });
-      });
     },
-    create: (event) => {
+    create: (event, userId) => {
       event.status = 'active';
       const newEvent = new Event(event);
+      newEvent.organizer = userId;
 
       return new Promise((resolve, reject) => {
         newEvent.save((err) => {

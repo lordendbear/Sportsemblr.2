@@ -47,6 +47,7 @@ export function login(user) {
           user: response.data.user
         };
 
+        localStorage.removeItem('auth');
         localStorage.setItem('auth', JSON.stringify(auth));
         dispatch({
           type: types.LOGIN
@@ -71,6 +72,6 @@ export function isLoggedIn() {
 export function logOut() {
   return (dispatch) => {
     authApi.logOut();
-    dispatch(notificationActions.success({ message: 'See you soon!' }));    
+    dispatch(notificationActions.success({ message: 'See you soon!' }));
   }
 }
