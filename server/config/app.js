@@ -9,6 +9,7 @@ import initializeDb from './db';
 import initializeApi from '../api';
 import initializeUtils from '../utils';
 import initializeAuthMiddleware from '../middleware/auth';
+import initializeWebSockets from './websockets';
 
 export default function (config) {
   let app = express();
@@ -39,6 +40,8 @@ export default function (config) {
   initializeDb(config);
 
   initializeApi(app, config, utils, middleware);
+
+  initializeWebSockets(app);
 
   return app;
 }
