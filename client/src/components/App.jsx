@@ -47,7 +47,7 @@ class App extends Component {
               <Route exact path="/users/:id" component={UserProfile} />
               <PrivateRoute exact path="/event" component={ManageEvent} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/events/:id" component={EventDetailsContainer} isAuthenticated={this.state.isAuthenticated} />
-              <Route exact path="/events" component={EventsContainer} isAuthenticated={this.state.isAuthenticated} />
+              <Route exact path="/events" component={EventsContainer} />
               <PrivateRoute path="/place" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/places" component={PlacesList} isAuthenticated={this.state.isAuthenticated} />

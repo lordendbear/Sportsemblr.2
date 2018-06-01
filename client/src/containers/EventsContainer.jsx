@@ -4,6 +4,7 @@ import EventsList from '../components/event/EventsList';
 import EditEventModal from '../components/event/EditEventModal';
 import { bindActionCreators } from 'redux';
 import * as eventActions from '../actions/eventActions';
+import { isLoggedIn } from '../actions/authActions';
 
 class EventsContainer extends React.Component {
     constructor(props, context) {
@@ -12,12 +13,16 @@ class EventsContainer extends React.Component {
         this.state = { 
             isOpen: false,
             event: Object.assign({}, props.event),
-            isAuthenticated: this.props.isAuthenticated 
+            isAuthenticated: this.props.isLoggedIn()
         };
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
         this.inputChange = this.inputChange.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ isAuthenticated: nextProps.isLoggedIn() });
     }
 
     componentDidMount() {
@@ -73,7 +78,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
-        getEvents: bindActionCreators(eventActions.loadEvents, dispatch)
+        getEvents: bindActionCreators(eventActions.loadEvents, dispatch),
+        isLoggedIn: bindActionCreators(isLoggedIn, dispatch)
     };
 };
 
