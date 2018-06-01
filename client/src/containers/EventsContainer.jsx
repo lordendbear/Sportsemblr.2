@@ -9,7 +9,11 @@ class EventsContainer extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = { isOpen: false, event: Object.assign({}, props.event) };
+        this.state = { 
+            isOpen: false,
+            event: Object.assign({}, props.event),
+            isAuthenticated: this.props.isAuthenticated 
+        };
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
@@ -24,7 +28,7 @@ class EventsContainer extends React.Component {
         return (
             <div>
                 <EventsList events={this.props.events} onNewEventClick={this.toggleModal} ></EventsList>
-                {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
+                {this.state.isOpen && <EditEventModal isAuthenticated={this.state.isAuthenticated} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
             </div>
         );
     }
