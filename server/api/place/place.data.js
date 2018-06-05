@@ -15,9 +15,10 @@ export default (Place) => {
         });
       })
     },
-    create: (place) => {
+    create: (place, ownerId) => {
       const newPlace = new Place({
-        name: place.name
+        name: place.name,
+        owner: ownerId
       });
 
       return new Promise((resolve, reject) => {

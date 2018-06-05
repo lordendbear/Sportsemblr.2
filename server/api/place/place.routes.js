@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-export default (controller) => {
+export default (controller, auth) => {
   const router = new Router();
 
-  router.post('', controller.create);
+  router.post('', auth, controller.create);
   router.put('/:id', controller.update);
   router.delete('/:id', controller.delete);
 

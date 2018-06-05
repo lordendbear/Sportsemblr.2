@@ -32,7 +32,9 @@ export default (data) => {
           .sendStatus(400);
       }
 
-      data.create(place)
+      const userId = req.user._id;
+
+      data.create(place, userId)
         .then((newPlace) => {
           return res
             .send(newPlace)

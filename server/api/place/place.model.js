@@ -7,7 +7,11 @@ const placeSchema = new mongoose.Schema({
     index: true,
     trim: true,
     required: true
-  }
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
 }, {
     timestamps: true
   });
