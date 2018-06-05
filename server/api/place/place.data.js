@@ -53,6 +53,17 @@ export default (Place) => {
           });
         });
       });
+    },
+    getAllPlaces: () => {
+      return new Promise((resolve, reject) => {
+        Place.find({}, (err, places) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(places);
+        });
+      });
     }
   };
 }
