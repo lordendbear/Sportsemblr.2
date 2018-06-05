@@ -11,6 +11,8 @@ import {
   Button
 } from 'reactstrap';
 
+const renderNoEventsMessage = () => <span>No events right now</span>
+
 const EventsList = ({ events, onNewEventClick }) => {
   return (
     <div className="animated fadeIn">
@@ -34,13 +36,16 @@ const EventsList = ({ events, onNewEventClick }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {events.map(event =>
-                    <EventShort
-                      key={event._id}
-                      event={event}
-                      isActive={true}
-                    />
-                  )}
+                  {
+                    !events ?
+                    renderNoEventsMessage() :
+                    events.map(event =>
+                      <EventShort
+                        key={event._id}
+                        event={event}
+                        isActive={true}
+                      />)
+                  }
                 </tbody>
               </Table>
             </CardBody>
