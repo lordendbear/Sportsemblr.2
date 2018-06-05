@@ -8,9 +8,6 @@ import {
   CardHeader,
   CardBody,
   Table,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
   Button
 } from 'reactstrap';
 
