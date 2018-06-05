@@ -12,6 +12,8 @@ describe('POST /api/places', () => {
   let dbPlace;
   let place;
   let app;
+  let token;
+  let user;
 
   beforeEach((done) => {
     app = inititalizeApp(config);
@@ -24,17 +26,36 @@ describe('POST /api/places', () => {
       name: 'test place'
     };
 
-    Place.remove({}, () => {
-      Place.create(dbPlace, (err, savedPlace) => {
-        if (err) {
-          return done(err);
-        }
+    user = {
+      email: 'sousa.dfs@gmail.com',
+      password: '123456',
+      name: 'Daniel Sousa',
+    };
 
+    Place.remove({})
+      .then(() => {
+        return Place.create(dbPlace);
+      })
+      .then((savedPlace) => {
         dbPlace = savedPlace;
 
-        return done();
+        return request(app)
+          .post('/api/users')
+          .send(user)
+      })
+      .then((response) => {
+        return request(app)
+          .post('/api/login')
+          .send(user);
+      })
+      .then((response) => {
+        token = response.body.token;
+        done();
+      })
+      .catch(err => {
+        done(err);
       });
-    });
+
   });
 
   afterEach((done) => {
@@ -44,6 +65,7 @@ describe('POST /api/places', () => {
   it('should create a new place when request is ok', (done) => {
     request(app)
       .post('/api/places')
+      .set('Authorization', `Bearer ${token}`)
       .send(place)
       .expect(200)
       .then((res) => {
@@ -56,6 +78,7 @@ describe('POST /api/places', () => {
   it('should return 400 when no place', (done) => {
     request(app)
       .post('/api/places')
+      .set('Authorization', `Bearer ${token}`)
       .send()
       .expect(400)
       .then(() => {
@@ -66,6 +89,7 @@ describe('POST /api/places', () => {
   it('should return 400 when no name', (done) => {
     request(app)
       .post('/api/places')
+      .set('Authorization', `Bearer ${token}`)
       .send({})
       .expect(400)
       .then(() => {
