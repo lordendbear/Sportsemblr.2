@@ -6,10 +6,10 @@ import Route from 'react-router-dom/Route';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
 import EventsContainer from '../containers/EventsContainer';
+import PlacesContainer from '../containers/place/PlacesContainer';
 import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
 import ManageEvent from '../containers/ManageEvent';
-import PlacesList from '../containers/place/PlacesList';
 import EventDetailsContainer from '../containers/event/EventDetailsContainer';
 import Aside from '../components/aside/Aside';
 import Profile from '../components/profile/Profile';
@@ -50,7 +50,7 @@ class App extends Component {
               <Route exact path="/events" component={EventsContainer} />
               <PrivateRoute path="/place" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
-              <PrivateRoute exact path="/places" component={PlacesList} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/places" component={PlacesContainer} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute path="/admin" component={Admin} isAuthenticated={this.state.isAuthenticated} />
             </Container>

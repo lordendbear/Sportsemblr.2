@@ -6,6 +6,7 @@ export default (controller, auth) => {
   router.post('', auth, controller.create);
   router.put('/:id', controller.update);
   router.delete('/:id', controller.delete);
+  router.get('', controller.getAll);
 
   return router;
 }

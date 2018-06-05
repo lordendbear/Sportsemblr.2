@@ -3,14 +3,12 @@ import requester from './requester';
 const API_URL = 'http://localhost:4040/api';
 
 class PlaceApi {
+    static getAll() {
+        const url = `${API_URL}/places`;
 
-    // static getAll() {
-    //     return new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             resolve(Object.assign([], places));
-    //         }, 1000);
-    //     });
-    // }
+        return requester.get(url);
+    }
+
     static savePlace(place) {
         if (place._id) {
             return this.updatePlace(place);

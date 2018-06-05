@@ -40,6 +40,15 @@ export default (data) => {
             .send(newPlace)
         })
         .catch(err => next(err));
+    },
+    getAll: (req, res, next) => {
+      data.getAllPlaces()
+        .then(places => {
+          res.send({ places });
+        })
+        .catch(err => {
+          next(err);
+        })
     }
   }
 }

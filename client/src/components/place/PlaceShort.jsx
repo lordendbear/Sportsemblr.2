@@ -5,7 +5,7 @@ const PlaceShort = ({ place }) => {
     return (
         <div className="well">
             <h2 className="media-heading">
-                {place.title}
+                {place.name}
             </h2>
         </div>
     );
