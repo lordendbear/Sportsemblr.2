@@ -32,20 +32,13 @@ export class ManagePlace extends React.Component {
     };
 
     this.savePlace = this.savePlace.bind(this);
-    this.updatePlaceState = this.updatePlaceState.bind(this);
+    this.inputChange = this.inputChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.place.id !== nextProps.place.id) {
       this.setState({ place: Object.assign({}, nextProps.place) });
     }
-  }
-
-  updatePlaceState(event) {
-    const field = event.target.name;
-    let place = Object.assign({}, this.state.place);
-    place[field] = event.target.value;
-    return this.setState({ place });
   }
 
   formIsValid() {
@@ -78,7 +71,15 @@ export class ManagePlace extends React.Component {
   }
 
   redirect() {
-    this.setState({ saving: false });
+    this.props.history.push('/places');
+  }
+
+  inputChange(value, property) {
+    let place = Object.assign({}, this.state.place);
+
+    place[property] = value;
+
+    this.setState({ place });
   }
 
   render() {
@@ -96,7 +97,8 @@ export class ManagePlace extends React.Component {
                     <Label htmlFor="text-input">Name</Label>
                   </Col>
                   <Col xs="12" md="9">
-                    <Input type="text" id="text-input" name="text-input" placeholder="Enter name" />
+                    <Input type="text" id="text-input" name="text-input" placeholder="Enter name" onChange={(e) => this.inputChange(e.target.value, 'name')}
+                      value={this.state.place.name} />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -138,7 +140,6 @@ export class ManagePlace extends React.Component {
                     </InputGroup>
                   </Col>
                 </FormGroup>
-                {/* Fuck tabs, no time for that, no save configured */}
                 <FormGroup row>
                   <Col md="3">
                     <Label htmlFor="file-input">Add photo</Label>
@@ -150,7 +151,7 @@ export class ManagePlace extends React.Component {
               </Form>
             </CardBody>
             <CardFooter>
-              <Button type="submit" size="xl" color="primary"><i className="fa fa-dot-circle-o"></i> Create</Button>
+              <Button type="submit" size="xl" color="primary" onClick={(ev) => this.savePlace(ev)}><i className="fa fa-dot-circle-o"></i> Create</Button>
             </CardFooter>
           </Card>
         </Col>

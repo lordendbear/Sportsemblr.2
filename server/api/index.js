@@ -18,7 +18,7 @@ export default (app, config, utils, middleware) => {
   const userRouter = userRouterInit(config, utils);
   router.use('/users', userRouter);
 
-  const placeRouter = placeRouterInit(config, utils);
+  const placeRouter = placeRouterInit(config, middleware.auth);
   router.use('/places', placeRouter);
 
   const authRouter = authRouterInit(config, utils);
