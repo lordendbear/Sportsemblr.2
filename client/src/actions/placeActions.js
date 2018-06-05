@@ -26,8 +26,8 @@ export function updatePlaceSuccess(place) {
 export function loadPlaces() {
   return (dispatch) => {
     return PlaceApi.getAll()
-      .then(places => {
-        dispatch(loadPlacesSuccess(places));
+      .then(response => {
+        dispatch(loadPlacesSuccess(response.data.places));
       })
   };
 }

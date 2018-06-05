@@ -8,7 +8,7 @@ const PlacesList = ({ places }) => {
             <div className="panel-heading clearfix">
                 {places.map(place =>
                     <PlaceShort
-                        key={place.id}
+                        key={place._id}
                         place={place}
                     />
                 )}
