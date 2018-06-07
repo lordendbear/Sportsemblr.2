@@ -6,6 +6,7 @@ import * as eventActions from '../../actions/eventActions';
 import EditEventModal from '../../components/event/EditEventModal';
 import { bindActionCreators } from 'redux';
 import { Button } from 'reactstrap';
+import ReviewForm from '../../components/event/ReviewForm';
 
 export class EventDetailsContainer extends React.Component {
     constructor(props, context) {
@@ -15,13 +16,15 @@ export class EventDetailsContainer extends React.Component {
             isOpen: false,
             event: Object.assign({}, props.event),
             canJoin: props.canJoin,
-            isOrganizer: props.isOrganizer
+            isOrganizer: props.isOrganizer,
+            ifCanLeaveReview: props.ifCanLeaveReview
         }
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
         this.inputChange = this.inputChange.bind(this);
         this.join = this.join.bind(this);
+        this.leaveReview = this.leaveReview.bind(this);
         this.respondToRequest = this.respondToRequest.bind(this);
     }
 
@@ -34,7 +37,8 @@ export class EventDetailsContainer extends React.Component {
             this.setState({
                 event: nextProps.event,
                 canJoin: nextProps.canJoin,
-                isOrganizer: nextProps.isOrganizer
+                isOrganizer: nextProps.isOrganizer,
+                ifCanLeaveReview: nextProps.ifCanLeaveReview
             });
         }
     }
@@ -49,8 +53,15 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.isOrganizer && < EventRequests requests={this.state.event.requests} respond={this.respondToRequest}></EventRequests>}
                 <hr />
                 {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
+                <hr />
+                <ReviewForm leaveReview={this.leaveReview}></ReviewForm>
+                {/* {this.state.ifCanLeaveReview && 12} */}
             </div>
         );
+    }
+
+    leaveReview(review) {
+        this.props.leaveReview(review, this.state.event);
     }
 
     join() {
@@ -102,17 +113,37 @@ const checkIfIsOrganizer = (event, user) => {
     return false;
 }
 
+const checkIfCanLeaveReview = (event, user) => {
+    let result = false;
+
+    if (event) {
+        const date = new Date(event.date);
+
+        result = date < new Date();
+        return result;
+        if (!result) {
+            return result;
+        }
+
+        result = !!event.reviews.find(r => r.user === user._id);
+    }
+
+    return result;
+}
+
 const mapStateToProps = (state, ownProps) => {
     const event = state.events.event;
     const user = state.auth.user;
     const canJoin = checkIfCanJoin(event, user);
     const isOrganizer = checkIfIsOrganizer(event, user);
+    const ifCanLeaveReview = checkIfCanLeaveReview(event);
 
     return {
         event,
         canJoin,
         user,
-        isOrganizer
+        isOrganizer,
+        ifCanLeaveReview
     };
 }
 
@@ -121,7 +152,8 @@ const mapDispatchToProps = (dispatch) => {
         getEvent: bindActionCreators(eventActions.getEventById, dispatch),
         saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
         joinEvent: bindActionCreators(eventActions.joinEvent, dispatch),
-        respondToRequest: bindActionCreators(eventActions.respondToRequest, dispatch)
+        respondToRequest: bindActionCreators(eventActions.respondToRequest, dispatch),
+        leaveReview: bindActionCreators(eventActions.leaveReview, dispatch)
     };
 };
 
