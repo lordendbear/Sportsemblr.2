@@ -59,7 +59,8 @@ const eventSchema = new mongoose.Schema({
   requests: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Request'
-  }]
+  }],
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
 });
 
 const Event = mongoose.model('Event', eventSchema);

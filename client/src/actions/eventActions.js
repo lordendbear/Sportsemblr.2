@@ -98,6 +98,22 @@ export function joinEvent(event, user) {
   }
 }
 
+export function leaveReview(review, event) {
+  return (dispatch) => {
+    return EventApi.leaveReview(review, event._id)
+      .then(response => {
+        dispatch({
+          type: types.LEAVE_REVIEW_SUCCESS
+        })
+
+        dispatch(notificationActions.success({ message: 'Review sent' }));
+      })
+      .catch(err => {
+        dispatch(notificationActions.error({ message: 'Something went wrong' }));
+      });
+  }
+}
+
 export function respondToRequest(event, request, accept) {
   return (dispatch) => {
     return RequestApi.respondToRequest(event._id, request._id, accept)

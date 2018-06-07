@@ -5,6 +5,7 @@ import authRouterInit from './auth'
 import userRouterInit from './users'
 import placeRouterInit from './place'
 import requestRouterInit from './request'
+import reviewRouterInit from './review'
 
 export default (app, config, utils, middleware) => {
   const router = Router();
@@ -20,6 +21,9 @@ export default (app, config, utils, middleware) => {
 
   const placeRouter = placeRouterInit(config, middleware.auth);
   router.use('/places', placeRouter);
+
+  const reviewRouter = reviewRouterInit(config, middleware.auth);
+  router.use('/events', reviewRouter);
 
   const authRouter = authRouterInit(config, utils);
   router.use('/login', authRouter);
