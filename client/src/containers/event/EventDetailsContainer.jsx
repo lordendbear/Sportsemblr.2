@@ -54,8 +54,7 @@ export class EventDetailsContainer extends React.Component {
                 <hr />
                 {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
                 <hr />
-                <ReviewForm leaveReview={this.leaveReview}></ReviewForm>
-                {/* {this.state.ifCanLeaveReview && 12} */}
+                {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
             </div>
         );
     }
@@ -120,7 +119,6 @@ const checkIfCanLeaveReview = (event, user) => {
         const date = new Date(event.date);
 
         result = date < new Date();
-        return result;
         if (!result) {
             return result;
         }
