@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema({
     sports: [{ name: String, skill: Number }],
     places: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }],
     events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
     requests: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Request'
