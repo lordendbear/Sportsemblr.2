@@ -40,6 +40,12 @@ class EventApi {
 
     return requester.postAuthorized(url, { userId: user._id });
   }
+
+  static leaveReview(review, eventId) {
+    const url = `${API_URL}/events/${eventId}/reviews`;
+
+    return requester.postAuthorized(url, review);
+  }
 }
 
 export default EventApi;
