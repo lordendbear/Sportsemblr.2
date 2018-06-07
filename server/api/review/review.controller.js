@@ -5,9 +5,8 @@ export default (data) => {
       const userId = req.user._id;
       const review = req.body;
 
-      data.createRequest(review, userId, eventId)
+      data.createReview(review, userId, eventId)
         .then((review) => {
-          console.log(review);
           res.send(review);
         })
     },

@@ -23,7 +23,7 @@ export default (app, config, utils, middleware) => {
   router.use('/places', placeRouter);
 
   const reviewRouter = reviewRouterInit(config, middleware.auth);
-  router.use('/reviews', reviewRouter);
+  router.use('/events', reviewRouter);
 
   const authRouter = authRouterInit(config, utils);
   router.use('/login', authRouter);
