@@ -11,7 +11,7 @@ import {
   Button
 } from 'reactstrap';
 
-const renderNoEventsMessage = () => <span>No events right now</span>
+const renderNoEventsMessage = () => <tr><td>No events right now</td></tr>
 
 const EventsList = ({ events, onNewEventClick }) => {
   return (
@@ -57,7 +57,11 @@ const EventsList = ({ events, onNewEventClick }) => {
 }
 
 EventsList.propTypes = {
-  events: PropTypes.array.isRequired,
+  events: PropTypes.array,
+}
+
+EventsList.defaultPropTypes = {
+  events: null
 }
 
 export default EventsList;

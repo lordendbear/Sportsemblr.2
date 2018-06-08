@@ -39,7 +39,7 @@ class PlacesContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    places: state.places
+    places: state.places.places
   };
 }
 

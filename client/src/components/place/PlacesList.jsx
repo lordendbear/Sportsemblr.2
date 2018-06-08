@@ -2,15 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PlaceShort from './PlaceShort';
 
+const renderNoEventsMessage = () => <tr><td>No sport places added yet... :/</td></tr>
+
 const PlacesList = ({ places }) => {
+    debugger;
     return (
         <div className="panel panel-default">
             <div className="panel-heading clearfix">
-                {places.map(place =>
-                    <PlaceShort
-                        key={place._id}
-                        place={place}
-                    />
+                {!places? renderNoEventsMessage() : 
+                    places.map(place =>
+                        <PlaceShort
+                            key={place._id}
+                            place={place}
+                        />
                 )}
             </div>
         </div>

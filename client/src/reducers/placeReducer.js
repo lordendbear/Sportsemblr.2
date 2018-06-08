@@ -1,10 +1,11 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-const handleLoadPlacesSuccess = (action) => {
-    return [
-        ...action.places
-    ];
+const handleLoadPlacesSuccess = (state, action) => {
+    return {
+        ...state,
+        places: action.places
+    };
 };
 
 const handleCreatePlaceSuccess = (state, action) => {
@@ -24,7 +25,7 @@ const handleUpdatePlaceSuccess = (state, action) => {
 export default function placeReducer(state = initialState.places, action) {
     switch (action.type) {
         case types.LOAD_PLACES_SUCCESS:
-            return handleLoadPlacesSuccess(action);
+            return handleLoadPlacesSuccess(state, action);
 
         case types.CREATE_PLACE_SUCCESS:
             return handleCreatePlaceSuccess(state, action);

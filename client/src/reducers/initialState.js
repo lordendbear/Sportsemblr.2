@@ -1,4 +1,5 @@
 export default {
-  places: [],
+  events: {},
+  places: {},
   notification: {}
 }
