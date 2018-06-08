@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import EventsList from '../components/event/EventsList';
 import EditEventModal from '../components/event/EditEventModal';
-import { bindActionCreators } from 'redux';
 import * as eventActions from '../actions/eventActions';
 import { isLoggedIn } from '../actions/authActions';
 
@@ -30,6 +29,7 @@ class EventsContainer extends React.Component {
     }
 
     render() {
+        debugger;
         return (
             <div>
                 <EventsList events={this.props.events} onNewEventClick={this.toggleModal} ></EventsList>
@@ -75,15 +75,8 @@ const mapStateToProps = state => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
-        getEvents: bindActionCreators(eventActions.loadEvents, dispatch),
-        isLoggedIn: bindActionCreators(isLoggedIn, dispatch)
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(EventsContainer)
+export default connect(mapStateToProps, {
+    saveEvent: eventActions.saveEvent,
+    getEvents: eventActions.loadEvents,
+    isLoggedIn
+})(EventsContainer)

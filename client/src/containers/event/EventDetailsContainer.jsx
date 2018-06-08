@@ -4,7 +4,6 @@ import EventDetails from '../../components/event/EventDetails';
 import EventRequests from '../../components/event/EventRequests';
 import * as eventActions from '../../actions/eventActions';
 import EditEventModal from '../../components/event/EditEventModal';
-import { bindActionCreators } from 'redux';
 import { Button } from 'reactstrap';
 import ReviewForm from '../../components/event/ReviewForm';
 
@@ -145,17 +144,10 @@ const mapStateToProps = (state, ownProps) => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getEvent: bindActionCreators(eventActions.getEventById, dispatch),
-        saveEvent: bindActionCreators(eventActions.saveEvent, dispatch),
-        joinEvent: bindActionCreators(eventActions.joinEvent, dispatch),
-        respondToRequest: bindActionCreators(eventActions.respondToRequest, dispatch),
-        leaveReview: bindActionCreators(eventActions.leaveReview, dispatch)
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(EventDetailsContainer)
+export default connect(mapStateToProps, {
+    getEvent: eventActions.getEventById,
+    saveEvent: eventActions.saveEvent,
+    joinEvent: eventActions.joinEvent,
+    respondToRequest: eventActions.respondToRequest,
+    leaveReview: eventActions.leaveReview
+})(EventDetailsContainer)

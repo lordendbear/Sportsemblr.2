@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
 import { isLoggedIn } from '../../actions/authActions';
 import PlacesList from '../../components/place/PlacesList';
 import * as placeActions from '../../actions/placeActions';
@@ -44,14 +43,7 @@ const mapStateToProps = state => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getPlaces: bindActionCreators(placeActions.loadPlaces, dispatch),
-    isLoggedIn: bindActionCreators(isLoggedIn, dispatch)
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PlacesContainer)
+export default connect(mapStateToProps, {
+    getPlaces: placeActions.loadPlaces,
+    isLoggedIn
+})(PlacesContainer)

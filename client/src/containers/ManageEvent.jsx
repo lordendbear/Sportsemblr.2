@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import EditEvent from '../components/event/EditEvent';
 import { saveEvent } from '../actions/eventActions.js';
-import { bindActionCreators } from 'redux';
 
 export class ManageEvent extends React.Component {
   constructor(props, context) {
@@ -85,13 +84,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    saveEvent: bindActionCreators(saveEvent, dispatch)
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ManageEvent)
+export default connect(mapStateToProps, {
+    saveEvent
+})(ManageEvent)
