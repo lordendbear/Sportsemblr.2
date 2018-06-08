@@ -29,7 +29,6 @@ class EventsContainer extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <div>
                 <EventsList events={this.props.events} onNewEventClick={this.toggleModal} ></EventsList>
@@ -71,7 +70,7 @@ const emptyEvent = {
 const mapStateToProps = state => {
     return {
         event: Object.assign({}, emptyEvent),
-        events: state.events
+        events: state.events.events
     };
 }
 

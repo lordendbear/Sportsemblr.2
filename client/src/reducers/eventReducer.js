@@ -1,15 +1,16 @@
 import * as types from '../actions/actionTypes';
 
-const handleLoadEventSuccess = (action) => {
+const handleLoadEventSuccess = (state, action) => {
     return {
         event: action.event
     };
 };
 
-const handleLoadEventsSuccess = (action) => {
-    return [
-        ...action.events
-    ];
+const handleLoadEventsSuccess = (state, action) => {
+    return  {
+        ...state,
+        events: action.events
+    }
 };
 
 const handleCreateEventSuccess = (state, action) => {
@@ -26,13 +27,13 @@ const handleUpdateEventSuccess = (state, action) => {
     ];
 };
 
-export default function eventReducer(state = [], action) {
+export default function eventReducer(state = {}, action) {
     switch (action.type) {
         case types.LOAD_EVENT_SUCCESS:
-            return handleLoadEventSuccess(action);
-
+            return handleLoadEventSuccess(state, action);
+            
         case types.LOAD_EVENTS_SUCCESS:
-            return handleLoadEventsSuccess(action);
+            return handleLoadEventsSuccess(state, action);
 
         case types.CREATE_EVENT_SUCCESS:
             return handleCreateEventSuccess(state, action);
