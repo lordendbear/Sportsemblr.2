@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import UserApi from '../api/userApi';
+import * as notificationActions from './notificationActions';
 
 export function loadProfileSuccess(user) {
   return {
@@ -13,6 +14,18 @@ export function loadProfile(id) {
     return UserApi.getUserProfile(id)
       .then(response => {
         dispatch(loadProfileSuccess(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  };
+}
+
+export function updateProfile(user) {
+  return (dispatch) => {
+    return UserApi.updateProfile(user._id, user)
+      .then(response => {
+        dispatch(notificationActions.success({ message: 'Profile updated' }));
       })
       .catch(err => {
         console.log(err);

@@ -58,6 +58,7 @@ export default (User, { passwordHasher }) => {
 
           user.email = options.email || user.email;
           user.name = options.name || user.name;
+          user.picture = options.picture || user.picture;
 
           user.save((err) => {
             if (err) {
