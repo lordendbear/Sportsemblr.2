@@ -6,7 +6,6 @@ import * as eventActions from '../../actions/eventActions';
 import EditEventModal from '../../components/event/EditEventModal';
 import { Button } from 'reactstrap';
 import ReviewForm from '../../components/event/ReviewForm';
-import { Redirect } from 'react-router-dom';
 
 export class EventDetailsContainer extends React.Component {
     constructor(props, context) {
