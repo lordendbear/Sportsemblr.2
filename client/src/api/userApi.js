@@ -8,7 +8,7 @@ class UserApi {
     return requester.get(url);
   }
 
-  static editProfile(id, profile) {
+  static updateProfile(id, profile) {
     const url = `${API_URL}/users/${id}`;
 
     return requester.putAuthorized(url, profile);
