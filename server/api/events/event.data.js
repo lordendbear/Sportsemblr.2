@@ -75,14 +75,6 @@ export default (Event) => {
       return Event
         .find({ status: 'active' })
         .populate('organizer');
-
-      Event.find({ status: 'active' }, (err, events) => {
-        if (err) {
-          return reject(err);
-        }
-
-        return resolve(events);
-      });
     },
     getAllEvents: () => {
       return new Promise((resolve, reject) => {
