@@ -12,9 +12,27 @@ const placeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+  page: {
+    type: String,
+    maxlength: 128,
+    index: true,
+    trim: true,
+    required: false
+  },
+  sports: [{
+    type: String,
+    maxlength: 128,
+    index: true,
+    trim: true,
+    required: true
+  }],
+  reviews: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Review'
+  }],
 }, {
-    timestamps: true
-  });
+  timestamps: true
+});
 
 const Place = mongoose.model('Place', placeSchema);
 
