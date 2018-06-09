@@ -45,13 +45,18 @@ export class EventDetailsContainer extends React.Component {
     render() {
         return (
             <div>
-                <Button color="primary" size="sm" className="float-right" onClick={this.toggleModal}>Edit</Button>
                 {this.state.canJoin && !this.state.isOrganizer && <Button color="primary" size="sm" onClick={this.join}>Join</Button>}
+                {this.state.isOrganizer &&
+                    <span className="float-right">
+                        <Button color="primary" size="sm" onClick={this.toggleModal}>Edit</Button>
+                        <Button color="warning" size="sm" onClick={this.delete}>Delete</Button>
+                    </span>}
+
                 <EventDetails event={this.props.event}></EventDetails>
                 <hr />
                 {this.state.isOrganizer && < EventRequests requests={this.state.event.requests} respond={this.respondToRequest}></EventRequests>}
                 <hr />
-                {this.state.isOpen && <EditEventModal closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
+                {this.state.isOpen && <EditEventModal isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
                 <hr />
                 {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
             </div>
@@ -131,17 +136,19 @@ const checkIfCanLeaveReview = (event, user) => {
 const mapStateToProps = (state, ownProps) => {
     const event = state.events.event;
     const user = state.auth.user;
-    const canJoin = checkIfCanJoin(event, user);
-    const isOrganizer = checkIfIsOrganizer(event, user);
-    const ifCanLeaveReview = checkIfCanLeaveReview(event);
 
-    return {
-        event,
-        canJoin,
-        user,
-        isOrganizer,
-        ifCanLeaveReview
-    };
+    const result = {};
+
+    if (user) {
+        result.canJoin = checkIfCanJoin(event, user);
+        result.isOrganizer = checkIfIsOrganizer(event, user);
+        result.ifCanLeaveReview = checkIfCanLeaveReview(event, user);
+    }
+
+    result.event = event;
+    result.user = user;
+
+    return result;
 }
 
 export default connect(mapStateToProps, {
