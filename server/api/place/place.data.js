@@ -16,10 +16,8 @@ export default (Place) => {
       })
     },
     create: (place, ownerId) => {
-      const newPlace = new Place({
-        name: place.name,
-        owner: ownerId
-      });
+      const newPlace = new Place(place);
+      newPlace.owner = ownerId;
 
       return new Promise((resolve, reject) => {
         newPlace.save((err) => {

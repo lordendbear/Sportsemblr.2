@@ -22,7 +22,11 @@ const PlacesList = ({ places }) => {
 }
 
 PlacesList.propTypes = {
-    places: PropTypes.array.isRequired,
+    places: PropTypes.array,
+}
+
+PlacesList.defaultPropTypes = {
+    places: null,
 }
 
 export default PlacesList;

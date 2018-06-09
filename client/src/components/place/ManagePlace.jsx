@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import ReactTags from 'react-tag-autocomplete';
 import { savePlace } from '../../actions/placeActions';
+import { checkIfEmptyObject } from '../../util';
+import { SPORTS_SUGGESTIONS } from '../../util/constants';
 
 import {
   Row,
@@ -28,7 +30,11 @@ export class ManagePlace extends React.Component {
     this.state = {
       place: Object.assign({}, this.props.place),
       errors: {},
-      saving: false
+      saving: false,
+      selectedSports: [
+        { id: 1, name: "Handball" }
+      ],
+      sportSuggestions: SPORTS_SUGGESTIONS
     };
 
     this.savePlace = this.savePlace.bind(this);
@@ -39,6 +45,17 @@ export class ManagePlace extends React.Component {
     if (this.state.place.id !== nextProps.place.id) {
       this.setState({ place: Object.assign({}, nextProps.place) });
     }
+  }
+
+  handleDelete (i) {
+    const selectedSports = this.state.selectedSports.slice(0)
+    selectedSports.splice(i, 1)
+    this.setState({ selectedSports })
+  }
+
+  handleAddition (selectedSport) {
+    const selectedSports = [].concat(this.state.selectedSports, selectedSport)
+    this.setState({ selectedSports })
   }
 
   formIsValid() {
@@ -63,7 +80,8 @@ export class ManagePlace extends React.Component {
     }
 
     this.setState({ saving: true });
-    this.props.savePlace(this.state.place)
+
+    this.props.savePlace({ ...this.state.place, sports: this.state.selectedSports })
       .then(() => this.redirect())
       .catch(error => {
         this.setState({ saving: false });
@@ -107,23 +125,25 @@ export class ManagePlace extends React.Component {
                   </Col>
                   <Col xs="12" md="9">
                     <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                      placeholder="Wonderful place, come to us" />
+                      placeholder="Wonderful place, come to us" onChange={(e) => this.inputChange(e.target.value, 'description')} />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
                   <Col md="3">
-                    <Label htmlFor="multiple-select">Sports you are interested in</Label>
+                    <Label htmlFor="multiple-select">Sports offered</Label>
                   </Col>
                   <Col md="9">
                     <FormText color="muted">Press ctrl or drag</FormText>
-                    <Input type="select" name="multiple-select" id="multiple-select" multiple>
-                      <option value="1">Football</option>
-                      <option value="2">Basketball</option>
-                      <option value="3">Tennis</option>
-                      <option value="4">Volleyball</option>
-                      <option value="5">Cricket</option>
-                      <option value="6">Table Tennis</option>
-                    </Input>
+                    <ReactTags
+                      tags={this.state.selectedSports}
+                      suggestions={this.state.sportSuggestions}
+                      handleDelete={this.handleDelete.bind(this)}
+                      handleAddition={this.handleAddition.bind(this)}
+                      autoresize={false}
+                      minQueryLength={1}
+                      allowNew={true}
+                      delimiterChars={['Tab', 'Enter', ',']}
+                      placeholder={"Input sports"}/>
                   </Col>
                 </FormGroup>
                 {/* Fuck linters */}
@@ -136,7 +156,7 @@ export class ManagePlace extends React.Component {
                       <InputGroupAddon addonType="prepend">
                         <Button type="button" color="primary"><i className="fa fa-facebook"></i></Button>
                       </InputGroupAddon>
-                      <Input type="text" id="input3-group2" name="input3-group2" placeholder="Facebook page" />
+                      <Input type="text" id="input3-group2" name="input3-group2" placeholder="Facebook page" onChange={(e) => this.inputChange(e.target.value, 'page')} />
                     </InputGroup>
                   </Col>
                 </FormGroup>
@@ -161,9 +181,13 @@ export class ManagePlace extends React.Component {
 }
 
 ManagePlace.propTypes = {
-  place: PropTypes.object.isRequired,
+  place: PropTypes.object,
   savePlace: PropTypes.func.isRequired
 };
+
+ManagePlace.defaultPropTypes = {
+  place: null
+}
 
 const getPlaceById = (places, id) => {
   const placeList = places.filter((e) => e.id === id);
@@ -176,6 +200,10 @@ const getPlaceById = (places, id) => {
 };
 
 function mapStateToProps(state, ownProps) {
+  if(checkIfEmptyObject(state.places)) {
+    return {};
+  }
+
   const id = +ownProps.match.params.id;
 
   const place = getPlaceById(state.places, id);
@@ -185,8 +213,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ savePlace }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ManagePlace);
+export default connect(mapStateToProps, { savePlace })(ManagePlace);
