@@ -126,3 +126,16 @@ export function respondToRequest(event, request, accept) {
       });
   }
 }
+
+export function deleteEvent(event) {
+  return (dispatch) => {
+    return EventApi.deleteEvent(event._id)
+      .then(() => {
+        dispatch({
+          type: types.DELETE_EVENT_SUCCESS
+        })
+
+        dispatch(notificationActions.success({ message: 'Event deleted' }));
+      })
+  }
+}

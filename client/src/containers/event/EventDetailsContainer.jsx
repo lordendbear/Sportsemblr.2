@@ -6,6 +6,7 @@ import * as eventActions from '../../actions/eventActions';
 import EditEventModal from '../../components/event/EditEventModal';
 import { Button } from 'reactstrap';
 import ReviewForm from '../../components/event/ReviewForm';
+import { Redirect } from 'react-router-dom';
 
 export class EventDetailsContainer extends React.Component {
     constructor(props, context) {
@@ -25,6 +26,7 @@ export class EventDetailsContainer extends React.Component {
         this.join = this.join.bind(this);
         this.leaveReview = this.leaveReview.bind(this);
         this.respondToRequest = this.respondToRequest.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     componentDidMount() {
@@ -50,7 +52,8 @@ export class EventDetailsContainer extends React.Component {
                     <span className="float-right">
                         <Button color="primary" size="sm" onClick={this.toggleModal}>Edit</Button>
                         <Button color="warning" size="sm" onClick={this.delete}>Delete</Button>
-                    </span>}
+                    </span>
+                }
 
                 <EventDetails event={this.props.event}></EventDetails>
                 <hr />
@@ -61,6 +64,13 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
             </div>
         );
+    }
+
+    delete() {
+        this.props.deleteEvent(this.state.event)
+            .then(() => {
+                this.props.history.push("/events")
+            });
     }
 
     leaveReview(review) {
@@ -156,5 +166,6 @@ export default connect(mapStateToProps, {
     saveEvent: eventActions.saveEvent,
     joinEvent: eventActions.joinEvent,
     respondToRequest: eventActions.respondToRequest,
-    leaveReview: eventActions.leaveReview
+    leaveReview: eventActions.leaveReview,
+    deleteEvent: eventActions.deleteEvent
 })(EventDetailsContainer)
