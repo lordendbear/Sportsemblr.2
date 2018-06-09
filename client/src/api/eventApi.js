@@ -46,6 +46,12 @@ class EventApi {
 
     return requester.postAuthorized(url, review);
   }
+
+  static deleteEvent(eventId) {
+    const url = `${API_URL}/events/${eventId}`;
+
+    return requester.deleteAuthorized(url);
+  }
 }
 
 export default EventApi;
