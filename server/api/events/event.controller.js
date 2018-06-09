@@ -57,6 +57,14 @@ export default (data) => {
     getActive: (req, res, next) => {
       data.getActiveEvents()
         .then(events => {
+          events = events.map(e => {
+            if (e.organizer) {
+              e.organizer.password = null;
+            }
+
+            return e;
+          });
+
           res.send({ events });
         })
         .catch(err => {

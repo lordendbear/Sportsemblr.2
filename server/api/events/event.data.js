@@ -72,14 +72,16 @@ export default (Event) => {
       });
     },
     getActiveEvents: () => {
-      return new Promise((resolve, reject) => {
-        Event.find({ status: 'active' }, (err, events) => {
-          if (err) {
-            return reject(err);
-          }
+      return Event
+        .find({ status: 'active' })
+        .populate('organizer');
 
-          return resolve(events);
-        });
+      Event.find({ status: 'active' }, (err, events) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(events);
       });
     },
     getAllEvents: () => {
