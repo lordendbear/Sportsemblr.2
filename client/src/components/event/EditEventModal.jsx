@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap4-modal';
 import DatePicker from 'react-date-picker';
 import TimePicker from 'react-time-picker';
-import { Button, FormGroup, Input, Form, Col, Label, FormFeedback } from 'reactstrap';
+import { Button, FormGroup, Input, Form, Col, Label, FormFeedback, FormText } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import MapComponent from '../common/MapComponent';
 
@@ -15,6 +15,7 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
             <FormGroup row>
               <Col md="6">
                 <Label>Title</Label>
+                <FormText color="muted"> E.g. "Football for amaterus" </FormText>
                 <Input onChange={(e) => onInputChange(e.target.value, 'title')}
                   valid={!shouldMarkError('title')}
                   onBlur={handleBlur('title')}
@@ -23,22 +24,47 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Col md="4">
+              <Col md="6">
                 <Label>People needed</Label>
+                <FormText color="muted"> How many people does this event need </FormText>
                 <Input onChange={(e) => onInputChange(e.target.value, 'peopleNeeded')}
+                  min="1"
+                  max="100"
                   value={event.peopleNeeded} type="number" />
+              </Col>
+              <Col md="6">
+                <Label>Price per person</Label>
+                <FormText color="muted"> How much will the event cost? </FormText>
+                <Input onChange={(e) => onInputChange(e.target.value, 'totalPrice')}
+                  min="0"
+                  max="10000"
+                  value={event.totalPrice} type="number" step="0.1" />
               </Col>
             </FormGroup>
             <FormGroup row>
               <Col>
                 <Label>Description</Label>
+                <FormText color="muted"> Enter notes to the other players or anything you need to share for the event </FormText>
                 <Input onChange={(e) => onInputChange(e.target.value, 'description')}
                   valid={!shouldMarkError('description')}
                   onBlur={handleBlur('description')}
                   value={event.description} type="textarea" />
-                  <FormFeedback>Title should be at least 20 characters long</FormFeedback>
+                  <FormFeedback>Description should be at least 20 characters long</FormFeedback>
               </Col>
             </FormGroup>
+            <FormGroup>
+              <Col>
+                <Label>Location</Label>
+                <FormText color="muted"> Drag the marker to the location of the event </FormText>
+                <MapComponent isMarkerShown
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `300px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  markerPosition={markerPosition}
+                  onMarkerDragEnd={onInputChange}/>
+              </Col>
+            </FormGroup> 
             <FormGroup row>
               <Col>
                 <Label>Difficulty</Label>
@@ -70,7 +96,8 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
             </FormGroup>
             <FormGroup row>
               <Col md="6">
-                <Label>Sport</Label>
+                <Label>Sport Type</Label>
+                <FormText color="muted"> What are you playing </FormText>
                 <Input type="select" onChange={(e) => onInputChange(e.target.value, 'sport')}
                   value={event.sport}>
                   <option>Select</option>
@@ -82,7 +109,6 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
             </FormGroup>
             <FormGroup row>
               <Col>
-                <Label>Date</Label>
                 <DatePicker
                   onChange={(date) => onInputChange(date, 'date')}
                   value={event.date}
@@ -91,24 +117,13 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
             </FormGroup>
             <FormGroup row>
               <Col>
-                <Label>Time</Label>
+                <FormText color="muted"> Where? </FormText>
                 <TimePicker
                   onChange={(time) => onInputChange(time, 'time')}
                   value={event.time}
                 />
               </Col>
-            </FormGroup>
-            <FormGroup>
-              <Col>
-                <MapComponent isMarkerShown
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                  loadingElement={<div style={{ height: `100%` }} />}
-                  containerElement={<div style={{ height: `300px` }} />}
-                  mapElement={<div style={{ height: `100%` }} />}
-                  markerPosition={markerPosition}
-                  onMarkerDragEnd={onInputChange}/>
-              </Col>
-            </FormGroup>       
+            </FormGroup>      
           </FormGroup>
 
           <FormGroup>

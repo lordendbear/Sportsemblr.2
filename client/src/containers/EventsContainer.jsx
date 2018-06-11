@@ -121,13 +121,13 @@ class EventsContainer extends React.Component {
 
 const emptyEvent = {
     title: '',
-    peopleNeeded: 0,
+    peopleNeeded: 1,
     sport: '',
     description: '',
     difficulty: 'beginner',
     date: new Date(),
     time: '18:00',
-    totalPrice: 0,
+    totalPrice: 5,
     location: {
         lat: 0,
         lng: 0
