@@ -126,6 +126,7 @@ const emptyEvent = {
     description: '',
     difficulty: 'beginner',
     date: new Date(),
+    duration: 1,
     time: '18:00',
     totalPrice: 5,
     location: {

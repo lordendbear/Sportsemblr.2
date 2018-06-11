@@ -48,6 +48,10 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  duration: {
+    type: Number,
+    required: true
+  },
   organizer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

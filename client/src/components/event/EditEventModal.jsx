@@ -70,6 +70,47 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
               </Col>
             </FormGroup> 
             <FormGroup row>
+              <Col md="6">
+                <Label>Sport Type</Label>
+                <FormText color="muted"> What are you playing </FormText>
+                <Input type="select" onChange={(e) => onInputChange(e.target.value, 'sport')}
+                  value={event.sport}>
+                  <option>Select</option>
+                  <option>Football</option>
+                  <option>Basketball</option>
+                  <option>Voleyball</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col>
+                <FormText color="muted"> Date </FormText>
+                <DatePicker
+                  onChange={(date) => onInputChange(date, 'date')}
+                  value={event.date}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col>
+                <FormText color="muted"> Time </FormText>
+                <TimePicker
+                  onChange={(time) => onInputChange(time, 'time')}
+                  value={event.time}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="2">
+                <Label>Duration</Label>
+                <FormText color="muted"> In hours </FormText>
+                <Input onChange={(e) => onInputChange(e.target.value, 'duration')}
+                  min="0.25"
+                  max="1000"
+                  value={event.duration} type="number" step="0.25" />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
               <Col>
                 <Label>Difficulty</Label>
                 <FormGroup check>
@@ -98,36 +139,6 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
                 </FormGroup>
               </Col>
             </FormGroup>
-            <FormGroup row>
-              <Col md="6">
-                <Label>Sport Type</Label>
-                <FormText color="muted"> What are you playing </FormText>
-                <Input type="select" onChange={(e) => onInputChange(e.target.value, 'sport')}
-                  value={event.sport}>
-                  <option>Select</option>
-                  <option>Football</option>
-                  <option>Basketball</option>
-                  <option>Voleyball</option>
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col>
-                <DatePicker
-                  onChange={(date) => onInputChange(date, 'date')}
-                  value={event.date}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col>
-                <FormText color="muted"> Where? </FormText>
-                <TimePicker
-                  onChange={(time) => onInputChange(time, 'time')}
-                  value={event.time}
-                />
-              </Col>
-            </FormGroup>      
           </FormGroup>
 
           <FormGroup>

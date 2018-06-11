@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import {
-    Badge,
-    Row,
-    Col
+    Badge
 } from 'reactstrap';
 import MapComponent from '../common/MapComponent';
 
@@ -13,7 +11,13 @@ const renderPrice = (price) => <span><strong><em>{`${price}$`}</em></strong></sp
 
 // TODO: After X hours should be days, hours, minutes...
 const EventShortComponent = ({ event, isActive }) => {
-    debugger;
+    let duration, hours, mins;
+    if(event.duration) {
+        duration = event.duration.toString().split('.');
+        [hours] = duration;
+        mins = (duration[1] * 60) / 100
+    }
+
     return (
         <tr>
             <td><Link to={'/events/' + event._id}>{event.title}</Link></td>
@@ -23,6 +27,7 @@ const EventShortComponent = ({ event, isActive }) => {
                 <br/>
                 <strong><em>({Math.round(Math.abs(Date.now() - event.date) / 36e5)} h)</em></strong>
             </td>
+            <td>{event.duration ? `${hours} h ${mins} min` : 'n/a'}</td>
             <td>{event.totalPrice === 0 ? renderFree() : renderPrice(event.totalPrice)}</td>
             <td>
                 {

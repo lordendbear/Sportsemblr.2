@@ -31,6 +31,7 @@ const EventsList = ({ events, onNewEventClick }) => {
                     <th>Title</th>
                     <th>What</th>
                     <th>When</th>
+                    <th>Duration</th>
                     <th>Price / person</th>
                     <th>Location</th>
                     <th>People</th>
