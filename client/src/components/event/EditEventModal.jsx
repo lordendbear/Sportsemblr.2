@@ -3,9 +3,10 @@ import Modal from 'react-bootstrap4-modal';
 import DatePicker from 'react-date-picker';
 import TimePicker from 'react-time-picker';
 import { Button, FormGroup, Input, Form, Col, Label, FormFeedback } from 'reactstrap';
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
+import MapComponent from '../common/MapComponent';
 
-const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, handleBlur, shouldMarkError, isSaveDisabled, saveEvent }) => {  
+const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, handleBlur, shouldMarkError, isSaveDisabled, saveEvent, markerPosition, onMarkerDragEnd}) => {
   return !isAuthenticated ? 
     <Redirect to={{ pathname: '/login' }} /> :
     (<Modal visible={true} onClickBackdrop={closeModal} dialogClassName="modal-lg">
@@ -96,7 +97,18 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
                   value={event.time}
                 />
               </Col>
-            </FormGroup>            
+            </FormGroup>
+            <FormGroup>
+              <Col>
+                <MapComponent isMarkerShown
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `300px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  markerPosition={markerPosition}
+                  onMarkerDragEnd={onInputChange}/>
+              </Col>
+            </FormGroup>       
           </FormGroup>
 
           <FormGroup>
