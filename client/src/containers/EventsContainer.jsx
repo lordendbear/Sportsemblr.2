@@ -13,6 +13,7 @@ class EventsContainer extends React.Component {
             isOpen: false,
             event: Object.assign({}, props.event),
             isAuthenticated: this.props.isLoggedIn(),
+            markerPosition: { lat: -34.397, lng: 150.644 },
 
             touched: {
                 title: false,
@@ -49,7 +50,8 @@ class EventsContainer extends React.Component {
                         handleBlur={this.handleBlur}
                         saveEvent={this.saveEvent}
                         shouldMarkError={this.shouldMarkError}
-                        isSaveDisabled={isSaveDisabled}>
+                        isSaveDisabled={isSaveDisabled}
+                        markerPosition={this.state.markerPosition}>
                     </EditEventModal>}
             </div>
         );
@@ -57,6 +59,15 @@ class EventsContainer extends React.Component {
 
     inputChange(value, property) {
         let event = Object.assign({}, this.state.event);
+
+        if(property === 'location') {
+            const location = {
+                lat: value.latLng.lat(),
+                lng: value.latLng.lng()
+            }
+            
+            value = location;
+        }
 
         event[property] = value;
 
@@ -94,7 +105,7 @@ class EventsContainer extends React.Component {
 
     isSaveDisabled() {
         const isSaveDisabled = Object.values(this.validate(this.state.event)).reduce((a, b) => a || b);
-        debugger;
+
         return isSaveDisabled;
     }
 
@@ -116,7 +127,11 @@ const emptyEvent = {
     difficulty: 'beginner',
     date: new Date(),
     time: '18:00',
-    totalPrice: 0
+    totalPrice: 0,
+    location: {
+        lat: 0,
+        lng: 0
+    }
 };
 
 const mapStateToProps = state => {
