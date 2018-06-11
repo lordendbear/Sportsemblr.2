@@ -56,6 +56,10 @@ const eventSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  location: {
+    lat: Number,
+    lng: Number
+  },
   requests: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Request'
