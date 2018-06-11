@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap4-modal';
 import DatePicker from 'react-date-picker';
 import TimePicker from 'react-time-picker';
-import { Button, FormGroup, Input, Form, Col, Label, FormFeedback, UncontrolledButtonDropdown } from 'reactstrap';
+import { Button, FormGroup, Input, Form, Col, Label, FormFeedback } from 'reactstrap';
 import { Redirect } from "react-router-dom";
 
 const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, handleBlur, shouldMarkError, isSaveDisabled, saveEvent }) => {  
