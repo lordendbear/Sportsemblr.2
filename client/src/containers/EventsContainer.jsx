@@ -12,12 +12,19 @@ class EventsContainer extends React.Component {
         this.state = { 
             isOpen: false,
             event: Object.assign({}, props.event),
-            isAuthenticated: this.props.isLoggedIn()
+            isAuthenticated: this.props.isLoggedIn(),
+
+            touched: {
+                title: false,
+                description: false
+            }
         };
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
         this.inputChange = this.inputChange.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.shouldMarkError = this.shouldMarkError.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -29,10 +36,21 @@ class EventsContainer extends React.Component {
     }
 
     render() {
+        const isSaveDisabled = this.isSaveDisabled();
+
         return (
             <div>
                 <EventsList events={this.props.events} onNewEventClick={this.toggleModal} ></EventsList>
-                {this.state.isOpen && <EditEventModal isAuthenticated={this.state.isAuthenticated} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
+                {this.state.isOpen &&
+                    <EditEventModal isAuthenticated={this.state.isAuthenticated}
+                        closeModal={this.toggleModal}
+                        event={this.state.event}
+                        onInputChange={this.inputChange}
+                        handleBlur={this.handleBlur}
+                        saveEvent={this.saveEvent}
+                        shouldMarkError={this.shouldMarkError}
+                        isSaveDisabled={isSaveDisabled}>
+                    </EditEventModal>}
             </div>
         );
     }
@@ -45,7 +63,18 @@ class EventsContainer extends React.Component {
         this.setState({ event });
     }
 
+    handleBlur = (field) => (evt) => {
+        this.setState({
+          touched: { ...this.state.touched, [field]: true },
+        });
+    }
+
     saveEvent() {
+        const event = this.state.event;
+        const time = event.time.split(':');
+
+        event.date.setHours(time[0], time[1]);
+
         this.props.saveEvent(this.state.event)
             .then(res => {
                 this.toggleModal();
@@ -54,6 +83,28 @@ class EventsContainer extends React.Component {
 
     toggleModal() {
         this.setState({ isOpen: !this.state.isOpen });
+    }
+    
+    validate(event) {
+        return {
+            title: event.title.length < 3,
+            description: event.description.length < 20
+        }
+    }
+
+    isSaveDisabled() {
+        const isSaveDisabled = Object.values(this.validate(this.state.event)).reduce((a, b) => a || b);
+        debugger;
+        return isSaveDisabled;
+    }
+
+    shouldMarkError(field) {
+        const errors = this.validate(this.state.event);
+
+        const hasError = errors[field];
+        const shouldShow = this.state.touched[field];
+
+        return hasError ? shouldShow : false;
     }
 }
 
@@ -64,6 +115,7 @@ const emptyEvent = {
     description: '',
     difficulty: 'beginner',
     date: new Date(),
+    time: '18:00',
     totalPrice: 0
 };
 
