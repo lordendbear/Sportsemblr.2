@@ -4,13 +4,14 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 const MapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    defaultCenter={props.markerPosition}>
         {
             props.isMarkerShown &&
                 <Marker position={props.markerPosition}
                     onDragEnd={(data) => props.onMarkerDragEnd(data, 'location')}
-                    defaultClickable
-                    defaultDraggable />
+                    defaultClickable={props.markerClickable}
+                    defaultDraggable={props.markerDraggable}
+                />
         }
   </GoogleMap>
 ));

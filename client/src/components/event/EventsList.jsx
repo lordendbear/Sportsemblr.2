@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 
 const renderNoEventsMessage = () => <tr><td>No events right now</td></tr>
-
+// TODO: Should add filers and orders
 const EventsList = ({ events, onNewEventClick }) => {
   return (
     <div className="animated fadeIn">
@@ -29,8 +29,10 @@ const EventsList = ({ events, onNewEventClick }) => {
                 <thead>
                   <tr>
                     <th>Title</th>
+                    <th>What</th>
                     <th>When</th>
-                    <th>Organizer</th>
+                    <th>Price / person</th>
+                    <th>Location</th>
                     <th>People</th>
                     <th>Status</th>
                   </tr>

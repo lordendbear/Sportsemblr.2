@@ -6,6 +6,7 @@ import { Button, FormGroup, Input, Form, Col, Label, FormFeedback, FormText } fr
 import { Redirect } from 'react-router-dom';
 import MapComponent from '../common/MapComponent';
 
+// TODO: Add check if date & time is in the past. You can't add an event in the past
 const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, handleBlur, shouldMarkError, isSaveDisabled, saveEvent, markerPosition, onMarkerDragEnd}) => {
   return !isAuthenticated ? 
     <Redirect to={{ pathname: '/login' }} /> :
@@ -62,7 +63,10 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
                   containerElement={<div style={{ height: `300px` }} />}
                   mapElement={<div style={{ height: `100%` }} />}
                   markerPosition={markerPosition}
-                  onMarkerDragEnd={onInputChange}/>
+                  onMarkerDragEnd={onInputChange}
+                  markerClickable={true}
+                  markerDraggable={true}
+                />
               </Col>
             </FormGroup> 
             <FormGroup row>

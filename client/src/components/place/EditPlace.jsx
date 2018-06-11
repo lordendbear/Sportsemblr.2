@@ -1,5 +1,4 @@
 import React from 'react';
-import { DateRange } from 'react-date-range';
 
 import {
   Row,
@@ -41,12 +40,6 @@ const EditPlace = ({ event, onSave, onChange, saving, errors }) => {
         <FormGroup row>
           <Col md="3">
             <Label htmlFor="password-input">Select date</Label>
-          </Col>
-          <Col xs="12" md="9">
-            <DateRange
-					    onInit={this.handleSelect}
-					    onChange={this.handleSelect}
-			  	  />
           </Col>
         </FormGroup>
         <FormGroup row>
