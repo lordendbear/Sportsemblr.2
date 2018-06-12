@@ -4,7 +4,7 @@ import DatePicker from 'react-date-picker';
 import TimePicker from 'react-time-picker';
 import { Button, FormGroup, Input, Form, Col, Label, FormFeedback, FormText } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
-import MapComponent from '../common/MapComponent';
+import MapSearchBox from '../common/MapSearchBox';
 
 // TODO: Add check if date & time is in the past. You can't add an event in the past
 const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, handleBlur, shouldMarkError, isSaveDisabled, saveEvent, markerPosition, onMarkerDragEnd}) => {
@@ -57,13 +57,13 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
               <Col>
                 <Label>Location</Label>
                 <FormText color="muted"> Drag the marker to the location of the event </FormText>
-                <MapComponent isMarkerShown
+                <MapSearchBox isMarkerShown
                   googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={<div style={{ height: `300px` }} />}
                   mapElement={<div style={{ height: `100%` }} />}
                   markerPosition={markerPosition}
-                  onMarkerDragEnd={onInputChange}
+                  onInputChange={onInputChange}
                   markerClickable={true}
                   markerDraggable={true}
                 />
