@@ -5,3 +5,36 @@ textarea {
 .pac-container {
     z-index: 1100 !important;
 }
+
+details summary::-webkit-details-marker {
+    background: none;
+    color: transparent;
+}
+details[open] summary::-webkit-details-marker {
+    font-weight: bold;
+    background: none;
+    color: transparent;
+}
+
+details[open] summary {
+    font-weight: bold;
+}
+
+details summary::before {
+    content: "x";
+    content: "\f041";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+}
+
+details[open] summary::before {
+    content: "x";
+    content: "\f041";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+    zoom: 1.3;
+    color: green;
+}
+
+.simple-map-wrapper {
+    transition: opacity 1s ease-out;
+    margin-top: 15px;
+}

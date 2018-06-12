@@ -30,20 +30,26 @@ const EventShortComponent = ({ event, isActive }) => {
             <td>{event.duration ? `${hours} h ${mins} min` : 'n/a'}</td>
             <td>{event.totalPrice === 0 ? renderFree() : renderPrice(event.totalPrice)}</td>
             <td>
-                <span>{event.address ? event.address : ''}</span>
-                {
-                    !event.location ? 
-                        <span> 'No geolocation added' </span> :
-                        <MapComponent isMarkerShown
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                            loadingElement={<div style={{ height: `100%` }} />}
-                            containerElement={<div style={{ height: `150px`, width: '250px' }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
-                            markerPosition={event.location}
-                            markerDraggeble={false}
-                            markerClickable={false}
-                        />
-                }
+                <details>
+                    <summary>
+                        <span>{event.address ? `${event.address}` : 'No address added'}</span>
+                    </summary>
+                    {
+                        !event.location ? 
+                            <span> 'This event has no location provided :/' </span> :
+                            <div className="simple-map-wrapper">
+                                <MapComponent isMarkerShown
+                                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                                    loadingElement={<div style={{ height: `100%` }} />}
+                                    containerElement={<div style={{ height: `150px`, width: '250px' }} />}
+                                    mapElement={<div style={{ height: `100%` }} />}
+                                    markerPosition={event.location}
+                                    markerDraggeble={false}
+                                    markerClickable={false}
+                                />
+                            </div>
+                    }
+                </details>
             </td>
             <td>{event.peopleJoined.length} / {event.peopleNeeded}</td>
             <td>
