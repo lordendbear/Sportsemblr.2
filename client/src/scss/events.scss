@@ -6,35 +6,48 @@ textarea {
     z-index: 1100 !important;
 }
 
+.simple-map-wrapper {
+    transition: opacity 1s ease-out;
+    margin-top: 15px;
+}
+
+// Details styles
+details[open] summary {
+    font-weight: bold;
+}
+
 details summary::-webkit-details-marker {
     background: none;
     color: transparent;
 }
 details[open] summary::-webkit-details-marker {
-    font-weight: bold;
     background: none;
     color: transparent;
 }
 
-details[open] summary {
-    font-weight: bold;
+details summary::before {
+    content: "\f041";
+    font-family: FontAwesome;
 }
 
-details summary::before {
-    content: "x";
-    content: "\f041";  /* this is your text. You can also use UTF-8 character codes as I do here */
+details summary::after {
+    font-size: 12px;
+    margin-left: 5px;
+    content: "\f054";
     font-family: FontAwesome;
 }
 
 details[open] summary::before {
-    content: "x";
-    content: "\f041";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    content: "\f041";
     font-family: FontAwesome;
     zoom: 1.3;
     color: green;
 }
 
-.simple-map-wrapper {
-    transition: opacity 1s ease-out;
-    margin-top: 15px;
+details[open] summary::after {
+    font-size: 12px;
+    margin-left: 5px;
+    content: "\f078";
+    font-family: FontAwesome;
 }
+
