@@ -57,12 +57,14 @@ const eventSchema = new mongoose.Schema({
     ref: 'User'
   },
   totalPrice: {
-    type: Number,
-    required: true
+    type: Number
   },
   location: {
     lat: Number,
     lng: Number
+  },
+  address: {
+    type: String
   },
   requests: [{
     type: mongoose.Schema.Types.ObjectId,
