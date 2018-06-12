@@ -60,15 +60,6 @@ class EventsContainer extends React.Component {
     inputChange(value, property) {
         let event = Object.assign({}, this.state.event);
 
-        if(property === 'location') {
-            const location = {
-                lat: value.latLng.lat(),
-                lng: value.latLng.lng()
-            }
-            
-            value = location;
-        }
-
         event[property] = value;
 
         this.setState({ event });
@@ -132,7 +123,8 @@ const emptyEvent = {
     location: {
         lat: 0,
         lng: 0
-    }
+    },
+    address: ''
 };
 
 const mapStateToProps = state => {

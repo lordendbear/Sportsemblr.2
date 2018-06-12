@@ -1,3 +1,7 @@
 textarea {
     resize: none;
 }
+
+.pac-container {
+    z-index: 1100 !important;
+}

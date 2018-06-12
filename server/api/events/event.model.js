@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+// TODO: Fix what is required and after that fix test because no time now!
 const eventSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -50,7 +51,7 @@ const eventSchema = new mongoose.Schema({
   },
   duration: {
     type: Number,
-    required: true
+    //required: true
   },
   organizer: {
     type: mongoose.Schema.Types.ObjectId,
@@ -58,11 +59,14 @@ const eventSchema = new mongoose.Schema({
   },
   totalPrice: {
     type: Number,
-    required: true
+    // required: true
   },
   location: {
     lat: Number,
     lng: Number
+  },
+  address: {
+    type: String
   },
   requests: [{
     type: mongoose.Schema.Types.ObjectId,
