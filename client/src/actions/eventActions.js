@@ -3,6 +3,19 @@ import EventApi from '../api/eventApi';
 import RequestApi from '../api/requestApi';
 import * as notificationActions from './notificationActions';
 
+export function setVisibilityFilter(filter) {
+  return {
+    type: 'SET_VISIBILITY_FILTER',
+    filter
+  };
+}
+
+export const VisibilityFilters = {
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_INACTIVE: 'SHOW_INACTIVE',
+  SHOW_ACTIVE: 'SHOW_ACTIVE'
+}
+
 export function loadEventsSuccess(events) {
   return {
     type: types.LOAD_EVENTS_SUCCESS,

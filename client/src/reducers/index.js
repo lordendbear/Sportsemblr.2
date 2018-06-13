@@ -5,6 +5,7 @@ import eventReducer from './eventReducer';
 import notificationReducer from './notificationReducer';
 import sportReducer from './sportReducer';
 import userReducer from './userReducer';
+import visibilityFilter from './visibilityFilter';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   places: placeReducer,
   notification: notificationReducer,
   sports: sportReducer,
-  user: userReducer
+  user: userReducer,
+  visibilityFilter
 });
 
 export default rootReducer;
