@@ -41,7 +41,7 @@ class EventsContainer extends React.Component {
 
         return (
             <div>
-                {this.props.events && <VisibleEventsList events={this.props.events} onNewEventClick={this.toggleModal} />}
+                {this.props.events && <VisibleEventsList events={this.props.events} onNewEventClick={this.toggleModal} isModalOpen={this.state.isOpen} />}
                 {this.state.isOpen &&
                     <EditEventModal isAuthenticated={this.state.isAuthenticated}
                         closeModal={this.toggleModal}

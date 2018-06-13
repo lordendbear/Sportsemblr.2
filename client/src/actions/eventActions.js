@@ -3,17 +3,23 @@ import EventApi from '../api/eventApi';
 import RequestApi from '../api/requestApi';
 import * as notificationActions from './notificationActions';
 
-export function setVisibilityFilter(filter) {
+export function setVisibilityFilter(filter, args) {
+  debugger;
   return {
     type: 'SET_VISIBILITY_FILTER',
-    filter
+    filter,
+    args
   };
 }
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_INACTIVE: 'SHOW_INACTIVE',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
+  SHOW_ACTIVE: 'SHOW_ACTIVE',
+  MIN_PRICE_FILTER: 'MIN_PRICE_FILTER',
+  MAX_PRICE_FILTER: 'MAX_PRICE_FILTER',
+  SPORT_TYPE_FILTER: 'SPORT_TYPE_FILTER',
+  SHOW_FREE_EVENTS: 'SHOW_FREE_EVENTS'
 }
 
 export function loadEventsSuccess(events) {
