@@ -9,18 +9,18 @@ const Filters = () => (
   <div>
     <Row>
         <Col md="3">
-            <ActiveFilter filter={VisibilityFilters.SHOW_ALL}>
+            <ActiveFilter filter={VisibilityFilters.SHOW_ALL} color="primary">
                 All
             </ActiveFilter>
-            <ActiveFilter filter={VisibilityFilters.SHOW_ACTIVE}>
+            <ActiveFilter filter={VisibilityFilters.SHOW_ACTIVE} color="success">
                 Active
             </ActiveFilter>
-            <ActiveFilter filter={VisibilityFilters.SHOW_INACTIVE}>
+            <ActiveFilter filter={VisibilityFilters.SHOW_INACTIVE} color="danger">
                 Inactive
             </ActiveFilter>
         </Col>
         <Col md="9">
-            <ActiveFilter filter={VisibilityFilters.SHOW_FREE_EVENTS} color="success" className="pull-right">
+            <ActiveFilter filter={VisibilityFilters.SHOW_FREE_EVENTS} color="warning" className="pull-right">
                 SHOW FREE EVENTS
             </ActiveFilter>
         </Col>    
