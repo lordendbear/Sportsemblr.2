@@ -51,3 +51,35 @@ details[open] summary::after {
     font-family: FontAwesome;
 }
 
+.create-event-btn {
+    display:block;
+    width:85px;
+    height:85px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#f5f5f5;
+    text-align:center;
+    text-decoration:none;
+    background: #43A564;
+    box-shadow: 0 0 3px gray;
+    font-size:25px;
+    line-height: 26px;
+    font-weight:bold;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    transition: all .2s ease-in-out;
+}
+
+.create-event-btn:hover {
+    transform: scale(1.2);
+    text-decoration: none;
+    color: #f5f5f5;
+    background: rgb(49, 119, 72);
+    border-color: transparent;
+    outline: none;
+}
+
+.create-event-btn:focus {
+    outline: none;
+}

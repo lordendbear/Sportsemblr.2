@@ -15,8 +15,7 @@ import Filters from './Filters';
 const renderNoEventsMessage = () => <tr><td>No events right now</td></tr>
 
 // TODO: Should add filers and orders
-const EventsList = ({ events, onNewEventClick }) => {
-  debugger;
+const EventsList = ({ events, onNewEventClick, isModalOpen }) => {
   return (
     <div className="animated fadeIn">
       <Row>
@@ -24,7 +23,7 @@ const EventsList = ({ events, onNewEventClick }) => {
           <Card>
             <CardHeader>
                <Filters />
-               <Button color="primary" size="sm" className="float-right" onClick={onNewEventClick}>New</Button>
+               {!isModalOpen && <Button className="create-event-btn" color="info" size="md" onClick={onNewEventClick}>NEW</Button>}
             </CardHeader>
             <CardBody>
               <Table responsive striped>
