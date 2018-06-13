@@ -1,3 +1,4 @@
+// TODO: Add more here
 export const SPORTS_SUGGESTIONS = [
     { id: 1, name: "Football" },
     { id: 2, name: "Volleyball" },
@@ -12,4 +13,5 @@ export const SPORTS_SUGGESTIONS = [
     { id: 11, name: "Swimming" },
     { id: 12, name: "Cycling" },
     { id: 13, name: "Roller skating" },
+    { id: 14, name: "Other" }
 ];

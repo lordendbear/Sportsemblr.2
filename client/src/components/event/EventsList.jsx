@@ -10,18 +10,20 @@ import {
   Table,
   Button
 } from 'reactstrap';
+import Filters from './Filters';
 
 const renderNoEventsMessage = () => <tr><td>No events right now</td></tr>
+
 // TODO: Should add filers and orders
 const EventsList = ({ events, onNewEventClick }) => {
+  debugger;
   return (
     <div className="animated fadeIn">
       <Row>
         <Col xs="12" lg="12">
           <Card>
             <CardHeader>
-              <i className="fa fa-align-justify"></i> All Events
-
+               <Filters />
                <Button color="primary" size="sm" className="float-right" onClick={onNewEventClick}>New</Button>
             </CardHeader>
             <CardBody>
@@ -40,14 +42,14 @@ const EventsList = ({ events, onNewEventClick }) => {
                 </thead>
                 <tbody>
                   {
-                    !events ?
-                    renderNoEventsMessage() :
-                    events.map(event =>
-                      <EventShort
-                        key={event._id}
-                        event={event}
-                        isActive={true}
-                      />)
+                    !events || events.length === 0 ?
+                      renderNoEventsMessage() :
+                      events.map(event =>
+                        <EventShort
+                          key={event._id}
+                          event={event}
+                          isActive={true}
+                        />)
                   }
                 </tbody>
               </Table>

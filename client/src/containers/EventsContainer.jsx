@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import EventsList from '../components/event/EventsList';
+import VisibleEventsList from './event/VisibleEventsList';
 import EditEventModal from '../components/event/EditEventModal';
 import * as eventActions from '../actions/eventActions';
 import { isLoggedIn } from '../actions/authActions';
@@ -41,7 +41,7 @@ class EventsContainer extends React.Component {
 
         return (
             <div>
-                <EventsList events={this.props.events} onNewEventClick={this.toggleModal} ></EventsList>
+                {this.props.events && <VisibleEventsList events={this.props.events} onNewEventClick={this.toggleModal} />}
                 {this.state.isOpen &&
                     <EditEventModal isAuthenticated={this.state.isAuthenticated}
                         closeModal={this.toggleModal}

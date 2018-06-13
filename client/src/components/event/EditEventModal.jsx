@@ -5,6 +5,7 @@ import TimePicker from 'react-time-picker';
 import { Button, FormGroup, Input, Form, Col, Label, FormFeedback, FormText } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import MapSearchBox from '../common/MapSearchBox';
+import { SPORTS_SUGGESTIONS as sports } from '../../util/constants';
 
 // TODO: Add check if date & time is in the past. You can't add an event in the past
 const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, handleBlur, shouldMarkError, isSaveDisabled, saveEvent, markerPosition, onMarkerDragEnd}) => {
@@ -75,10 +76,7 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
                 <FormText color="muted"> What are you playing </FormText>
                 <Input type="select" onChange={(e) => onInputChange(e.target.value, 'sport')}
                   value={event.sport}>
-                  <option>Select</option>
-                  <option>Football</option>
-                  <option>Basketball</option>
-                  <option>Voleyball</option>
+                  {sports.map(sport => <option key={sport.id}>{sport.name}</option>)}
                 </Input>
               </Col>
             </FormGroup>
