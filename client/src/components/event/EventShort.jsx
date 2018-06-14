@@ -15,8 +15,12 @@ const EventShortComponent = ({ event, isActive }) => {
     if(event.duration) {
         duration = event.duration.toString().split('.');
         [hours] = duration;
-        mins = (duration[1] * 60) / 100
+        mins = duration[1] ? (duration[1] * 60) / 100 : 0
     }
+
+    const durationText = !duration ? 'n/a' : 
+        mins ? `${hours} h ${mins} min` 
+            : `${hours} h`;
 
     return (
         <tr>
@@ -27,7 +31,7 @@ const EventShortComponent = ({ event, isActive }) => {
                 <br/>
                 <strong><em>({Math.round(Math.abs(Date.now() - event.date) / 36e5)} h)</em></strong>
             </td>
-            <td>{event.duration ? `${hours} h ${mins} min` : 'n/a'}</td>
+            <td>{durationText}</td>
             <td>{event.totalPrice === 0 ? renderFree() : renderPrice(event.totalPrice)}</td>
             <td>
                 <details>
