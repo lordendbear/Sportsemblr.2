@@ -3,6 +3,7 @@ import initialState from './initialState';
 
 const handleLoadEventSuccess = (state, action) => {
     return {
+        ...state,
         event: action.event
     };
 };

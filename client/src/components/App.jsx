@@ -11,7 +11,7 @@ import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
 import ManageEvent from '../containers/ManageEvent';
 import EventDetailsContainer from '../containers/event/EventDetailsContainer';
-import Aside from '../components/aside/Aside';
+import AsideContainer from '../containers/AsideContainer';
 import Profile from '../components/profile/Profile';
 import Home from '../components/home/Home';
 import PrivateRoute from '../components/auth/PrivateRoute.js';
@@ -55,7 +55,7 @@ class App extends Component {
               <PrivateRoute path="/admin" component={Admin} isAuthenticated={this.state.isAuthenticated} />
             </Container>
           </main>
-          {this.state.isAuthenticated && <Aside />}
+          {this.state.isAuthenticated && <AsideContainer />}
         </div>
       </div>
     );
