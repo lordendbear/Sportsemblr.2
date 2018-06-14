@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Progress, Card, CardTitle } from 'reactstrap';
+import { Row, Col, Progress, Card } from 'reactstrap';
 import MapComponent from '../common/MapComponent';
 
 const renderFree = () => <span className="badge badge-success">FREE</span>
