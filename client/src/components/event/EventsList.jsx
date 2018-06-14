@@ -1,5 +1,6 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+import LazyLoad from 'react-lazyload';
 import EventShort from './EventShort';
 import {
   Row,
@@ -23,7 +24,7 @@ const EventsList = ({ events, onNewEventClick, isModalOpen }) => {
           <Card>
             <CardHeader>
                <Filters />
-               {!isModalOpen && <Button className="create-event-btn" color="info" size="md" onClick={onNewEventClick}>NEW</Button>}
+               {!isModalOpen && <Button className="create-event-btn" size="md" onClick={onNewEventClick}>NEW</Button>}
             </CardHeader>
             <CardBody>
               <Table responsive striped>
@@ -44,11 +45,14 @@ const EventsList = ({ events, onNewEventClick, isModalOpen }) => {
                     !events || events.length === 0 ?
                       renderNoEventsMessage() :
                       events.map(event =>
-                        <EventShort
-                          key={event._id}
-                          event={event}
-                          isActive={true}
-                        />)
+                        {
+                          return <LazyLoad height={100}>
+                            <EventShort
+                              key={event._id}
+                              event={event}
+                              isActive={true} />
+                            </LazyLoad>;
+                        })
                   }
                 </tbody>
               </Table>

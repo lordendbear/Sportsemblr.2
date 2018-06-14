@@ -52,6 +52,7 @@
     "react-tag-autocomplete": "^5.5.1",
     "react-time-picker": "^2.3.2",
     "reactstrap": "5.0.0-beta",
+    "react-lazyload": "^2.3.0",
     "redux": "^3.7.2",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.2.0",
