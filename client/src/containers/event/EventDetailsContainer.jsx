@@ -46,11 +46,11 @@ export class EventDetailsContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.state.canJoin && !this.state.isOrganizer && <Button color="primary" size="sm" onClick={this.join}>Join</Button>}
+                {this.state.canJoin && !this.state.isOrganizer && <Button className="create-event-btn" onClick={this.join}>Join</Button>}
                 {this.state.isOrganizer &&
                     <span className="float-right">
-                        <Button color="primary" size="sm" onClick={this.toggleModal}>Edit</Button>
-                        <Button color="warning" size="sm" onClick={this.delete}>Delete</Button>
+                        <Button className="create-event-btn edit" onClick={this.toggleModal}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Button>
+                        <Button className="create-event-btn delete" onClick={this.delete}><i class="fa fa-trash" aria-hidden="true"></i></Button>
                     </span>
                 }
 
