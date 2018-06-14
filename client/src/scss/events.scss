@@ -52,6 +52,7 @@ details[open] summary::after {
 }
 
 .create-event-btn {
+    z-index: 1000;
     display:block;
     width:85px;
     height:85px;
@@ -80,6 +81,78 @@ details[open] summary::after {
     outline: none;
 }
 
+.delete {
+    width:65px;
+    height:65px;
+    background-color: red;
+}
+
+.delete:hover {
+    background: rgb(168, 0, 0);
+}
+
+.edit {
+    bottom: 95px;
+    width:65px;
+    height:65px;
+    background-color: #FDC02F;
+}
+
+.edit:hover {
+    background-color: rgb(207, 157, 40);
+}
+
 .create-event-btn:focus {
     outline: none;
+}
+
+.event-details-wrapper {
+    padding: 25px;
+}
+
+.progressbar-wrapper {
+    margin-bottom: 25px;
+}
+
+.speech-bubble {
+    margin: 25px 25px;
+    padding: 40px;
+    color: #f5f5f5;
+	position: relative;
+	background: #0094bb;
+	border-radius: .4em;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 10%;
+	width: 0;
+	height: 0;
+	border: 17px solid transparent;
+	border-bottom-color: #0094bb;
+	border-top: 0;
+	border-left: 0;
+	margin-left: -8.5px;
+	margin-top: -17px;
+}
+
+.event-single-info-wrapper {
+    margin: 15px 0;
+}
+
+.event-single-info {
+    margin-left: 5px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.event-info-icon {
+    vertical-align: middle;
+    color: rgb(18, 112, 141);
+}
+
+.progress-text {
+    color: gray;
 }
