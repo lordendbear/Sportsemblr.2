@@ -12,7 +12,7 @@ const renderProgressBar = (peopleJoined, peopleNeeded) => {
     }
 
     const color = percentage > 70 ? 'danger' : 'success';
-    debugger;
+
     return <Progress value={percentage} color={color} />
 }
 
@@ -88,17 +88,17 @@ const EventDetails = ({ event }) => {
             <Row>
                 <Col md="12">
                     <div className="event-single-info-wrapper">
-                        <i class="fa fa-clock-o fa-2x event-info-icon" aria-hidden="true"></i> <span className="event-single-info"> {hourText} </span>
+                        <i className="fa fa-clock-o fa-2x event-info-icon" aria-hidden="true"></i> <span className="event-single-info"> {hourText} </span>
                     </div>
                 </Col>
             </Row>
             <hr/>
             <Row>
-                <Col><div className="event-single-info-wrapper"><i class="fa fa-hourglass-start fa-2x event-info-icon" aria-hidden="true"></i> <span className="event-single-info"> {durationText} </span></div></Col>
+                <Col><div className="event-single-info-wrapper"><i className="fa fa-hourglass-start fa-2x event-info-icon" aria-hidden="true"></i> <span className="event-single-info"> {durationText} </span></div></Col>
             </Row>
             <hr/> 
             <Row>
-                <Col><div className="event-single-info-wrapper"><i class="fa fa-credit-card-alt fa-2x event-info-icon" aria-hidden="true"></i> <span className="event-single-info">{event.totalPrice === 0 ? renderFree() : renderPrice(event.totalPrice)}</span></div></Col>
+                <Col><div className="event-single-info-wrapper"><i className="fa fa-credit-card-alt fa-2x event-info-icon" aria-hidden="true"></i> <span className="event-single-info">{event.totalPrice === 0 ? renderFree() : renderPrice(event.totalPrice)}</span></div></Col>
             </Row>
         </Col>
 
@@ -113,7 +113,7 @@ const EventDetails = ({ event }) => {
                     </Row>
                     <Row>
                         <Col>
-                            <span><i class="fa fa-map-marker " aria-hidden="true"></i> {event.address ? event.address : 'No address specified'}</span>
+                            <span><i className="fa fa-map-marker " aria-hidden="true"></i> {event.address ? event.address : 'No address specified'}</span>
                         </Col>
                     </Row>
                     

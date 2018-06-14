@@ -3,7 +3,6 @@ import EventsList from '../../components/event/EventsList';
 import { VisibilityFilters } from '../../actions/eventActions';
 
 const getVisibleEvents = (events, action) => {
-  debugger;
   switch (action.filter) {
     case VisibilityFilters.SHOW_ALL:
       return events

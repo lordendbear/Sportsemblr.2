@@ -49,8 +49,8 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.canJoin && !this.state.isOrganizer && <Button className="create-event-btn" onClick={this.join}>Join</Button>}
                 {this.state.isOrganizer &&
                     <span className="float-right">
-                        <Button className="create-event-btn edit" onClick={this.toggleModal}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Button>
-                        <Button className="create-event-btn delete" onClick={this.delete}><i class="fa fa-trash" aria-hidden="true"></i></Button>
+                        <Button className="create-event-btn edit" onClick={this.toggleModal}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></Button>
+                        <Button className="create-event-btn delete" onClick={this.delete}><i className="fa fa-trash" aria-hidden="true"></i></Button>
                     </span>
                 }
 
