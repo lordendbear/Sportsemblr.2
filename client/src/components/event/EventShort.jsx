@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-import {
-    Badge
-} from 'reactstrap';
+import { Badge } from 'reactstrap';
 import MapComponent from '../common/MapComponent';
 
 const renderFree = () => <span className="badge badge-success">FREE</span>
