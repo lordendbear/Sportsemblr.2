@@ -55,7 +55,9 @@ const EventShortComponent = ({ event, isActive }) => {
                     }
                 </details>
             </td>
-            <td>{event.peopleJoined.length} / {event.peopleNeeded}</td>
+            <td>
+                {event.peopleNeeded > 0 ? `${event.peopleJoined.length} / ${event.peopleNeeded}` : <Badge color='danger'>FULL</Badge>}    
+            </td>
             <td>
                 <Badge color={isActive ? 'success' : 'danger'}>{isActive ? 'Active' : 'Inactive'}</Badge>
             </td>

@@ -37,9 +37,16 @@ class Aside extends Component {
     }
   }
 
+  getDateText(event) {
+    let date = new Date(event.date);
+    date = date.toLocaleString('bg-BG');
+
+    return date.split(',')[0];
+  }
+
   renderSingleEvent = (event) => [<div key={event._id} className="callout callout-warning m-0 py-3">
     <div><strong><Link className="aside-link" to={'/events/' + event._id}>{event.title}</Link></strong></div>
-    <small className="text-muted mr-3"><i className="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+    <small className="text-muted mr-3"><i className="icon-calendar"></i>&nbsp; {this.getDateText(event)}</small>
     <small className="text-muted"><i className="icon-location-pin"></i>&nbsp; {event.address || 'n/a'}</small>
   </div>,
   <hr key={event._createdAt} className="mx-3 my-0" />];

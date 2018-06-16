@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ExtendedNavbar from './layout/Navbar';
 import Route from 'react-router-dom/Route';
+import { withRouter } from 'react-router';
 import Register from './auth/register/Register';
 import Login from './auth/login/Login';
 import EventsContainer from '../containers/EventsContainer';
@@ -83,4 +84,4 @@ function mapStateToProps(state, ownProps) {
   return { isAuthenticated };
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
