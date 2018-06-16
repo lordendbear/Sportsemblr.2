@@ -4,7 +4,6 @@ import RequestApi from '../api/requestApi';
 import * as notificationActions from './notificationActions';
 
 export function setVisibilityFilter(filter, args) {
-  debugger;
   return {
     type: 'SET_VISIBILITY_FILTER',
     filter,

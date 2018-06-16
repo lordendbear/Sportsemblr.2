@@ -6,7 +6,6 @@ const getUserParticipatedEvents = (allEvents, user) => {
   if(!allEvents || allEvents.length === 0 || !user) {
     return null;
   }
-  debugger;
   return allEvents.filter(event => !event.peopleJoined.indexOf(user._id));
 }
 
@@ -19,7 +18,6 @@ const getUserEvents = (allEvents, user) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
   return {
     userEvents: getUserEvents(state.events.events, state.auth.user),
     joinedEvents: getUserParticipatedEvents(state.events.events, state.auth.user),
