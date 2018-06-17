@@ -69,6 +69,9 @@ export default (User, { passwordHasher }) => {
           });
         });
       });
+    },
+    getAll: () => {
+      return User.find({});
     }
   };
 }

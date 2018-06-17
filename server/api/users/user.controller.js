@@ -57,6 +57,18 @@ export default (data) => {
 
           return res.send(user);
         });
+    },
+    getAll: (req, res) => {
+      data
+        .getAll()
+        .then(users => {
+          users = users.map(u => {
+            u.password = null;
+            return u;
+          });
+
+          return res.send(users);
+        });
     }
   }
 }
