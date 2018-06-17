@@ -6,6 +6,7 @@ import userRouterInit from './users'
 import placeRouterInit from './place'
 import requestRouterInit from './request'
 import reviewRouterInit from './review'
+import messagesRouterInit from './messages'
 
 export default (app, config, utils, middleware) => {
   const router = Router();
@@ -27,6 +28,9 @@ export default (app, config, utils, middleware) => {
 
   const authRouter = authRouterInit(config, utils);
   router.use('/login', authRouter);
+
+  const messagesRouter = messagesRouterInit(config, utils);
+  // router.use('/messages', messagesRouter);
 
   app.use('/api', router);
 }
