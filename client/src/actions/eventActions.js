@@ -157,3 +157,15 @@ export function deleteEvent(event) {
       })
   }
 }
+
+export function getEventMessages(event) {
+  return (dispatch) => {
+    return EventApi.getMessages(event._id)
+      .then((response) => {
+        dispatch({
+          type: types.LOAD_MESSAGES_SUCCESS,
+          messages: response.data
+        });
+      });
+  }
+}

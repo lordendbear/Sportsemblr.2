@@ -52,6 +52,12 @@ class EventApi {
 
     return requester.deleteAuthorized(url);
   }
+
+  static getMessages(eventId) {
+    const url = `${API_URL}/events/${eventId}/messages`;
+
+    return requester.getAuthorized(url);
+  }
 }
 
 export default EventApi;
