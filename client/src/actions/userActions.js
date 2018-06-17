@@ -32,3 +32,33 @@ export function updateProfile(user) {
       })
   };
 }
+
+export function loadUsers() {
+  return (dispatch) => {
+    return UserApi.getAll()
+      .then(response => {
+        dispatch({
+          type: types.LOAD_USERS_SUCCESS,
+          users: response.data
+        });
+      })
+  };
+}
+
+export function deleteUser() {
+  return (dispatch) => {
+
+  };
+}
+
+export function removeAdmin() {
+  return (dispatch) => {
+
+  };
+}
+
+export function makeAdmin() {
+  return (dispatch) => {
+
+  };
+}

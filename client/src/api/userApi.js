@@ -13,6 +13,12 @@ class UserApi {
 
     return requester.putAuthorized(url, profile);
   }
+
+  static getAll() {
+    const url = `${API_URL}/users`;
+
+    return requester.get(url);
+  }
 }
 
 export default UserApi;
