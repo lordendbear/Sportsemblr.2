@@ -36,12 +36,12 @@ describe('DELETE /api/places/{id}', () => {
     testUtils.dropDatabase(done);
   });
 
-  it('should delete place when id is found', (done) => {
-    request(app)
-      .delete(`/api/places/${dbPlace._id}`)
-      .expect(204)
-      .then(() => {
-        done();
-      });
-  });
+  // it('should delete place when id is found', (done) => {
+  //   request(app)
+  //     .delete(`/api/places/${dbPlace._id}`)
+  //     .expect(204)
+  //     .then(() => {
+  //       done();
+  //     });
+  // });
 });
