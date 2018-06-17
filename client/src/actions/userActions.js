@@ -58,14 +58,15 @@ export function deleteUser(user) {
   };
 }
 
-export function removeAdmin() {
+export function toggleAdmin(user, admin) {
   return (dispatch) => {
-
-  };
-}
-
-export function makeAdmin() {
-  return (dispatch) => {
-
+    return UserApi.toggleAdmin(user._id, admin)
+      .then(() => {
+        dispatch(notificationActions.success({ message: 'Status changed...' }));
+        dispatch({
+          type: types.TOGGLE_ADMIN_SUCCESS,
+          user
+        });
+      });
   };
 }

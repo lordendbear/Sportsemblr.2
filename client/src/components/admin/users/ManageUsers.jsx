@@ -26,9 +26,16 @@ class ManageUsers extends React.Component {
     this.props.deleteUser(user);
   }
 
+  toggleAdmin = (user, makeAdmin) => {
+    this.props.toggleAdmin(user, makeAdmin)
+      .then(() => {
+        this.props.loadUsers();
+      });
+  }
+
   render() {
     return (
-      <UsersList users={this.state.users} delete={this.deleteUser} />
+      <UsersList users={this.state.users} delete={this.deleteUser} toggleAdmin={this.toggleAdmin} />
     );
   }
 }
@@ -48,6 +55,5 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(mapStateToProps, {
   loadUsers: userActions.loadUsers,
   deleteUser: userActions.deleteUser,
-  // makeAdmin: userActions.makeAdmin,
-  // removeAdmin: userActions.removeAdmin
+  toggleAdmin: userActions.toggleAdmin
 })(ManageUsers)
