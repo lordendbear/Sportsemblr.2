@@ -17,6 +17,7 @@ script:
   - npm run build
   - npm run test
   - cd ../server
+  - rm -rf public/
   - npm run build
   - npm run test
 
