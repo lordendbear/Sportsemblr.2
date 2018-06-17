@@ -12,7 +12,6 @@ import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
 import EventDetailsContainer from '../containers/event/EventDetailsContainer';
 import AsideContainer from '../containers/AsideContainer';
-import Profile from '../components/profile/Profile';
 import Home from '../components/home/Home';
 import PrivateRoute from '../components/auth/PrivateRoute.js';
 import Admin from '../components/admin/Admin';
@@ -52,7 +51,7 @@ class App extends Component {
               <PrivateRoute path="/place" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <Route exact path="/places" component={PlacesContainer} isAuthenticated={this.state.isAuthenticated} />
-              <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/profile" component={UserProfile} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/admin/sports" component={ManageSports} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/admin/users" component={ManageUsers} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/admin" component={Admin} isAuthenticated={this.state.isAuthenticated} />

@@ -70,7 +70,12 @@ const checkIfCanEdit = (profile, user) => {
 
 const mapStateToProps = (state, ownProps) => {
   const user = state.auth.user;
-  const profile = state.user.profile;
+  let profile = state.user.profile;
+
+  if (!ownProps.match.params.id) {
+    profile = Object.assign({}, user);
+  }
+
   const canEdit = checkIfCanEdit(profile, user);
 
   return {
