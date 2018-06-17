@@ -18,6 +18,8 @@ import Home from '../components/home/Home';
 import PrivateRoute from '../components/auth/PrivateRoute.js';
 import Admin from '../components/admin/Admin';
 import UserProfile from '../containers/user/UserProfile';
+import ManageSports from './admin/sport/ManageSports';
+import ManageUsers from './admin/users/ManageUsers';
 
 import { Container } from 'reactstrap';
 
@@ -52,7 +54,9 @@ class App extends Component {
               <PrivateRoute path="/places/:id" component={ManagePlace} isAuthenticated={this.state.isAuthenticated} />
               <Route exact path="/places" component={PlacesContainer} isAuthenticated={this.state.isAuthenticated} />
               <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={this.state.isAuthenticated} />
-              <PrivateRoute path="/admin" component={Admin} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/admin/sports" component={ManageSports} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/admin/users" component={ManageUsers} isAuthenticated={this.state.isAuthenticated} />
+              <PrivateRoute exact path="/admin" component={Admin} isAuthenticated={this.state.isAuthenticated} />
             </Container>
           </main>
           {this.state.isAuthenticated && <AsideContainer />}

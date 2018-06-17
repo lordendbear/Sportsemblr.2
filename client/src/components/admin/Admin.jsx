@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AdminRoute from './common/AdminRoute';
-import ManageSports from './sport/ManageSports';
+import { Link } from 'react-router-dom';
 
 class Admin extends Component {
   render() {
     return (
       <div>
-        <AdminRoute path="/admin/sports" component={ManageSports} isAuthorized={this.props.isAuthorized} />
+        <Link to='/admin/sports'>Sports</Link>
+        <hr />
+        <Link to='/admin/users'>Users</Link>
       </div>
     );
   }
@@ -18,14 +19,12 @@ Admin.propTypes = {
   children: PropTypes.object,
 }
 
-const checkAuthorized = () => {
-  // Do checks...
-
-  return true;
+const checkAuthorized = (user) => {
+  return !!user && user.role === 'admin';
 };
 
 function mapStateToProps(state, ownProps) {
-  const isAuthorized = checkAuthorized();
+  const isAuthorized = checkAuthorized(state.auth.user);
 
   return { isAuthorized };
 }
