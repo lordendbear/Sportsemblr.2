@@ -10,7 +10,6 @@ import EventsContainer from '../containers/EventsContainer';
 import PlacesContainer from '../containers/place/PlacesContainer';
 import ManagePlace from './place/ManagePlace';
 import Notification from '../containers/Notification';
-import ManageEvent from '../containers/ManageEvent';
 import EventDetailsContainer from '../containers/event/EventDetailsContainer';
 import AsideContainer from '../containers/AsideContainer';
 import Profile from '../components/profile/Profile';
