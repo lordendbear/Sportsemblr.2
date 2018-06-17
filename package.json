@@ -7,11 +7,12 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "cd client && npm run build && cd ../server && npm run build && node dist",
+    "start": "cd server && node dist",
     "start-client": "cd client && npm run start",
     "server-build": "cd server && npm run build && npm run start",
     "prepush": "cd client && npm test && npm run build && cd ../server && npm test",
-    "postinstall": "cd client && npm install && cd ../server && npm install"
+    "postinstall": "cd client && npm install cd ../server && npm install && cd ..",
+    "heroku-postbuild": "cd client && npm run build && cd ../server && npm run build && cd .."    
   },
   "repository": {
     "type": "git",
