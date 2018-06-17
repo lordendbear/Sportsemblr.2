@@ -6,17 +6,33 @@ import * as eventActions from '../../actions/eventActions';
 import EditEventModal from '../../components/event/EditEventModal';
 import { Button } from 'reactstrap';
 import ReviewForm from '../../components/event/ReviewForm';
+import EventChat from '../../components/event/EventChat';
+import socketIOClient from 'socket.io-client'
 
 export class EventDetailsContainer extends React.Component {
     constructor(props, context) {
         super(props, context);
+
+        const socket = socketIOClient(window.location.origin);
+        socket.on('chat message', (message) => {
+            if (message) {
+                const messages = Object.assign([], this.state.messages);
+                messages.push(message);
+
+                this.setState({ messages });
+                console.log(message);
+            }
+        });
 
         this.state = {
             isOpen: false,
             event: Object.assign({}, props.event),
             canJoin: props.canJoin,
             isOrganizer: props.isOrganizer,
-            ifCanLeaveReview: props.ifCanLeaveReview
+            ifCanLeaveReview: props.ifCanLeaveReview,
+            hasJoined: props.hasJoined,
+            messages: props.messages,
+            socket
         }
 
         this.toggleModal = this.toggleModal.bind(this);
@@ -26,6 +42,7 @@ export class EventDetailsContainer extends React.Component {
         this.leaveReview = this.leaveReview.bind(this);
         this.respondToRequest = this.respondToRequest.bind(this);
         this.delete = this.delete.bind(this);
+        this.writeMessage = this.writeMessage.bind(this);
     }
 
     componentDidMount() {
@@ -38,8 +55,14 @@ export class EventDetailsContainer extends React.Component {
                 event: nextProps.event,
                 canJoin: nextProps.canJoin,
                 isOrganizer: nextProps.isOrganizer,
+                hasJoined: nextProps.hasJoined,
+                messages: nextProps.messages,
                 ifCanLeaveReview: nextProps.ifCanLeaveReview
             });
+
+            if (!nextProps.messages) {
+                this.props.getEventMessages(nextProps.event);
+            }
         }
     }
 
@@ -59,10 +82,20 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.isOrganizer && < EventRequests requests={this.state.event.requests} respond={this.respondToRequest}></EventRequests>}
                 <hr />
                 {this.state.isOpen && <EditEventModal isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
+                {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat writeMessage={this.writeMessage} messages={this.state.messages}></EventChat>}
                 <hr />
                 {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
             </div>
         );
+    }
+
+    writeMessage(message) {
+        if (message.content) {
+            message.room = this.state.event._id;
+            message.user = this.props.user._id;
+            message.time = new Date();
+            this.state.socket.emit('chat message', message);
+        }
     }
 
     delete() {
@@ -142,20 +175,26 @@ const checkIfCanLeaveReview = (event, user) => {
     return result;
 }
 
+const checkIfHasJoined = (event, user) => {
+    return !!event && !!event.peopleJoined.find(u => u.user === user._id);
+}
+
 const mapStateToProps = (state, ownProps) => {
     const event = state.events.event;
     const user = state.auth.user;
-
+    const messages = state.message.messages;
     const result = {};
 
     if (user) {
         result.canJoin = checkIfCanJoin(event, user);
+        result.hasJoined = checkIfHasJoined(event, user);
         result.isOrganizer = checkIfIsOrganizer(event, user);
         result.ifCanLeaveReview = checkIfCanLeaveReview(event, user);
     }
 
     result.event = event;
     result.user = user;
+    result.messages = messages;
 
     return result;
 }
@@ -166,5 +205,6 @@ export default connect(mapStateToProps, {
     joinEvent: eventActions.joinEvent,
     respondToRequest: eventActions.respondToRequest,
     leaveReview: eventActions.leaveReview,
-    deleteEvent: eventActions.deleteEvent
+    deleteEvent: eventActions.deleteEvent,
+    getEventMessages: eventActions.getEventMessages
 })(EventDetailsContainer)
