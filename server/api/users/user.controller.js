@@ -77,6 +77,16 @@ export default (data) => {
         .then(() => {
           res.sendStatus(204);
         });
+    },
+    toggleAdmin: (req, res) => {
+      const id = req.params.id;
+      const makeAdmin = req.body.makeAdmin;
+
+      data.toggleAdmin(id, makeAdmin)
+        .then((user) => {
+          res.send(user);
+        })
+        .catch(err => console.log);
     }
   }
 }
