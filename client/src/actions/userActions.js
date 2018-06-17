@@ -45,9 +45,16 @@ export function loadUsers() {
   };
 }
 
-export function deleteUser() {
+export function deleteUser(user) {
   return (dispatch) => {
-
+    return UserApi.deleteUser(user._id)
+      .then(() => {
+        dispatch(notificationActions.success({ message: 'User deleted' }));
+        dispatch({
+          type: types.DELETE_USER_SUCCESS,
+          user
+        });
+      });
   };
 }
 

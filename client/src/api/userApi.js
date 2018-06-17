@@ -19,6 +19,12 @@ class UserApi {
 
     return requester.get(url);
   }
+
+  static deleteUser(userId) {
+    const url = `${API_URL}/users/${userId}`;
+
+    return requester.deleteAuthorized(url);
+  }
 }
 
 export default UserApi;
