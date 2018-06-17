@@ -69,6 +69,14 @@ export default (data) => {
 
           return res.send(users);
         });
+    },
+    delete: (req, res) => {
+      const id = req.params.id;
+
+      data.delete(id)
+        .then(() => {
+          res.sendStatus(204);
+        });
     }
   }
 }

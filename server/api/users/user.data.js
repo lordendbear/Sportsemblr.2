@@ -72,6 +72,9 @@ export default (User, { passwordHasher }) => {
     },
     getAll: () => {
       return User.find({});
+    },
+    delete: (id) => {
+      return User.remove({ _id: id });
     }
   };
 }
