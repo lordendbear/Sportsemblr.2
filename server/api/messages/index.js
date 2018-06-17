@@ -1,4 +1,6 @@
 import dataInit from './message.data';
+import controllerInit from './message.controller';
+import routerInit from './message.routes'
 import Message from './message.model';
 
 export default (app, auth) => {
@@ -13,4 +15,10 @@ export default (app, auth) => {
                 });
         });
     });
+
+    const controller = controllerInit(data);
+
+    const router = routerInit(controller, auth);
+
+    return router;
 };

@@ -29,8 +29,8 @@ export default (app, config, utils, middleware) => {
   const authRouter = authRouterInit(config, utils);
   router.use('/login', authRouter);
 
-  const messagesRouter = messagesRouterInit(config, utils);
-  // router.use('/messages', messagesRouter);
+  const messagesRouter = messagesRouterInit(app, middleware.auth);
+  router.use('/events', messagesRouter);
 
   app.use('/api', router);
 }

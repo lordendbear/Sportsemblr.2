@@ -51,7 +51,5 @@ export default function (config) {
     });
   }
 
-  initializeWebSockets(app);
-
   return app;
 }
