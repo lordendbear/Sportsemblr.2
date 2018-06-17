@@ -32,3 +32,41 @@ export function updateProfile(user) {
       })
   };
 }
+
+export function loadUsers() {
+  return (dispatch) => {
+    return UserApi.getAll()
+      .then(response => {
+        dispatch({
+          type: types.LOAD_USERS_SUCCESS,
+          users: response.data
+        });
+      })
+  };
+}
+
+export function deleteUser(user) {
+  return (dispatch) => {
+    return UserApi.deleteUser(user._id)
+      .then(() => {
+        dispatch(notificationActions.success({ message: 'User deleted' }));
+        dispatch({
+          type: types.DELETE_USER_SUCCESS,
+          user
+        });
+      });
+  };
+}
+
+export function toggleAdmin(user, admin) {
+  return (dispatch) => {
+    return UserApi.toggleAdmin(user._id, admin)
+      .then(() => {
+        dispatch(notificationActions.success({ message: 'Status changed...' }));
+        dispatch({
+          type: types.TOGGLE_ADMIN_SUCCESS,
+          user
+        });
+      });
+  };
+}

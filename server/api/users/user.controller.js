@@ -57,6 +57,36 @@ export default (data) => {
 
           return res.send(user);
         });
+    },
+    getAll: (req, res) => {
+      data
+        .getAll()
+        .then(users => {
+          users = users.map(u => {
+            u.password = null;
+            return u;
+          });
+
+          return res.send(users);
+        });
+    },
+    delete: (req, res) => {
+      const id = req.params.id;
+
+      data.delete(id)
+        .then(() => {
+          res.sendStatus(204);
+        });
+    },
+    toggleAdmin: (req, res) => {
+      const id = req.params.id;
+      const makeAdmin = req.body.makeAdmin;
+
+      data.toggleAdmin(id, makeAdmin)
+        .then((user) => {
+          res.send(user);
+        })
+        .catch(err => console.log);
     }
   }
 }

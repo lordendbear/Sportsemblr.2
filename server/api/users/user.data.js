@@ -69,6 +69,24 @@ export default (User, { passwordHasher }) => {
           });
         });
       });
+    },
+    getAll: () => {
+      return User.find({});
+    },
+    delete: (id) => {
+      return User.remove({ _id: id });
+    },
+    toggleAdmin: (id, makeAdmin) => {
+      return User.findById(id)
+        .then(user => {
+          if (makeAdmin) {
+            user.role = 'admin';
+          } else {
+            user.role = 'user';
+          }
+
+          return user.save();
+        });
     }
   };
 }

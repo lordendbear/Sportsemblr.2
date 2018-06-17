@@ -32,7 +32,7 @@ export function deleteSportSuccess(id) {
 
 export function deleteSport(id) {
     return (dispatch) => {
-        return SportApi.deleteSport()
+        return SportApi.deleteSport(id)
             .then(() => {
                 dispatch(deleteSportSuccess(id));
             });
