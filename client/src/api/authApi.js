@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4040/api';
+const API_URL = '/api';
 
 // How about naming those services? 
 class AuthApi {

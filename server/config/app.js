@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 
+import path from 'path';
 import initializePassport from './passport';
 import initializeDb from './db';
 import initializeApi from '../api';
@@ -40,6 +41,15 @@ export default function (config) {
   initializeDb(config);
 
   initializeApi(app, config, utils, middleware);
+
+  if (config.production) {
+    app.use(express.static(path.join(__dirname, '../public')));
+
+    app.get('*', function (req, res) {
+      const filePath = path.resolve(__dirname, '../public/index.html');
+      res.sendFile(filePath);
+    });
+  }
 
   initializeWebSockets(app);
 

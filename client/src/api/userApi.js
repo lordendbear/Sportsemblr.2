@@ -1,5 +1,5 @@
 import requester from './requester';
-const API_URL = 'http://localhost:4040/api';
+const API_URL = '/api';
 
 class UserApi {
   static getUserProfile(id) {

@@ -6,7 +6,8 @@ const config = {
     env: process.env.NODE_ENV,
     port: process.env.PORT,
     jwtSecret: process.env.JWT_SECRET,
-    connectionString: process.env.CONNECTION_STRING
+    connectionString: process.env.CONNECTION_STRING,
+    production: process.env.isProduction
 };
 
 export default config;

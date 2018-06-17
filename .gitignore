@@ -26,6 +26,7 @@ bld/
 
 client/build/
 server/dist/
+server/public/
 
 server/.env
 
