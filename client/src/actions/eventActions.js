@@ -107,10 +107,6 @@ export function joinEvent(event, user) {
         dispatch(notificationActions.success({ message: 'Request sent' }));
       })
       .catch(err => {
-        dispatch({
-          type: types.LOGIN_FAIL
-        });
-
         dispatch(notificationActions.error({ message: 'Something went wrong' }));
       });
   }
@@ -121,7 +117,8 @@ export function leaveReview(review, event) {
     return EventApi.leaveReview(review, event._id)
       .then(response => {
         dispatch({
-          type: types.LEAVE_REVIEW_SUCCESS
+          type: types.LEAVE_REVIEW_SUCCESS,
+          review: response.data
         })
 
         dispatch(notificationActions.success({ message: 'Review sent' }));
