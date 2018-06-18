@@ -92,11 +92,18 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.isOrganizer && < EventRequests requests={this.state.event.requests} respond={this.respondToRequest}></EventRequests>}
                 <hr />
                 {this.state.isOpen && <EditEventModal validate={this.validate} handleBlur={this.handleBlur} shouldMarkError={this.shouldMarkError} isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
-                {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat writeMessage={this.writeMessage} messages={this.state.messages}></EventChat>}
+                {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat isActive={this.checkIsActive()} writeMessage={this.writeMessage} messages={this.state.messages}></EventChat>}
                 <hr />
                 {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
             </div>
         );
+    }
+
+    checkIsActive = () => {
+        let date = this.props.event.date;
+        date = new Date(date);
+
+        return date > new Date();
     }
 
     handleBlur = (field) => (evt) => {
@@ -199,11 +206,12 @@ const checkIfCanLeaveReview = (event, user) => {
         const date = new Date(event.date);
 
         result = date < new Date();
+
         if (!result) {
             return result;
         }
 
-        result = !!event.reviews.find(r => r.user === user._id);
+        result = !event.reviews.find(r => r.user === user._id);
     }
 
     return result;

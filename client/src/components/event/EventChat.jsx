@@ -39,7 +39,7 @@ export class EventChat extends React.Component {
               </CardBody>
             </Card>))}
 
-        <Form onSubmit={(e) => { e.preventDefault() }}>
+        {this.props.isActive && <Form onSubmit={(e) => { e.preventDefault() }}>
           <FormGroup>
             <Row>
               <Col md="8">
@@ -53,7 +53,7 @@ export class EventChat extends React.Component {
           <FormGroup>
             <Button type="submit" size="xl" color="primary" onClick={this.sendMessage}><i className="fa fa-dot-circle-o"></i> Submit</Button>
           </FormGroup>
-        </Form>
+        </Form>}
       </div>)
   }
 }
