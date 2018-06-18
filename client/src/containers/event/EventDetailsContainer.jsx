@@ -144,7 +144,9 @@ const checkIfCanJoin = (event, user) => {
 
         const hasJoined = !!event.peopleJoined.find(u => u._id === user._id);
 
-        return !hasJoined && !hasRequested;
+        const fullEvent = event.peopleJoined;
+
+        return !hasJoined && !hasRequested && !fullEvent;
     }
 
     return false;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Progress, Card } from 'reactstrap';
+import { Row, Col, Progress, Card, Badge } from 'reactstrap';
 import MapComponent from '../common/MapComponent';
 
 const renderFree = () => <span className="badge badge-success">FREE</span>
@@ -13,9 +13,8 @@ const renderProgressBar = (peopleJoined, peopleNeeded) => {
 
     const color = percentage > 70 ? 'danger' : 'success';
 
-    return <Progress value={percentage} color={color} />
+    return peopleNeeded === 0 ?  <Progress value={100} color="danger" /> : <Progress value={percentage} color={color} />;
 }
-
 
 const renderMap = (location) => <MapComponent isMarkerShown
     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -58,7 +57,7 @@ const EventDetails = ({ event }) => {
             <div className="progressbar-wrapper">
                 <Row>
                     <Col md="7" className="text-center">
-                        <span className="progress-text">{`${event.peopleJoined.length} / ${event.peopleNeeded} joined`}</span>
+                        <span className="progress-text">{event.peopleNeeded > 0 ? `${event.peopleJoined.length} / ${event.peopleNeeded}` : <Badge color='danger'>FULL EVENT</Badge>}</span>
                     </Col>
                 </Row>
                 <Row>
