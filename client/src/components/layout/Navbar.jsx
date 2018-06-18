@@ -44,6 +44,11 @@ class Navbar extends React.Component {
           <NavItem className="px-3">
             {this.renderNavLink('Places', '/places')}
           </NavItem>
+          {this.props.isAdmin &&
+            <NavItem className="px-3">
+              {this.renderNavLink('Admin', '/admin')}
+            </NavItem>
+          }
         </Nav>
         {isAuthenticated &&
           <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>

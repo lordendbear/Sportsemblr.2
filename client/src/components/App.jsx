@@ -37,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <ExtendedNavbar isAuthenticated={this.state.isAuthenticated} />
+        <ExtendedNavbar isAuthenticated={this.state.isAuthenticated} isAdmin={this.props.isAdmin} />
         <Notification />
         <div className="app-body">
           <main className="main">
@@ -81,8 +81,9 @@ const checkAuthenticated = () => {
 
 function mapStateToProps(state, ownProps) {
   const isAuthenticated = checkAuthenticated();
+  const isAdmin = state.auth && state.auth.user && state.auth.user.role === 'admin';
 
-  return { isAuthenticated };
+  return { isAuthenticated, isAdmin };
 }
 
 export default withRouter(connect(mapStateToProps)(App));
