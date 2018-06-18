@@ -58,6 +58,12 @@ class EventApi {
 
     return requester.getAuthorized(url);
   }
+
+  static deleteMessage(eventId, messageId) {
+    const url = `${API_URL}/events/${eventId}/messages/${messageId}`;
+
+    return requester.deleteAuthorized(url);
+  }
 }
 
 export default EventApi;
