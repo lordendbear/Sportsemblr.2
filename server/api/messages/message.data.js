@@ -14,6 +14,10 @@ export default (Message) => {
     getMessages: (room) => {
       return Message.find({ room })
         .populate('user');
+    },
+    deleteMessage: (messageId) => {
+      return Message
+        .remove({ _id: messageId });
     }
   }
 }

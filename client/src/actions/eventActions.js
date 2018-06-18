@@ -166,3 +166,15 @@ export function getEventMessages(event) {
       });
   }
 }
+
+export function deleteEventMessage(event, message) {
+  return (dispatch) => {
+    return EventApi.deleteMessage(event._id, message._id)
+      .then((response) => {
+        dispatch({
+          type: types.DELETE_MESSAGE_SUCCESS,
+          messageId: message._id
+        });
+      });
+  }
+}

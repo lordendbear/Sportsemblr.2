@@ -29,7 +29,7 @@ const handleUpdateEventSuccess = (state, action) => {
     ];
 };
 
-const handleLeaveReviewtSuccess = (state, action) => {
+const handleLeaveReviewSuccess = (state, action) => {
     const event = Object.assign({}, state.event);
     const reviews = Object.assign([], event.reviews);
     reviews.push(action.review);
@@ -56,7 +56,7 @@ export default function eventReducer(state = initialState.events, action) {
             return handleUpdateEventSuccess(state, action);
 
         case types.LEAVE_REVIEW_SUCCESS:
-            return handleLeaveReviewtSuccess(state, action);
+            return handleLeaveReviewSuccess(state, action);
 
         default:
             return state;

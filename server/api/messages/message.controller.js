@@ -7,6 +7,15 @@ export default (data) => {
         .then(messages => {
           res.send(messages);
         })
+    },
+    deleteMessage: (req, res) => {
+      const id = req.params.messageId;
+
+      data
+        .deleteMessage(id)
+        .then(() => {
+          res.sendStatus(204);
+        })
     }
   };
 }

@@ -53,6 +53,7 @@ export class EventDetailsContainer extends React.Component {
         this.writeMessage = this.writeMessage.bind(this);
         this.shouldMarkError = this.shouldMarkError.bind(this);
         this.validate = this.validate.bind(this);
+        this.deleteMessage = this.deleteMessage.bind(this);
     }
 
     componentDidMount() {
@@ -92,12 +93,16 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.isOrganizer && < EventRequests requests={this.state.event.requests} respond={this.respondToRequest}></EventRequests>}
                 <hr />
                 {this.state.isOpen && <EditEventModal validate={this.validate} handleBlur={this.handleBlur} shouldMarkError={this.shouldMarkError} isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
-                {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat isActive={this.checkIsActive()} writeMessage={this.writeMessage} messages={this.state.messages}></EventChat>}
+                {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat isActive={this.checkIsActive()} canDelete={this.state.isOrganizer} writeMessage={this.writeMessage} messages={this.state.messages} deleteMessage={this.deleteMessage}></EventChat>}
                 <hr />
                 Reviews
                 {this.props.event && !this.checkIsActive() && <ReviewForm leaveReview={this.leaveReview} canLeaveReview={this.state.ifCanLeaveReview} reviews={this.props.event.reviews}> </ReviewForm>}
             </div>
         );
+    }
+
+    deleteMessage(message) {
+        this.props.deleteEventMessage(this.props.event, message);
     }
 
     checkIsActive = () => {
@@ -249,5 +254,6 @@ export default connect(mapStateToProps, {
     respondToRequest: eventActions.respondToRequest,
     leaveReview: eventActions.leaveReview,
     deleteEvent: eventActions.deleteEvent,
-    getEventMessages: eventActions.getEventMessages
+    getEventMessages: eventActions.getEventMessages,
+    deleteEventMessage: eventActions.deleteEventMessage
 })(EventDetailsContainer)
