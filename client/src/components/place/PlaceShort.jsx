@@ -4,7 +4,6 @@ import { Card, CardTitle, CardText, CardHeader, CardBody, CardLink } from 'react
 import { Link } from 'react-router-dom';
 
 const PlaceShort = ({ place }) => {
-    console.log(place);
     return (
         <Card className="well">
             <CardHeader>

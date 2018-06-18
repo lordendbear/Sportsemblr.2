@@ -47,13 +47,13 @@ export class ManagePlace extends React.Component {
     }
   }
 
-  handleDelete (i) {
+  handleDelete(i) {
     const selectedSports = this.state.selectedSports.slice(0)
     selectedSports.splice(i, 1)
     this.setState({ selectedSports })
   }
 
-  handleAddition (selectedSport) {
+  handleAddition(selectedSport) {
     const selectedSports = [].concat(this.state.selectedSports, selectedSport)
     this.setState({ selectedSports })
   }
@@ -143,7 +143,7 @@ export class ManagePlace extends React.Component {
                       minQueryLength={1}
                       allowNew={true}
                       delimiterChars={['Tab', 'Enter', ',']}
-                      placeholder={"Input sports"}/>
+                      placeholder={"Input sports"} />
                   </Col>
                 </FormGroup>
                 {/* Fuck linters */}
@@ -200,13 +200,13 @@ const getPlaceById = (places, id) => {
 };
 
 function mapStateToProps(state, ownProps) {
-  if(checkIfEmptyObject(state.places)) {
+  if (checkIfEmptyObject(state.places)) {
     return {};
   }
 
   const id = +ownProps.match.params.id;
 
-  const place = getPlaceById(state.places, id);
+  const place = getPlaceById(state.places.places, id);
 
   return {
     place
