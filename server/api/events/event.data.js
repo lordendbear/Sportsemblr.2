@@ -19,8 +19,8 @@ export default (Event) => {
       return Event
         .findById(id)
         .populate({
-          path: 'requests peopleJoined', populate: {
-            path: 'sender'
+          path: 'requests peopleJoined reviews', populate: {
+            path: 'sender user',
           }
         })
         .then(populated => {
