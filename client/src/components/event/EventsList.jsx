@@ -23,8 +23,8 @@ const EventsList = ({ events, onNewEventClick, isModalOpen }) => {
         <Col xs="12" lg="12">
           <Card>
             <CardHeader>
-               <Filters />
-               {!isModalOpen && <Button className="create-event-btn" size="md" onClick={onNewEventClick}>NEW</Button>}
+              <Filters />
+              {!isModalOpen && <Button className="create-event-btn" size="md" onClick={onNewEventClick}>NEW</Button>}
             </CardHeader>
             <CardBody>
               <Table responsive striped>
@@ -44,15 +44,14 @@ const EventsList = ({ events, onNewEventClick, isModalOpen }) => {
                   {
                     !events || events.length === 0 ?
                       renderNoEventsMessage() :
-                      events.map(event =>
-                        {
-                          return <LazyLoad height={100}>
-                            <EventShort
-                              key={event._id}
-                              event={event}
-                              isActive={true} />
-                            </LazyLoad>;
-                        })
+                      events.map(event => {
+                        return <LazyLoad key={event._id}
+                          height={100}>
+                          <EventShort
+                            event={event}
+                            isActive={true} />
+                        </LazyLoad>;
+                      })
                   }
                 </tbody>
               </Table>

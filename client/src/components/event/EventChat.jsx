@@ -31,7 +31,7 @@ export class EventChat extends React.Component {
       <div>
         {this.props.messages && this.props.messages.length &&
           this.props.messages
-            .map(m => (<Card>
+            .map(m => (<Card key={m._id}>
               <CardBody>
                 <CardTitle><Link to={'/users/' + m.user._id}>{m.user.name}</Link></CardTitle>
                 <CardSubtitle>{m.time}</CardSubtitle>

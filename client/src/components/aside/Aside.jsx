@@ -48,16 +48,16 @@ class Aside extends Component {
     <div><strong><Link className="aside-link" to={'/events/' + event._id}>{event.title}</Link></strong></div>
     <small className="text-muted mr-3"><i className="icon-calendar"></i>&nbsp; {this.getDateText(event)}</small>
     <small className="text-muted"><i className="icon-location-pin"></i>&nbsp; {event.address || 'n/a'}</small>
-  </div>,
-  <hr key={event._createdAt} className="mx-3 my-0" />];
+    <hr key={event._createdAt} className="mx-3 my-0" /></div>,
+  ];
 
   renderUserEvents = (which, events) => (<div>
-      <div className="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
-        <small><b>{which}</b></small>
-      </div>
-      <hr className="transparent mx-3 my-0" />
-      {(events && events.length > 0) ? events.map(event => this.renderSingleEvent(event)) : <div className="text-center">...</div>}
-    </div>);
+    <div className="callout m-0 py-2 text-muted text-center bg-light text-uppercase">
+      <small><b>{which}</b></small>
+    </div>
+    <hr className="transparent mx-3 my-0" />
+    {(events && events.length > 0) ? events.map((event) => this.renderSingleEvent(event)) : <div className="text-center">...</div>}
+  </div>);
 
   render() {
     return (
