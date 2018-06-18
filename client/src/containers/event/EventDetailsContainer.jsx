@@ -13,18 +13,7 @@ export class EventDetailsContainer extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        const socket = socketIOClient(window.location.origin);
-        socket.on('chat message', (message) => {
-            if (message) {
-                const messages = Object.assign([], this.state.messages);
-                messages.push(message);
-
-                this.setState({ messages });
-                console.log(message);
-            }
-        });
-
-        this.state = {
+        const state = {
             isOpen: false,
             event: Object.assign({}, props.event),
             canJoin: props.canJoin,
@@ -32,8 +21,27 @@ export class EventDetailsContainer extends React.Component {
             ifCanLeaveReview: props.ifCanLeaveReview,
             hasJoined: props.hasJoined,
             messages: props.messages,
-            socket
+            touched: {
+                title: false,
+                description: false
+            }
+        };
+
+        if (props.user) {
+            const socket = socketIOClient(window.location.origin);
+            socket.on('chat message', (message) => {
+                if (message) {
+                    const messages = Object.assign([], this.state.messages);
+                    messages.push(message);
+
+                    this.setState({ messages });
+                }
+            });
+
+            state.socket = socket;
         }
+
+        this.state = state;
 
         this.toggleModal = this.toggleModal.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
@@ -43,6 +51,8 @@ export class EventDetailsContainer extends React.Component {
         this.respondToRequest = this.respondToRequest.bind(this);
         this.delete = this.delete.bind(this);
         this.writeMessage = this.writeMessage.bind(this);
+        this.shouldMarkError = this.shouldMarkError.bind(this);
+        this.validate = this.validate.bind(this);
     }
 
     componentDidMount() {
@@ -60,7 +70,7 @@ export class EventDetailsContainer extends React.Component {
                 ifCanLeaveReview: nextProps.ifCanLeaveReview
             });
 
-            if (!nextProps.messages) {
+            if (!nextProps.messages && this.props.user) {
                 this.props.getEventMessages(nextProps.event);
             }
         }
@@ -70,7 +80,7 @@ export class EventDetailsContainer extends React.Component {
         return (
             <div>
                 {this.state.canJoin && !this.state.isOrganizer && <Button className="create-event-btn" onClick={this.join}>Join</Button>}
-                {this.state.isOrganizer &&
+                {(this.state.isOrganizer || this.props.isAdmin) &&
                     <span className="float-right">
                         <Button className="create-event-btn edit" onClick={this.toggleModal}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></Button>
                         <Button className="create-event-btn delete" onClick={this.delete}><i className="fa fa-trash" aria-hidden="true"></i></Button>
@@ -81,12 +91,34 @@ export class EventDetailsContainer extends React.Component {
                 <hr />
                 {this.state.isOrganizer && < EventRequests requests={this.state.event.requests} respond={this.respondToRequest}></EventRequests>}
                 <hr />
-                {this.state.isOpen && <EditEventModal isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
+                {this.state.isOpen && <EditEventModal validate={this.validate} handleBlur={this.handleBlur} shouldMarkError={this.shouldMarkError} isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
                 {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat writeMessage={this.writeMessage} messages={this.state.messages}></EventChat>}
                 <hr />
                 {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
             </div>
         );
+    }
+
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: { ...this.state.touched, [field]: true },
+        });
+    }
+
+    validate(event) {
+        return {
+            title: event.title.length < 3,
+            description: event.description.length < 20
+        }
+    }
+
+    shouldMarkError(field) {
+        const errors = this.validate(this.state.event);
+
+        const hasError = errors[field];
+        const shouldShow = this.state.touched[field];
+
+        return hasError ? shouldShow : false;
     }
 
     writeMessage(message) {
@@ -144,7 +176,7 @@ const checkIfCanJoin = (event, user) => {
 
         const hasJoined = !!event.peopleJoined.find(u => u._id === user._id);
 
-        const fullEvent = event.peopleJoined;
+        const fullEvent = event.peopleJoined && event.peopleJoined.length === event.peopleNeeded;
 
         return !hasJoined && !hasRequested && !fullEvent;
     }
@@ -192,6 +224,7 @@ const mapStateToProps = (state, ownProps) => {
         result.hasJoined = checkIfHasJoined(event, user);
         result.isOrganizer = checkIfIsOrganizer(event, user);
         result.ifCanLeaveReview = checkIfCanLeaveReview(event, user);
+        result.isAdmin = user.role === 'admin';
     }
 
     result.event = event;
