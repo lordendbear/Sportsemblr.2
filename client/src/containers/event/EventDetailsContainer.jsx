@@ -176,7 +176,7 @@ const checkIfCanLeaveReview = (event, user) => {
 }
 
 const checkIfHasJoined = (event, user) => {
-    return !!event && !!event.peopleJoined.find(u => u.user === user._id);
+    return !!event && !!event.peopleJoined.find(u => u._id === user._id);
 }
 
 const mapStateToProps = (state, ownProps) => {
