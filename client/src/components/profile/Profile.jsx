@@ -6,8 +6,7 @@ import {
   Row,
   Col,
   Card,
-  CardHeader,
-  CardImg
+  CardHeader
 } from 'reactstrap';
 
 // const radar = {
@@ -45,7 +44,7 @@ const Profile = ({ user }) => {
             <CardHeader>
               <strong>{user.name}</strong>
             </CardHeader>
-            <CardImg width="20%" src={user.picture} alt="Card image cap" />
+            <img src={user.picture} width="100px" alt="" />
 
             {/* <CardBody>
               <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
