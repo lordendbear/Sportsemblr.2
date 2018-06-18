@@ -37,6 +37,7 @@ export class EventChat extends React.Component {
                 <CardSubtitle>{m.time}</CardSubtitle>
                 <CardText>{m.content}</CardText>
               </CardBody>
+              {this.props.canDelete && <Button type="submit" size="s" color="danger" onClick={() => this.props.deleteMessage(m)}> Delete</Button>}
             </Card>))}
 
         {this.props.isActive && <Form onSubmit={(e) => { e.preventDefault() }}>
