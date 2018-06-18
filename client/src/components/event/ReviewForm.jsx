@@ -29,11 +29,12 @@ export class ReviewForm extends React.Component {
             .map(r => (<Card key={r._id}>
               <CardBody>
                 <CardTitle><Link to={'/users/' + r.user._id}>{r.user.name}</Link></CardTitle>
-                <CardText>{r.content}</CardText>
+                <CardText>{r.text}</CardText>
+                <CardText>{r.score}</CardText>
               </CardBody>
             </Card>))}
 
-        <Form onSubmit={(e) => { e.preventDefault() }}>
+        {this.props.canLeaveReview && <Form onSubmit={(e) => { e.preventDefault() }}>
           <FormGroup>
             <Row>
               <Col md="4">
@@ -52,7 +53,7 @@ export class ReviewForm extends React.Component {
           <FormGroup>
             <Button type="submit" size="xl" color="primary" onClick={() => this.props.leaveReview(this.state.review)}><i className="fa fa-dot-circle-o"></i> Review</Button>
           </FormGroup>
-        </Form>
+        </Form>}
       </div>)
   }
 }

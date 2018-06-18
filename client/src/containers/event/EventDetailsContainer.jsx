@@ -94,7 +94,8 @@ export class EventDetailsContainer extends React.Component {
                 {this.state.isOpen && <EditEventModal validate={this.validate} handleBlur={this.handleBlur} shouldMarkError={this.shouldMarkError} isAuthenticated={!!this.props.user} closeModal={this.toggleModal} event={this.state.event} onInputChange={this.inputChange} saveEvent={this.saveEvent}></EditEventModal>}
                 {this.state.messages && (this.state.hasJoined || this.state.isOrganizer) && <EventChat isActive={this.checkIsActive()} writeMessage={this.writeMessage} messages={this.state.messages}></EventChat>}
                 <hr />
-                {this.state.ifCanLeaveReview && <ReviewForm leaveReview={this.leaveReview}></ReviewForm>}
+                Reviews
+                {this.props.event && !this.checkIsActive() && <ReviewForm leaveReview={this.leaveReview} canLeaveReview={this.state.ifCanLeaveReview} reviews={this.props.event.reviews}> </ReviewForm>}
             </div>
         );
     }
@@ -201,7 +202,6 @@ const checkIfIsOrganizer = (event, user) => {
 
 const checkIfCanLeaveReview = (event, user) => {
     let result = false;
-
     if (event) {
         const date = new Date(event.date);
 
@@ -211,7 +211,7 @@ const checkIfCanLeaveReview = (event, user) => {
             return result;
         }
 
-        result = !event.reviews.find(r => r.user === user._id);
+        result = !event.reviews.find(r => r.user._id === user._id);
     }
 
     return result;
