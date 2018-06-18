@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Card, CardBody, CardTitle } from 'reactstrap';
 
 class Admin extends Component {
   render() {
     return (
       <div>
-        <Link to='/admin/sports'>Sports</Link>
-        <hr />
-        <Link to='/admin/users'>Users</Link>
+        {/* <Link to='/admin/sports'>Sports</Link>
+        <hr /> */}
+        <Card >
+          <CardBody>
+            <CardTitle><Link to='/admin/users'>Users</Link></CardTitle>
+          </CardBody>
+        </Card>
       </div>
     );
   }
