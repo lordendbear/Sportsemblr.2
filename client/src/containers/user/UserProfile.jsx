@@ -14,7 +14,7 @@ class ProfilePage extends React.Component {
 
     this.state = {
       isOpen: false,
-      user: Object.assign({}, props.event),
+      user: Object.assign({}, props.user),
       canEdit: props.canEdit
     }
 
@@ -23,7 +23,9 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getProfile(this.props.match.params.id);
+    if (this.props.match.params.id) {
+      this.props.getProfile(this.props.match.params.id);
+    }
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
