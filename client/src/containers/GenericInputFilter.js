@@ -3,7 +3,7 @@ import { setVisibilityFilter } from '../actions/eventActions';
 import { Input } from 'reactstrap';
 
 const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilter
+  active: (ownProps.filter === state.visibilityFilter) + ''
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

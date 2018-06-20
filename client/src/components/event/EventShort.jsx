@@ -10,14 +10,14 @@ const renderPrice = (price) => <span><strong><em>{`${price}$`}</em></strong></sp
 // TODO: After X hours should be days, hours, minutes...
 const EventShortComponent = ({ event, isActive }) => {
     let duration, hours, mins;
-    if(event.duration) {
+    if (event.duration) {
         duration = event.duration.toString().split('.');
         [hours] = duration;
         mins = duration[1] ? (duration[1] * 60) / 100 : 0
     }
 
-    const durationText = !duration ? 'n/a' : 
-        mins ? `${hours} h ${mins} min` 
+    const durationText = !duration ? 'n/a' :
+        mins ? `${hours} h ${mins} min`
             : `${hours} h`;
 
     return (
@@ -26,7 +26,7 @@ const EventShortComponent = ({ event, isActive }) => {
             <td>{event.sport}</td>
             <td>
                 {event.date.toLocaleString("bg-BG")}
-                <br/>
+                <br />
                 <strong><em>({Math.round(Math.abs(Date.now() - event.date) / 36e5)} h)</em></strong>
             </td>
             <td>{durationText}</td>
@@ -37,9 +37,9 @@ const EventShortComponent = ({ event, isActive }) => {
                         <span>{event.address ? `${event.address}` : 'No address added'}</span>
                     </summary>
                     {
-                        !event.location ? 
+                        !event.location ?
                             <span> 'This event has no location provided :/' </span> :
-                            <div className="simple-map-wrapper">
+                            <span className="simple-map-wrapper">
                                 <MapComponent isMarkerShown
                                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                                     loadingElement={<div style={{ height: `100%` }} />}
@@ -49,12 +49,12 @@ const EventShortComponent = ({ event, isActive }) => {
                                     markerDraggeble={false}
                                     markerClickable={false}
                                 />
-                            </div>
+                            </span>
                     }
                 </details>
             </td>
             <td>
-                {event.peopleNeeded > 0 ? `${event.peopleJoined.length} / ${event.peopleNeeded}` : <Badge color='danger'>FULL</Badge>}    
+                {event.peopleNeeded > 0 ? `${event.peopleJoined.length} / ${event.peopleNeeded}` : <Badge color='danger'>FULL</Badge>}
             </td>
             <td>
                 <Badge color={isActive ? 'success' : 'danger'}>{isActive ? 'Active' : 'Inactive'}</Badge>
