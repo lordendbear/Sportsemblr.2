@@ -16,17 +16,22 @@ const handleLoadEventsSuccess = (state, action) => {
 };
 
 const handleCreateEventSuccess = (state, action) => {
-    return [
-        ...state,
-        Object.assign({}, action.event)
-    ];
+    const events = Object.assign([], state.events);
+    events.push(action.event);
+
+    return {
+        events
+    };
 };
 
 const handleUpdateEventSuccess = (state, action) => {
-    return [
-        ...state.filter(ev => ev.id !== action.event.id),
-        Object.assign({}, action.event)
-    ];
+    const events = Object.assign([], state.events)
+        .filter(ev => ev.id !== action.event.id);
+    events.push(action.event);
+
+    return {
+        events
+    };
 };
 
 const handleLeaveReviewSuccess = (state, action) => {
