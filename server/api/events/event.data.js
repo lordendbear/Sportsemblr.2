@@ -29,8 +29,23 @@ export default (Event) => {
     },
     create: (event, userId) => {
       event.status = 'active';
-      const newEvent = new Event(event);
+      let newEvent = new Event(event);
       newEvent.organizer = userId;
+
+      return newEvent.save()
+        .then(savedEvent => {
+          return Event.populate(savedEvent, { path: 'organizer' });
+        })
+        .then(populatedEvent => {
+          newEvent = populatedEvent;
+
+          newEvent.organizer.events.push(newEvent._id);
+
+          return newEvent.organizer.save();
+        })
+        .then(() => {
+          return Promise.resolve(newEvent);
+        })
 
       return new Promise((resolve, reject) => {
         newEvent.save((err) => {
