@@ -29,7 +29,7 @@ export class EventChat extends React.Component {
   render() {
     return (
       <div>
-        {this.props.messages && this.props.messages.length &&
+        {this.props.messages && !!this.props.messages.length &&
           this.props.messages
             .map(m => (<Card key={m._id}>
               <CardBody>

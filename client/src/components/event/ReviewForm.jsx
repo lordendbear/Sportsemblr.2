@@ -24,8 +24,7 @@ export class ReviewForm extends React.Component {
   render() {
     return (
       <div>
-        Reviews
-        {this.props.reviews && this.props.reviews.length &&
+        {this.props.reviews && !!this.props.reviews.length &&
           this.props.reviews
             .map(r => (<Card key={r._id}>
               <CardBody>
