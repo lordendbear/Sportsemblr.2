@@ -78,7 +78,6 @@ export class EventDetailsContainer extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <div>
                 {this.state.canJoin && !this.state.isOrganizer && <Button className="create-event-btn" onClick={this.join}>Join</Button>}
@@ -199,7 +198,6 @@ const checkIfCanJoin = (event, user) => {
 }
 
 const checkIfIsOrganizer = (event, user) => {
-    debugger;
     if (user && event) {
         return user._id === event.organizer;
     }
