@@ -9,7 +9,7 @@ class EventsContainer extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = { 
+        this.state = {
             isOpen: false,
             event: Object.assign({}, props.event),
             isAuthenticated: this.props.isLoggedIn(),
@@ -41,7 +41,7 @@ class EventsContainer extends React.Component {
 
         return (
             <div>
-                {this.props.events && <VisibleEventsList events={this.props.events} onNewEventClick={this.toggleModal} isModalOpen={this.state.isOpen} />}
+                {this.props.events && <VisibleEventsList isAuthenticated={this.state.isAuthenticated} events={this.props.events} onNewEventClick={this.toggleModal} isModalOpen={this.state.isOpen} />}
                 {this.state.isOpen &&
                     <EditEventModal isAuthenticated={this.state.isAuthenticated}
                         closeModal={this.toggleModal}
@@ -67,7 +67,7 @@ class EventsContainer extends React.Component {
 
     handleBlur = (field) => (evt) => {
         this.setState({
-          touched: { ...this.state.touched, [field]: true },
+            touched: { ...this.state.touched, [field]: true },
         });
     }
 
@@ -86,7 +86,7 @@ class EventsContainer extends React.Component {
     toggleModal() {
         this.setState({ isOpen: !this.state.isOpen });
     }
-    
+
     validate(event) {
         return {
             title: event.title.length < 3,
