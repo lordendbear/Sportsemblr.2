@@ -23,8 +23,8 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.match.params.id) {
-      this.props.getProfile(this.props.match.params.id);
+    if (!this.props.user || this.props.user._id !== this.props.userId) {
+      this.props.getProfile(this.props.userId);
     }
   }
 
@@ -73,16 +73,18 @@ const checkIfCanEdit = (profile, user) => {
 const mapStateToProps = (state, ownProps) => {
   const user = state.auth.user;
   let profile = state.user.profile;
+  let userId = user._id;
 
-  if (!ownProps.match.params.id) {
-    profile = Object.assign({}, user);
+  if (ownProps.match.params.id) {
+    userId = ownProps.match.params.id;
   }
 
   const canEdit = checkIfCanEdit(profile, user);
 
   return {
     user: profile,
-    canEdit
+    canEdit,
+    userId
   };
 }
 
