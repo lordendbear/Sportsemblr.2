@@ -52,7 +52,7 @@ details[open] summary::after {
 }
 
 .create-event-btn {
-    z-index: 1000;
+    z-index: 1100;
     display:block;
     width:85px;
     height:85px;
@@ -68,7 +68,7 @@ details[open] summary::after {
     font-weight:bold;
     position: fixed;
     bottom: 15px;
-    left: 15px;
+    right: 15px;
     transition: all .2s ease-in-out;
 }
 
