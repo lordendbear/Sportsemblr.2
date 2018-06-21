@@ -14,6 +14,12 @@ import {
 import Filters from './Filters';
 
 const renderNoEventsMessage = () => <tr><td>No events right now</td></tr>
+const isActive = (event) => {
+  let date =event.date;
+  date = new Date(date);
+
+  return date > new Date();
+}
 
 // TODO: Should add filers and orders
 const EventsList = ({ events, onNewEventClick, isModalOpen, isAuthenticated }) => {
@@ -49,7 +55,7 @@ const EventsList = ({ events, onNewEventClick, isModalOpen, isAuthenticated }) =
                           height={100}>
                           <EventShort
                             event={event}
-                            isActive={true} />
+                            isActive={isActive(event)} />
                         </LazyLoad>;
                       })
                   }
