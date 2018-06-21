@@ -4,6 +4,8 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const LOGIN = 'LOGIN';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
+export const LOGOUT = 'LOGOUT';
+
 export const LOAD_EVENTS_SUCCESS = 'LOAD_EVENTS_SUCCESS';
 export const LOAD_EVENT_SUCCESS = 'LOAD_EVENT_SUCCESS';
 export const UPDATE_EVENT_SUCCESS = 'UPDATE_EVENT_SUCCESS';

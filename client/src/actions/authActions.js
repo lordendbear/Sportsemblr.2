@@ -50,7 +50,8 @@ export function login(user) {
         localStorage.removeItem('auth');
         localStorage.setItem('auth', JSON.stringify(auth));
         dispatch({
-          type: types.LOGIN
+          type: types.LOGIN,
+          user: auth.user
         })
 
         dispatch(notificationActions.success({ message: 'Log in successful!' }));
@@ -72,6 +73,7 @@ export function isLoggedIn() {
 export function logOut() {
   return (dispatch) => {
     authApi.logOut();
+    dispatch({ type: types.LOGOUT });
     dispatch(notificationActions.success({ message: 'See you soon!' }));
   }
 }
