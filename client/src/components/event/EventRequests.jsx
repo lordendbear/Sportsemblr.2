@@ -8,6 +8,8 @@ import {
   Button
 } from 'reactstrap';
 
+const renderNoRequestsMessage = () => <div> No pending requests for your event</div>;
+
 const EventRequests = ({ requests, respond }) => {
   return !requests ? null : (
     < div className="animated fadeIn" >
@@ -24,7 +26,8 @@ const EventRequests = ({ requests, respond }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {requests.map(request =>
+                  {requests.length === 0 && renderNoRequestsMessage()}
+                  {requests && requests.map(request =>
                     <tr key={request._id}>
                       <td>{request.sender.name}</td>
                       <td>

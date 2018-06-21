@@ -27,6 +27,7 @@ export class EventChat extends React.Component {
   }
 
   render() {
+    debugger;
     return (
       <div>
         {this.props.messages && !!this.props.messages.length &&
@@ -44,9 +45,13 @@ export class EventChat extends React.Component {
           <FormGroup>
             <Row>
               <Col md="8">
-                <Label>Write</Label>
+                <Label>Event discussion</Label>
                 <Input onChange={(e) => this.onContentChange(e.target.value)}
-                  value={this.state.message.content} type="text" />
+                  value={this.state.message.content}
+                  type="textarea"
+                  placeholder="Write you instant message here"
+                  cols="5"
+                  rows="5" />
               </Col>
             </Row>
           </FormGroup>

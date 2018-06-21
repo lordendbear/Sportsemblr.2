@@ -25,6 +25,13 @@ const renderMap = (location) => <MapComponent isMarkerShown
     markerDraggeble={false}
     markerClickable={false} />
 
+const isInactive = (event) => {
+    let date =event.date;
+    date = new Date(date);
+
+    return date < new Date();
+}
+
 const EventDetails = ({ event }) => {
     if (!event) {
         return <div>Loading...</div>
@@ -53,6 +60,9 @@ const EventDetails = ({ event }) => {
         <Col md="6">
             <Row>
                 <Col><h2>{event.title}</h2></Col>
+                {
+                    <Col><h2>{isInactive(event) && <Badge color='danger'>This event has passed</Badge>}</h2></Col>
+                }
             </Row>
             <div className="progressbar-wrapper">
                 <Row>
