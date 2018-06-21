@@ -70,8 +70,8 @@ class Home extends Component {
                 </CardTitle>
                 <CardSubtitle>{this.getDateText(e.date)} <em>(starting in {Math.round(Math.abs(Date.now() - e.date) / 36e5)} h)</em></CardSubtitle>
                 <Badge color="info">{e.sport}</Badge>
-                <CardText>{e.address}</CardText>
-                <CardText>{e.description}</CardText>
+                <CardText>{e.address ? e.address : <em>No address provided</em>}</CardText>
+                <CardText>Description: {e.description}</CardText>
               </CardBody>
             </Card>))}
       </div>
