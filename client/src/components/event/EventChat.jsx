@@ -26,16 +26,23 @@ export class EventChat extends React.Component {
     this.onContentChange('');
   }
 
+  getTimeText(time) {
+    let date = new Date(time);
+    return date.toLocaleString('bg-BG');
+  }
+
+  renderNoMessagesText = () => <div className="empty-message"><em>Discussion of event will appear here.</em></div>
+
   render() {
-    debugger;
     return (
       <div>
+        {(!this.props.messages || !this.props.messages.length) && this.renderNoMessagesText()}
         {this.props.messages && !!this.props.messages.length &&
           this.props.messages
             .map(m => (<Card key={m._id}>
               <CardBody>
                 <CardTitle><Link to={'/users/' + m.user._id}>{m.user.name}</Link></CardTitle>
-                <CardSubtitle>{m.time}</CardSubtitle>
+                <CardSubtitle>{this.getTimeText(m.time)}</CardSubtitle>
                 <CardText>{m.content}</CardText>
               </CardBody>
               {this.props.canDelete && <Button type="submit" size="s" color="danger" onClick={() => this.props.deleteMessage(m)}> Delete</Button>}

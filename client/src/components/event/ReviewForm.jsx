@@ -37,15 +37,15 @@ export class ReviewForm extends React.Component {
         {this.props.canLeaveReview && <Form onSubmit={(e) => { e.preventDefault() }}>
           <FormGroup>
             <Row>
-              <Col md="4">
+              <Col md="8">
+                <Label>Review message</Label>
+                <Input onChange={(e) => this.onInputChange(e.target.value, 'text')}
+                  value={this.state.review.text} type="textarea" rows="4" placeholder="Tell whay you think of the passed event" />
+              </Col>
+              <Col md="1">
                 <Label>Points</Label>
                 <Input onChange={(e) => this.onInputChange(e.target.value, 'score')}
-                  value={this.state.review.score} type="number" />
-              </Col>
-              <Col md="8">
-                <Label>Text</Label>
-                <Input onChange={(e) => this.onInputChange(e.target.value, 'text')}
-                  value={this.state.review.text} type="text" />
+                  value={this.state.review.score} type="number" min="0" max="10"/>
               </Col>
             </Row>
           </FormGroup>

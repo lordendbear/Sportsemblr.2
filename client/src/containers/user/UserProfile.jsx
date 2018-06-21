@@ -52,7 +52,7 @@ class ProfilePage extends React.Component {
   render() {
     return (
       <div>
-        {this.state.canEdit && <Button color="primary" size="sm" className="float-right" onClick={this.toggleModal}>Edit Profile</Button>}
+        {this.state.canEdit && <Button color="primary" size="sm" className="create-event-btn" onClick={this.toggleModal}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></Button>}
 
         {this.state.isOpen && <UpdateProfileModal closeModal={this.toggleModal} user={this.state.user} onInputChange={this.inputChange} save={this.updateProfile}></UpdateProfileModal>}
 

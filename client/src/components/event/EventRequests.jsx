@@ -8,7 +8,7 @@ import {
   Button
 } from 'reactstrap';
 
-const renderNoRequestsMessage = () => <div> No pending requests for your event</div>;
+const renderNoRequestsMessage = () => <div className="empty-message "> No pending requests for your event</div>;
 
 const EventRequests = ({ requests, respond }) => {
   return !requests ? null : (
