@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormGroup, Input, Form, Col, Label, Row, Card, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Button, FormGroup, Input, Form, Col, Label, Row, Card, CardBody, CardTitle, CardText, CardSubtitle, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 export class ReviewForm extends React.Component {
@@ -28,9 +28,11 @@ export class ReviewForm extends React.Component {
           this.props.reviews
             .map(r => (<Card key={r._id}>
               <CardBody>
-                <CardTitle><Link to={'/users/' + r.user._id}>{r.user.name}</Link></CardTitle>
+                <CardTitle>
+                  <Link to={'/users/' + r.user._id}>{r.user.name}</Link> &nbsp;
+                  <Badge color="info">{r.score} p.</Badge>
+                </CardTitle>
                 <CardText>{r.text}</CardText>
-                <CardText>{r.score}</CardText>
               </CardBody>
             </Card>))}
 
