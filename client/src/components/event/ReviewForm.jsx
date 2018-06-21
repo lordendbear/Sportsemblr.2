@@ -21,9 +21,12 @@ export class ReviewForm extends React.Component {
     this.setState({ review });
   }
 
+  renderNoMessagesText = () => <div className="empty-message"><em>No reviews for this event.</em></div>
+
   render() {
     return (
       <div>
+        {(!this.props.reviews || !this.props.reviews.length) && this.renderNoMessagesText()}
         {this.props.reviews && !!this.props.reviews.length &&
           this.props.reviews
             .map(r => (<Card key={r._id}>
