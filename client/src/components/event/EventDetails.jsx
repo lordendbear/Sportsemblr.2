@@ -78,7 +78,7 @@ const EventDetails = ({ event }) => {
             </div>
             <hr/>
             <Row>
-                <Col>This user! is searching friends for <strong><em>{event.sport}</em></strong> for <strong><em>{event.difficulty}</em></strong>`s</Col>
+                <Col>Hey, I'm searching friends for <strong><em>{event.sport}</em></strong> for <strong><em>{event.difficulty}</em></strong>`s</Col>
             </Row> 
             <Row>
                 <div className="speech-bubble">
