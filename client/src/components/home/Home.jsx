@@ -58,7 +58,7 @@ class Home extends Component {
         <div className="overlay"></div>
         <div className="home-title-wrapper"> {
           isLoggedIn ?
-            <div className="heading-main"><h2>Hi, {this.state.user.name}, checkout latest upcoming events: </h2></div> :
+            <div className="heading-main"><h2>Hi, {this.state.user.name}, check out the latest upcoming events: </h2></div> :
             <NavLink className="login-link" tag={Link} to='/login'> LOGIN OR SIGN UP TO DISCOVER SPORT EVENTS </NavLink>
         }
         </div>
