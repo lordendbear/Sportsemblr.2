@@ -41,11 +41,11 @@ export class EventChat extends React.Component {
           this.props.messages
             .map(m => (<Card key={m._id}>
               <CardBody>
+                {this.props.canDelete && <div color="danger" className="pull-right chat-delete" onClick={() => this.props.deleteMessage(m)}><i class="fa fa-trash-o" aria-hidden="true"></i></div>}
                 <CardTitle><Link to={'/users/' + m.user._id}>{m.user.name}</Link></CardTitle>
                 <CardSubtitle>{this.getTimeText(m.time)}</CardSubtitle>
                 <CardText>{m.content}</CardText>
               </CardBody>
-              {this.props.canDelete && <Button type="submit" size="s" color="danger" onClick={() => this.props.deleteMessage(m)}> Delete</Button>}
             </Card>))}
 
         {this.props.isActive && <Form onSubmit={(e) => { e.preventDefault() }}>

@@ -172,3 +172,13 @@ details[open] summary::after {
 .heading-profile {
     margin: 15px;
 }
+
+.chat-delete {
+    cursor: pointer;
+}
+
+
+.chat-delete:hover {
+    color: red;
+    
+}
