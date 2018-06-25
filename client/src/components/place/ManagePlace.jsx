@@ -5,6 +5,7 @@ import ReactTags from 'react-tag-autocomplete';
 import { savePlace } from '../../actions/placeActions';
 import { checkIfEmptyObject } from '../../util';
 import { SPORTS_SUGGESTIONS } from '../../util/constants';
+import MapSearchBox from '../common/MapSearchBox';
 
 import {
   Row,
@@ -165,8 +166,19 @@ export class ManagePlace extends React.Component {
                     <Label htmlFor="file-input">Add photo</Label>
                   </Col>
                   <Col xs="12" md="9">
-                    <Input type="file" id="file-input" name="file-input" />
+                    <Input type="file" id="file-input" name="file-input" disabled/>
                   </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <MapSearchBox isMarkerShown
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `400px`, width:'100%', margin:'0 auto' }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                    markerPosition={this.inputChange}
+                    onInputChange={this.inputChange}
+                    markerClickable={true}
+                    markerDraggable={true}
+                  />
                 </FormGroup>
               </Form>
             </CardBody>

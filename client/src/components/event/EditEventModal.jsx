@@ -59,9 +59,8 @@ const EditEventModal = ({ isAuthenticated, event, closeModal, onInputChange, han
                 <Label>Location</Label>
                 <FormText color="muted"> Drag the marker to the location of the event </FormText>
                 <MapSearchBox isMarkerShown
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                   loadingElement={<div style={{ height: `100%` }} />}
-                  containerElement={<div style={{ height: `300px` }} />}
+                  containerElement={<div style={{ height: `400px`, width:'100%', margin:'0 auto' }} />}
                   mapElement={<div style={{ height: `100%` }} />}
                   markerPosition={markerPosition}
                   onInputChange={onInputChange}
