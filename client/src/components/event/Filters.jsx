@@ -20,7 +20,7 @@ const Filters = () => (
             </ActiveFilter>
             </Col>
             <Col md="9">
-                <ActiveFilter filter={VisibilityFilters.SHOW_FREE_EVENTS} color="warning" className="pull-right">
+                <ActiveFilter filter={VisibilityFilters.SHOW_FREE_EVENTS} color="info free-event" className="pull-right">
                     SHOW FREE EVENTS
             </ActiveFilter>
             </Col>
